@@ -1,0 +1,84 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Once you have completed these tasks in the ungraded lab, you can check and compare your answers with the following solutions.
+ </p>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Write a SQL statement to print all records of orders where the cost is $250 or less.
+ </p>
+ <pre language="sql">SELECT * FROM Orders WHERE Cost &lt;= 250;</pre>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Write a SQL statement to print all records of orders where the cost is between $50 and $750.
+ </p>
+ <pre language="sql">SELECT * FROM Orders WHERE Cost &gt; 50 AND Cost &lt; 750;</pre>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Write a SQL statement to print all records of orders that have been placed by the client with the id of Cl3 and where the cost of the order is more than $100.
+ </p>
+ <pre language="sql">SELECT * FROM Orders WHERE ClientID = "Cl3" and Cost &gt; 100; </pre>
+ <p>
+  <strong>
+   Task 4 solution:
+  </strong>
+  Write a SQL statement to print all records of orders that have a product id of p1 or p2 and the order quantity is more than 2.
+ </p>
+ <pre language="sql">SELECT * FROM Orders WHERE ProductID = "P1" OR ProductID = "P2" AND Quantity &gt; 2;</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

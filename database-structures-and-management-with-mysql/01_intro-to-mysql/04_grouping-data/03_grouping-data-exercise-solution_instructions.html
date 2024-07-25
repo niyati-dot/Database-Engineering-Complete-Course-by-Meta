@@ -1,0 +1,90 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Once you have completed these tasks, check and compare your answers with the following solutions:
+ </p>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Write a SQL SELECT statement to group all records that have the same order date.
+ </p>
+ <pre language="sql">SELECT OrderDate FROM Orders GROUP BY OrderDate;</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Write a SQL SELECT statement to retrieve the number of orders placed on the same day.
+ </p>
+ <pre language="sql">SELECT OrderDate,COUNT(OrderID) FROM Orders GROUP BY OrderDate;</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Write a SQL SELECT statement to retrieve the total order quantities placed by each department.
+ </p>
+ <pre language="sql">SELECT Department, SUM(OrderQty) FROM Orders GROUP BY Department;</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 4 solution:
+  </strong>
+  Write a SQL SELECT statement to retrieve the number of orders placed on the same day between the following dates: 1st June 2022 and 30th June 2022.
+ </p>
+ <pre language="sql">SELECT OrderDate,COUNT(OrderID) FROM Orders GROUP BY OrderDate HAVING OrderDate BETWEEN '2022-06-01' AND '2022-06-30';</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

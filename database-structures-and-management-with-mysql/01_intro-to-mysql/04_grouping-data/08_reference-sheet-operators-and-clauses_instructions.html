@@ -1,0 +1,120 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  <strong>
+   GROUP BY clause
+  </strong>
+ </p>
+ <p>
+  Use the GROUP BY clause in a SELECT statement to group rows in a table(s) based on a given column(s) into summary rows or subgroups.
+ </p>
+ <p>
+  It is placed after the FROM clause. If there is a WHERE clause in your SELECT statement, it should be placed after the WHERE clause. After the GROUP BY keyword, place a list of comma-separated column names by which you want to group the data.
+ </p>
+ <p>
+ </p>
+ <p>
+  <strong>
+   HAVING clause
+  </strong>
+ </p>
+ <p>
+  If you also want to filter your grouped data, use the HAVING clause. You should be aware that the WHERE clause cannot filter grouped data. The HAVING clause should appear after the GROUP BY clause. In the HAVING clause, you can specify the filter condition(s) that needs to be applied to your grouped data.
+ </p>
+ <p>
+ </p>
+ <p>
+  <strong>
+   ANY operator
+  </strong>
+ </p>
+ <p>
+  The ANY operator lets you perform a comparison between a single column value and a range of other values. The range of values comes from the execution of a subquery.
+ </p>
+ <p>
+  The syntax of a statement that uses an ANY operator is as follows:
+ </p>
+ <pre language="sql">SELECT column_name(s) 
+FROM table_name 
+WHERE column_name comparison operator ANY 
+  (SELECT column_name 
+  FROM table_name 
+  WHERE condition); </pre>
+ <p>
+  The ANY operator returns a boolean value following a comparison operation. It returns a TRUE value if ANY subquery values meet the given condition. In other words, the condition will be TRUE if the operation is true for any of the values in the range.
+ </p>
+ <p>
+  In this syntax, the ANY operator should be preceded by a column name and a comparison operator that operates on the column name against the set of values.
+ </p>
+ <p>
+  Standard comparison operators like =, &lt;&gt;, !=, &gt;, &gt;=, &lt;, or &lt;= can be used here.
+ </p>
+ <p>
+ </p>
+ <p>
+  <strong>
+   ALL operator
+  </strong>
+ </p>
+ <p>
+  Use the ALL operator for the same purpose as the ANY operator. However, the way it works is a little bit different. It returns a boolean value as a result of performing a comparison operation. It returns TRUE only if ALL subquery values meet the given condition. In other words, the condition will be TRUE only if the operation is true for all values in the range.
+ </p>
+ <p>
+  The syntax for the ALL operator is as follows:
+ </p>
+ <pre language="sql">SELECT column_name(s) 
+FROM table_name 
+WHERE column_name operator ALL 
+  (SELECT column_name FROM table_name WHERE condition); </pre>
+ <p>
+  The syntax is interpreted in the same way as with ANY and the standard comparison operators can be used with it.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
