@@ -1,0 +1,357 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><META http-equiv="Content-Language" content="en-US">
+<META name="chapter-id" content="">
+<link rel="shortcut icon" href="http://download.oracle.com/favicon.ico">
+<link rel="alternate" type="application/atom+xml" title="RecentlyPublished" href="/app/feed?n=10">
+<link rel="stylesheet" href="/docs/dcommon/dsc/css/default.css">
+<link rel="stylesheet" href="/docs/dcommon/dsc/css/dsc.css">
+<script language="javascript1.2" type="text/javascript"src="/app/css/sniff.js"></script>
+<script language="javascript1.2" type="text/javascript" src="/app/css/menucontent.js"></script>
+<script language="javascript1.2" type="text/javascript" src="/app/css/menucode.js"></script>
+<script language="javascript1.2" type="text/javascript" src="/lang-selector.js"></script>
+<title>Chapter 4. Getting Started Tutorial</title><link rel="stylesheet" href="mysql-html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.1"><link rel="start" href="index.html" title="MySQL Workbench"><link rel="up" href="index.html" title="MySQL Workbench"><link rel="prev" href="wb-installing.html" title="Chapter 3. Installing and Launching MySQL Workbench"><link rel="next" href="wb-home.html" title="Chapter 5. The Home Screen"><script language="javascript" type="text/javascript">
+    function datecheck() {
+        var base = new Date(1288881064*1000);
+        var now = new Date();
+        var diff = ((now-base)/1000)/(24*3600);
+
+        if (diff > 90) {
+            var nodes = document.getElementsByClassName('titlepage');
+            nodes[0].innerHTML = '<p style="border: 5px #ff0000 solid; padding: 5px; margin 5px">' +
+                'This copy of the manual is more than 90 days old. We encourage you to download a ' +
+                'new version from <a href="http://dev.mysql.com">dev.mysql.com/doc</a>.</p>' + nodes[0].innerHTML;
+        }
+}
+</script>
+<noscript></noscript>
+<script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head><body onLoad="datecheck();"  bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 4. Getting Started Tutorial</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="wb-installing.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="wb-home.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="wb-getting-started-tutorial"></a>Chapter 4. Getting Started Tutorial</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="wb-getting-started-tutorial.html#wb-getting-started-tutorial-admin">4.1. Administering a MySQL Server</a></span></dt><dt><span class="section"><a href="wb-getting-started-tutorial.html#wb-getting-started-tutorial-creating-a-model">4.2. Creating a Model</a></span></dt><dt><span class="section"><a href="wb-getting-started-tutorial.html#wb-getting-started-tutorial-adding-data">4.3. Adding Data to Your Database</a></span></dt></dl></div><p>
+    This tutorial provides a quick hands-on introduction to using
+    MySQL Workbench for beginners. If you have used MySQL Workbench before you
+    can safely skip this tutorial.
+  </p><p>
+    To complete this tutorial you will need to have a locally installed
+    MySQL Server. If you only have access to a remote MySQL server you
+    will need to enter appropriate connection parameters when required.
+    This tutorial requires MySQL Workbench version 5.2.16 or above. You also
+    need a basic understanding of MySQL concepts. This tutorial
+    demonstrates the procedures on Microsoft Windows, they are, however,
+    the same for all supported platforms.
+  </p><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-getting-started-tutorial-admin"></a>4.1. Administering a MySQL Server</h2></div></div></div><p>
+      In this section you will see how you can use MySQL Workbench to
+      connect to a server in order to carry out administrative
+      functions, such as starting and stopping the server.
+    </p><div class="orderedlist"><ol type="1"><li><p>
+          Launch MySQL Workbench. You will be presented with the Home
+          screen:
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-home"></a><p class="title"><b>Figure 4.1. Getting Started Tutorial - Home Screen</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-home.png" width="1024" height="708" alt="Getting Started Tutorial - Home
+              Screen"></div></div></li><li><p>
+          In order to administer your MySQL Server you need to first
+          create a Server Instance. This contains information about the
+          target server, including how to connect to it. From the Home
+          screen of MySQL Workbench, click <span class="guilabel">New Server
+          Instance</span>. The <span class="guilabel">Create New Server Instance
+          Profile</span> wizard will be displayed.
+        </p></li><li><p>
+          In this tutorial we will connect to a locally installed
+          server, so click <span class="guibutton">Next</span>.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-specify-host"></a><p class="title"><b>Figure 4.2. Getting Started Tutorial - Specify Host Machine</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-specify-host.png" width="798" height="598" alt="Getting Started Tutorial - Specify Host
+              Machine"></div></div></li><li><p>
+          Next you will set up a connection, or select an existing
+          connection to use to connect to the server. Assuming you have
+          not already created a connection, you can use the default
+          values here, although if your MySQL Server has a password set
+          for root, you can set it here by clicking on Store in Vault.
+          This allows you to connect to the server without needing to
+          enter a password each time. It is also possible to use another
+          account to connect to the server by setting the username and
+          password here, if required.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-connection"></a><p class="title"><b>Figure 4.3. Getting Started Tutorial - Database Connection</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-connection.png" width="798" height="598" alt="Getting Started Tutorial - Database
+              Connection"></div></div><p>
+          You can now click <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          The connection will now be tested. You should see that the
+          connection was successful. If not click
+          <span class="guibutton">Back</span> and check that you have entered
+          the information required.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-test-connection"></a><p class="title"><b>Figure 4.4. Getting Started Tutorial - Connection Test</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-test-connection.png" width="798" height="598" alt="Getting Started Tutorial - Connection
+              Test"></div></div><p>
+          If everything tested correctly, click
+          <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          On this screen you will set the operating system and
+          installation type. In this case the installation is Microsoft
+          Windows, and the installation type is MySQL 5.1 x86 Installer
+          Package. Setting these options allows MySQL Workbench to determine
+          location of configuration files, and the correct start up and
+          shut down commands to use for the server.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-os"></a><p class="title"><b>Figure 4.5. Getting Started Tutorial - Operating System</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-os.png" width="798" height="598" alt="Getting Started Tutorial - Operating
+              System"></div></div><p>
+          Once you have set the operating system and installation type,
+          click <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          The wizard will now check that it is able to access the start
+          up and shut down commands, and access the MySQL Server
+          configuration file.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-test-host"></a><p class="title"><b>Figure 4.6. Getting Started Tutorial - Test Host Settings</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-test-host.png" width="798" height="598" alt="Getting Started Tutorial - Test Host
+              Settings"></div></div><p>
+          Check that everything is in order and then click
+          <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          You now have a chance to review the configuration settings so
+          far. The information displayed varies slightly depending on
+          platform, connection method and installation type:
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-review"></a><p class="title"><b>Figure 4.7. Getting Started Tutorial - Review Settings</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-review.png" width="798" height="598" alt="Getting Started Tutorial - Review
+              Settings"></div></div><p>
+          Click <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          Finally you can give the server instance a suitable name. This
+          will be used to select this particular instance from a list of
+          available instances.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-instance-name"></a><p class="title"><b>Figure 4.8. Getting Started Tutorial - Instance Name</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-instance-name.png" width="798" height="598" alt="Getting Started Tutorial - Instance
+              Name"></div></div><p>
+          Having set the desired name, you can click
+          <span class="guibutton">Finish</span> to complete the server instance
+          creation process.
+        </p></li><li><p>
+          You will now be returned to the Home screen. You will see the
+          new server instance you created, along with the new connection
+          you created as part of the above procedure.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-home-screen-instance"></a><p class="title"><b>Figure 4.9. Getting Started Tutorial - Home Screen Instance</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-home-screen-instance.png" width="1024" height="708" alt="Getting Started Tutorial - Home Screen
+              Instance"></div></div><p>
+          You are now ready to test your new server instance.
+        </p></li><li><p>
+          From the Home screen, double-click the Server Instance you
+          created. The Administrator will open on the
+          <span class="guilabel">Startup</span> configuration page.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-admin-startup"></a><p class="title"><b>Figure 4.10. Getting Started Tutorial - Admin Startup</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-admin-startup.png" width="1024" height="708" alt="Getting Started Tutorial - Admin
+              Startup"></div></div></li><li><p>
+          Click the <span class="guibutton">Stop Server</span> button. The
+          message window will show that the server has stopped.
+        </p></li><li><p>
+          Click the <span class="guibutton">Start Server</span> button to resume
+          the server. The message window will confirm that the server is
+          running.
+        </p></li></ol></div><p>
+      You have now seen how to create a server instance to allow you to
+      manage a MySQL server.
+    </p><p>
+      For further information see
+      <a href="wb-server-administration.html" title="Chapter 8. Server Administration">Chapter 8, <i>Server Administration</i></a>.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-getting-started-tutorial-creating-a-model"></a>4.2. Creating a Model</h2></div></div></div><p>
+      In this section you will learn how to create a new database model,
+      create a table, create an EER Diagram of your model, and then
+      forward engineer your model to the live database server.
+    </p><div class="orderedlist"><ol type="1"><li><p>
+          Start MySQL Workbench. On the Home screen select <span class="guilabel">Create
+          new EER Model</span>. A model can contain multiple
+          schemata. Note that when you create a new model, it contains
+          the <code class="literal">mydb</code> schema by default. You can change
+          the name of this schema to serve your own purposes, or simply
+          delete it.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-home-screen"></a><p class="title"><b>Figure 4.11. Getting Started Tutorial - Home Screen</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-home-screen.png" width="1024" height="719" alt="Getting Started Tutorial - Home
+              Screen"></div></div></li><li><p>
+          On the Physical Schemata toolbar, click the button
+          <span class="guibutton">+</span> to add a new schema. This will create
+          a new schema and display a tabsheet for the schema. In the
+          tabsheet, change the name of the schema to
+          “<span class="quote">dvd_collection</span>”, by typing into the field called
+          <span class="guilabel">Name</span>. Ensure that this change is
+          reflected on the Physical Schemata tab. Now you are ready to
+          add a table to your schema. If at this stage you receive a
+          message dialog asking to rename all schema occurrences, you
+          can click <span class="guibutton">Yes</span> to apply your name
+          change.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-new-schema"></a><p class="title"><b>Figure 4.12. Getting Started Tutorial - New Schema</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-new-schema.png" width="1024" height="719" alt="Getting Started Tutorial - New
+              Schema"></div></div></li><li><p>
+          In the Physical Schemata section double-click <span class="guilabel">Add
+          Table</span>.
+        </p></li><li><p>
+          Double-click <span class="guilabel">table1</span> to launch the table
+          editor (you may not have to do this as the table editor will
+          automatically load at this point if you are using later
+          versions of MySQL Workbench). In the table editor, change the name
+          of the table to “<span class="quote">movies</span>” and press
+          <span><strong class="keycap">Enter</strong></span>.The table editor will then switch from
+          the <span class="guilabel">Table</span> tab to the
+          <span class="guilabel">Columns</span> tab, to allow you to enter
+          details of your table columns.
+        </p></li><li><p>
+          Change the name of the first column to
+          “<span class="quote">movie_id</span>”. Select a data type of
+          <code class="literal">INT</code>. You will then make this column have
+          the following properties: primary key, not null,
+          autoincrement. To do this click the <span class="guilabel">PK</span>,
+          <span class="guilabel">NN</span>, and <span class="guilabel">AI</span>
+          checkboxes.
+        </p></li><li><p>
+          Add two further columns:
+        </p><div class="informaltable"><table border="1"><colgroup><col><col><col></colgroup><thead><tr><th>Column Name</th><th>Data Type</th><th>Column Properties</th></tr></thead><tbody><tr><td>movie_title</td><td>VARCHAR(45)</td><td>NN</td></tr><tr><td>release_date</td><td>DATE (YYYY-MM-DD)</td><td>None.</td></tr></tbody></table></div><div class="figure"><a name="wb-getting-started-tutorial-columns"></a><p class="title"><b>Figure 4.13. Getting Started Tutorial - Columns</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-columns.png" width="1024" height="719" alt="Getting Started Tutorial -
+              Columns"></div></div></li><li><p>
+          Now you can obtain a visual representation of this schema so
+          far. From the main menu select <span class="guimenu">Model</span>,
+          <span class="guimenu">Create Diagram from Catalog Objects</span>. The
+          EER Diagram will be created and displayed.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-eer-diagram"></a><p class="title"><b>Figure 4.14. Getting Started Tutorial - EER Diagram</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-eer-diagram.png" width="1024" height="719" alt="Getting Started Tutorial - EER
+              Diagram"></div></div></li><li><p>
+          Now, in the table editor, change the name of the column
+          “<span class="quote">movie_title</span>” to “<span class="quote">title</span>”. Note that
+          the EER Diagram is automatically updated to reflect this
+          change.
+        </p></li><li><p>
+          At this point you can save your model. Click the main toolbar
+          button <span class="guibutton">Save Model to Current File</span>. In
+          this case you have not yet saved this file so you will be
+          prompted to enter a model file name. For this tutorial enter
+          “<span class="quote">Home_Media</span>”. The Home_Media model may contain
+          further schemata in addition to
+          <code class="literal">dvd_collection</code>, such as
+          <code class="literal">cd_collection</code>. Click
+          <span class="guibutton">Save</span> to save the model.
+        </p></li><li><p>
+          You can synchronize your model with the live database server.
+          First you need to tell MySQL Workbench how to connect to the live
+          server. From the main menu select <span class="guimenu">Database</span>,
+          <span class="guimenu">Manage Connections...</span>.
+        </p></li><li><p>
+          In the <span class="guilabel">Manage DB Connections</span> dialog click
+          <span class="guibutton">New</span>.
+        </p></li><li><p>
+          Enter “<span class="quote">Big Iron Server</span>” for the connection name.
+          This allows us to identify which server this connection
+          corresponds to, although it is possible to create multiple
+          connections to the same server.
+        </p></li><li><p>
+          Enter the username for the account you will use to connect to
+          the server.
+        </p></li><li><p>
+          Click on the <span class="guibutton">Store in Vault...</span> button
+          and enter the password for the username you entered in the
+          previous step. You can optionally ignore this step, and you
+          will be prompted for this password whenever MySQL Workbench
+          connects to the server.
+        </p></li><li><p>
+          Click <span class="guibutton">Test Connection</span> to test your
+          connection parameters. If everything is OK at this point you
+          can click <span class="guibutton">Close</span>.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-manage-connections"></a><p class="title"><b>Figure 4.15. Getting Started Tutorial - Manage Connections</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-manage-connections.png" width="898" height="498" alt="Getting Started Tutorial - Manage
+              Connections"></div></div></li><li><p>
+          You are now ready to forward engineer your model to the live
+          server. From the main menu select <span class="guimenu">Database</span>,
+          <span class="guimenu">Forward Engineer...</span>. The <span class="guilabel">Forward
+          Engineer to Database</span> wizard will be displayed.
+        </p></li><li><p>
+          The first page of the wizard is the Catalog Validation page.
+          Click the <span class="guibutton">Run Validations</span> button to
+          validate the Catalog. If everything is in order the wizard
+          will report that validaton finished successfully. Click
+          <span class="guilabel">Next</span> to continue.
+        </p></li><li><p>
+          The Options page of the wizard shows various advanced options.
+          For this tutorial you can ignore these and simply click
+          <span class="guilabel">Next</span>.
+        </p></li><li><p>
+          On the next page you can select the object you want to export
+          to the live server. In this case we only have a table, so no
+          other objects need to be selected. Click
+          <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          The next screen, Review SQL Script, displays the script that
+          will be run on the live server to create your schema. Review
+          the script to make sure that you understand the operations
+          that will be carried out. Click <span class="guibutton">Next</span>.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-review-script"></a><p class="title"><b>Figure 4.16. Getting Started Tutorial - Review Script</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-review-script.png" width="798" height="598" alt="Getting Started Tutorial - Review
+              Script"></div></div></li><li><p>
+          Select the connection you created earlier, “<span class="quote">Big Iron
+          Server</span>”. Click <span class="guibutton">Execute</span>. Check
+          the messages for any erros, and then click
+          <span class="guibutton">Close</span> to exit the wizard.
+        </p></li><li><p>
+          Ensure that the script ran without error on the server and
+          then click <span class="guibutton">Close</span>. As a simple test that
+          the script worked launch the MySQL Command Line Client. Enter
+          <code class="literal">SHOW DATABASES;</code> and identify your schema.
+          Enter <code class="literal">USE dvd_collection;</code>, to select your
+          schema. Now enter <code class="literal">SHOW TABLES;</code>. Enter
+          <code class="literal">SELECT * FROM movies;</code>, this will return the
+          empty set as you have not yet entered any data into your
+          database. Note that it is possible to use MySQL Workbench to carry
+          out such checks, and you will see how to do this later, but
+          the MySQL Command Line Client has been used here as you have
+          probably used this previously.
+        </p></li><li><p>
+          Ensure that your model is saved. Click <span class="guilabel">Save Model to
+          Current File</span> on the main toolbar.
+        </p></li></ol></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="wb-getting-started-tutorial-adding-data"></a>4.3. Adding Data to Your Database</h2></div></div></div><p>
+      In the previous section you created a model, schema, and table.
+      You also forward engineered your model to the live server. In this
+      section you will see how you can use MySQL Workbench to add data into
+      your database on the live server.
+    </p><div class="orderedlist"><ol type="1"><li><p>
+          On the Home screen click the link <span class="guilabel">Edit Table
+          Data</span> in the SQL Development area of the Workspace.
+          This launches <span class="guilabel">Edit Table Data</span> wizard.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-edit-table-data"></a><p class="title"><b>Figure 4.17. Getting Started Tutorial - Edit Table Data</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-edit-table-data.png" width="1024" height="719" alt="Getting Started Tutorial - Edit Table
+              Data"></div></div></li><li><p>
+          In the wizard select the “<span class="quote">Big Iron Server</span>”
+          connection from the stored connection drop down listbox. Click
+          <span class="guibutton">Next</span>.
+        </p></li><li><p>
+          Select the schema, <code class="literal">dvd_collection</code>. Select
+          the table to edit, <code class="literal">movies</code>. Click
+          <span class="guibutton">Finish</span>.
+        </p></li><li><p>
+          You will see a data grid. This is where you can enter the data
+          for your database. Remember that the
+          <code class="literal">movie_id</code> was set to be autoincrement, so
+          you do not need to enter values directly for this column. In
+          the data grid enter the following movie information:
+        </p><div class="informaltable"><table border="1"><colgroup><col><col></colgroup><thead><tr><th>title</th><th>release_date</th></tr></thead><tbody><tr><td>Gone with the Wind</td><td>1939-04-17</td></tr><tr><td>The Hound of the Baskervilles</td><td>1939-03-31</td></tr><tr><td>The Matrix</td><td>1999-06-11</td></tr><tr><td>Above the Law</td><td>1988-04-08</td></tr></tbody></table></div><p>
+          Note: do not modify any values in the
+          <code class="literal">movie_id</code> column.
+        </p></li><li><p>
+          Now click the <span class="guibutton">Apply changes to data
+          source</span> button in the toolbar located in the bottom
+          right corner. A list of SQL statements will be displayed.
+          Confirm that you understand the operations to be carried out.
+          Click <span class="guibutton">Apply SQL</span> to apply these changes
+          to the live server.
+        </p></li><li><p>
+          Confirm that the script was executed correctly and then click
+          <span class="guibutton">Finish</span>.
+        </p></li><li><p>
+          View the data grid again and observe that the autoincrement
+          values have been generated.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-edit-data"></a><p class="title"><b>Figure 4.18. Getting Started Tutorial - Edit Data</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-edit-data.png" width="1024" height="719" alt="Getting Started Tutorial - Edit
+              Data"></div></div></li><li><p>
+          Now you will check that the data really has been applied to
+          the live server. Launch the MySQL Command Line Client. Enter
+          <code class="literal">SELECT * FROM movies;</code> to see the data just
+          entered.
+        </p></li><li><p>
+          You can also carry out a similar check from within
+          MySQL Workbench. Click on the Home screen tab.
+        </p></li><li><p>
+          Click the link <span class="guilabel">Open Connection to start
+          Querying</span> in the SQL Development section of the
+          Workspace. This will launch the <span class="guilabel">Connect to
+          Database</span> dialog. Select “<span class="quote">Big Iron
+          Server</span>” from the drop down listbox. Click
+          <span class="guibutton">OK</span>.
+        </p></li><li><p>
+          A new SQL Editor tab will be displayed. In the SQL Statements
+          area enter the following code:
+        </p><pre class="programlisting">USE dvd_collection;
+SELECT * FROM movies;
+</pre></li><li><p>
+          Now click the <span class="guibutton">Execute SQL Script in Connected
+          Server</span> toolbar button. This resembles a small
+          lightning bolt. The SQL Editor will display a new Result tab
+          contain the result of executing the SQL statements.
+        </p><div class="figure"><a name="wb-getting-started-tutorial-results"></a><p class="title"><b>Figure 4.19. Getting Started Tutorial - Results</b></p><div class="mediaobject"><img src="images/wb-getting-started-tutorial-results.png" width="1024" height="719" alt="Getting Started Tutorial -
+              Results"></div></div></li></ol></div><p>
+      In this section of the tutorial you have learnt how to add data to
+      your database, and also how to execute SQL statements using
+      MySQL Workbench.
+    </p></div></div><div class="copyright-footer">
+    Copyright © 2006, 2010, Oracle and/or its affiliates. All
+    rights reserved.
+  <a href="index.html#legalnotice">Legal Notices</a></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="wb-installing.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="wb-home.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. Installing and Launching MySQL Workbench </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 5. The Home Screen</td></tr></table></div></body></html>

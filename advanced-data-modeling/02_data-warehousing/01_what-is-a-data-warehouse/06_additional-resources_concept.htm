@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en-US">
+<head>
+<meta name="Page" content="DefaultSingle">
+<meta name="Title" content=" Data Warehousing Concepts">
+<title>Data Warehousing Concepts</title>
+<link rel="home" href="../../index.htm" title="Library">
+<link rel="toc" href="toc.htm" title="Contents">
+<link rel="index" href="index.htm" title="Index">
+<link rel="copyright" href="../../dcommon/html/cpyr.htm" title="Copyright">
+<link rel="up" href="toc.htm" title="Up">
+<link rel="next" href="part2.htm" title="Next">
+<link rel="previous" href="part1.htm" title="Previous">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../dcommon/css/doccd.css" rel="stylesheet" title="Default" type="text/css">
+<script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script></head>
+<body bgcolor="white">
+<a name="top"></a> <a href="#BEGIN">Skip Headers</a><br>
+<br>
+<table summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="left" valign="top"><font color="#330099" face="Helvetica, Arial, sans-serif"><strong>Oracle9<i>i</i> Data Warehousing Guide<br>
+Release 2 (9.2)</strong><br>
+Part Number A96520-01</font></td>
+<td valign="bottom" align="right" width="144">
+<table summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td align="center" valign="top" width="16%"><a href="../../index.htm"><img src="../../dcommon/gifs/prodicon.gif" alt="Go To Documentation Library" border="0"><br>
+<font size="-2">Home</font></a></td>
+<td align="center" valign="top" width="17%"><a href="../../nav/docindex.htm"><img src="../../dcommon/gifs/bookicon.gif" alt="Go To Product List" border="0"><br>
+<font size="-2">Book List</font></a></td>
+<td align="center" valign="top" width="17%"><a href="toc.htm"><img src="../../dcommon/gifs/conticon.gif" alt="Go To Table Of Contents" border="0"><br>
+<font size="-2">Contents</font></a></td>
+<td align="center" valign="top" width="20%"><a href="index.htm"><img src="../../dcommon/gifs/indxicon.gif" alt="Go To Index" border="0"><br>
+<font size="-2">Index</font></a></td>
+<!--  mix  -->
+<td align="center" valign="top" width="17%"><a href="../../mix.920/a96625/toc.htm"><img src="../../dcommon/gifs/mix.gif" alt="" border="0"><br>
+<font size="-2">Master Index</font></a></td>
+<!--  fdbk  -->
+<td align="center" valign="top" width="17%"><a href="../../dcommon/html/feedback.htm"><img src="../../dcommon/gifs/feedback.gif" alt="" border="0"><br>
+<font size="-2">Feedback</font></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<hr>
+<p><a href="part1.htm"><img src="../../dcommon/gifs/larrow.gif" alt="Go to previous page" border="0"></a> <a href="part2.htm"><img src="../../dcommon/gifs/rarrow.gif" alt="Go to next page" border="0"></a> <a name="BEGIN"></a></p>
+
+<div class="IND"><!-- End Header -->
+<a name="43555"></a> <!--TOC=Title-"43555"-->
+<h1 class="Title"><font face="Arial, Helvetica, sans-serif" color="#330099">1<br>
+ <a name="DWHSG001">Data Warehousing Concepts</a></font></h1>
+
+<!--/TOC=Title-->
+<a name="50944"></a> 
+
+<p class="BP">This chapter provides an overview of the Oracle data warehousing implementation. It includes:</p>
+
+<ul class="LB1">
+<li class="LB1" type="disc"><a name="50468"></a><a href="concept.htm#50413">What is a Data Warehouse?</a></li>
+
+<li class="LB1" type="disc"><a name="41578"></a><a href="concept.htm#49759">Data Warehouse Architectures</a></li>
+</ul>
+
+<a name="50371"></a> 
+
+<p class="BP">Note that this book is meant as a supplement to standard texts about data warehousing. This book focuses on Oracle-specific material and does not reproduce in detail material of a general nature. Two standard texts are:</p>
+
+<ul class="LB1">
+<li class="LB1" type="disc"><a name="50571"></a><em class="Italic">The Data Warehouse Toolkit</em> by Ralph Kimball (John Wiley and Sons, 1996)</li>
+
+<li class="LB1" type="disc"><a name="50373"></a><em class="Italic">Building the Data Warehouse</em> by William Inmon (John Wiley and Sons, 1996)</li>
+</ul>
+
+<a name="50413"></a> <!--TOC=h1-"50413"-->
+<h2 class="H1"><font face="Arial, Helvetica, sans-serif" color="#330099">What is a Data Warehouse?</font></h2>
+
+<!--/TOC=h1-->
+<a name="50419"></a> 
+
+<p class="BP">A data warehouse is a relational database that is designed for query and analysis rather than for transaction processing. It usually contains historical data derived from transaction data, but it can include data from other sources. It separates analysis workload from transaction workload and enables an organization to consolidate data from several sources.</p>
+
+<a name="50424"></a> 
+
+<p class="BP">In addition to a relational database, a data warehouse environment includes an extraction, transportation, transformation, and loading (ETL) solution, an online analytical processing (OLAP) engine, client analysis tools, and other applications that manage the process of gathering data and delivering it to business users.</p>
+
+<a name="50750"></a> 
+
+<div align="center">
+<table class="NoteAlso" border="0" width="80%" cellpadding="0" cellspacing="0" dir="ltr" summary="This is a layout table to format a note" title="This is a layout table to format a note">
+<tr class="NoteAlso">
+<td class="NoteAlso"><a name="50743"></a><font face="Arial, Helvetica, sans-serif"><strong class="NH">See Also:</strong></font> <a name="50749"></a> 
+
+<p class="NB"><a href="ettoverv.htm#1020">Chapter&nbsp;10, "Overview of Extraction, Transformation, and Loading"</a></p>
+</td>
+</tr>
+</table>
+</div>
+
+<a name="43682"></a> 
+
+<p class="BP">A common way of introducing data warehousing is to refer to the characteristics of a data warehouse as set forth by William Inmon:</p>
+
+<ul class="LB1">
+<li class="LB1" type="disc"><a name="50146"></a><a href="concept.htm#49840">Subject Oriented</a></li>
+
+<li class="LB1" type="disc"><a name="50153"></a><a href="concept.htm#49842">Integrated</a></li>
+
+<li class="LB1" type="disc"><a name="50160"></a><a href="concept.htm#49871">Nonvolatile</a></li>
+
+<li class="LB1" type="disc"><a name="49836"></a><a href="concept.htm#49853">Time Variant</a></li>
+</ul>
+
+<a name="49840"></a> <!--TOC=h2-"49840"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Subject Oriented</font></h3>
+
+<!--/TOC=h2-->
+<a name="49841"></a> 
+
+<p class="BP">Data warehouses are designed to help you analyze data. For example, to learn more about your company's sales data, you can build a warehouse that concentrates on sales. Using this warehouse, you can answer questions like "Who was our best customer for this item last year?" This ability to define a data warehouse by subject matter, sales in this case, makes the data warehouse subject oriented.</p>
+
+<a name="49842"></a> <!--TOC=h2-"49842"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Integrated</font></h3>
+
+<!--/TOC=h2-->
+<a name="50528"></a> 
+
+<p class="BP">Integration is closely related to subject orientation. Data warehouses must put data from disparate sources into a consistent format. They must resolve such problems as naming conflicts and inconsistencies among units of measure. When they achieve this, they are said to be integrated.</p>
+
+<a name="49871"></a> <!--TOC=h2-"49871"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Nonvolatile</font></h3>
+
+<!--/TOC=h2-->
+<a name="49852"></a> 
+
+<p class="BP">Nonvolatile means that, once entered into the warehouse, data should not change. This is logical because the purpose of a warehouse is to enable you to analyze what has occurred.</p>
+
+<a name="49853"></a> <!--TOC=h2-"49853"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Time Variant</font></h3>
+
+<!--/TOC=h2-->
+<a name="49849"></a> 
+
+<p class="BP">In order to discover trends in business, analysts need large amounts of data. This is very much in contrast to <strong class="Bold"><a href="glossary.htm#432248">online transaction processing (OLTP)</a></strong> systems, where performance requirements demand that historical data be moved to an archive. A data warehouse's focus on change over time is what is meant by the term time variant.</p>
+
+<a name="49851"></a> <!--TOC=h2-"49851"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Contrasting OLTP and Data Warehousing Environments</font></h3>
+
+<!--/TOC=h2-->
+<a name="49835"></a> 
+
+<p class="BP"><a href="concept.htm#50044">Figure&nbsp;1-1</a> illustrates key differences between an OLTP system and a data warehouse.</p>
+
+<a name="50044"></a> 
+
+<h4 class="FT"><font face="Arial, Helvetica, sans-serif"><em>Figure 1-1 Contrasting OLTP and Data Warehousing Environments</em></font></h4>
+
+<a name="43693"><img src="dwhsg005.gif" alt="Text description of dwhsg005.gif follows"></a><a href="img_text/dwhsg005.htm"><br>
+Text description of the illustration dwhsg005.gif</a><br>
+<br>
+ <a name="43686"></a> 
+
+<p class="BP">One major difference between the types of system is that data warehouses are not usually in <strong class="Bold"><a href="glossary.htm#432709">third normal form (3NF)</a></strong>, a type of data normalization common in OLTP environments.</p>
+
+<a name="50213"></a> 
+
+<p class="BP">Data warehouses and OLTP systems have very different requirements. Here are some examples of differences between typical data warehouses and OLTP systems:</p>
+
+<ul class="LB1">
+<li class="LB1" type="disc"><a name="50218"></a>Workload 
+
+<p><a name="50219"></a></p>
+
+<p class="BP1">Data warehouses are designed to accommodate <em class="Italic">ad hoc</em> queries. You might not know the workload of your data warehouse in advance, so a data warehouse should be optimized to perform well for a wide variety of possible query operations.</p>
+
+<a name="50224"></a> 
+
+<p class="BP1">OLTP systems support only predefined operations. Your applications might be specifically tuned or designed to support only these operations.</p>
+</li>
+
+<li class="LB1" type="disc"><a name="50228"></a>Data modifications 
+
+<p><a name="50229"></a></p>
+
+<p class="BP1">A data warehouse is updated on a regular basis by the ETL process (run nightly or weekly) using bulk data modification techniques. The end users of a data warehouse do not directly update the data warehouse.</p>
+
+<a name="50234"></a> 
+
+<p class="BP1">In OLTP systems, end users routinely issue individual data modification statements to the database. The OLTP database is always up to date, and reflects the current state of each business transaction.</p>
+</li>
+
+<li class="LB1" type="disc"><a name="50239"></a>Schema design 
+
+<p><a name="50240"></a></p>
+
+<p class="BP1">Data warehouses often use denormalized or partially denormalized schemas (such as a star schema) to optimize query performance.</p>
+
+<a name="50243"></a> 
+
+<p class="BP1">OLTP systems often use fully normalized schemas to optimize update/insert/delete performance, and to guarantee data consistency.</p>
+</li>
+
+<li class="LB1" type="disc"><a name="50246"></a>Typical operations 
+
+<p><a name="50247"></a></p>
+
+<p class="BP1">A typical data warehouse query scans thousands or millions of rows. For example, "Find the total sales for all customers last month."</p>
+
+<a name="50250"></a> 
+
+<p class="BP1">A typical OLTP operation accesses only a handful of records. For example, "Retrieve the current order for this customer."</p>
+</li>
+
+<li class="LB1" type="disc"><a name="50253"></a>Historical data 
+
+<p><a name="50255"></a></p>
+
+<p class="BP1">Data warehouses usually store many months or years of data. This is to support historical analysis.</p>
+
+<a name="50258"></a> 
+
+<p class="BP1">OLTP systems usually store data from only a few weeks or months. The OLTP system stores only historical data as needed to successfully meet the requirements of the current transaction.</p>
+</li>
+</ul>
+
+<a name="49759"></a> <!--TOC=h1-"49759"-->
+<h2 class="H1"><font face="Arial, Helvetica, sans-serif" color="#330099">Data Warehouse Architectures</font></h2>
+
+<!--/TOC=h1-->
+<a name="50484"></a> 
+
+<p class="BP">Data warehouses and their architectures vary depending upon the specifics of an organization's situation. Three common architectures are:</p>
+
+<ul class="LB1">
+<li class="LB1" type="disc"><a name="51111"></a><a href="concept.htm#51090">Data Warehouse Architecture (Basic)</a></li>
+
+<li class="LB1" type="disc"><a name="51118"></a><a href="concept.htm#50822">Data Warehouse Architecture (with a Staging Area)</a></li>
+
+<li class="LB1" type="disc"><a name="51089"></a><a href="concept.htm#51078">Data Warehouse Architecture (with a Staging Area and Data Marts)</a></li>
+</ul>
+
+<a name="51090"></a> <!--TOC=h2-"51090"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Data Warehouse Architecture (Basic)</font></h3>
+
+<!--/TOC=h2-->
+<a name="51088"></a> 
+
+<p class="BP"><a href="concept.htm#50055">Figure&nbsp;1-2</a> shows a simple architecture for a data warehouse. End users directly access data derived from several source systems through the data warehouse.</p>
+
+<a name="50055"></a> 
+
+<h4 class="FT"><font face="Arial, Helvetica, sans-serif"><em>Figure 1-2 Architecture of a Data Warehouse</em></font></h4>
+
+<a name="49763"><img src="dwhsg013.gif" alt="Text description of dwhsg013.gif follows"></a><a href="img_text/dwhsg013.htm"><br>
+Text description of the illustration dwhsg013.gif</a><br>
+<br>
+ <a name="50383"></a> 
+
+<p class="BP">In <a href="concept.htm#50055">Figure&nbsp;1-2</a>, the metadata and raw data of a traditional OLTP system is present, as is an additional type of data, summary data. Summaries are very valuable in data warehouses because they pre-compute long operations in advance. For example, a typical data warehouse query is to retrieve something like August sales. A summary in Oracle is called a <strong class="Bold"><a href="glossary.htm#432049">materialized view</a></strong>.</p>
+
+<a name="50822"></a> <!--TOC=h2-"50822"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Data Warehouse Architecture (with a Staging Area)</font></h3>
+
+<!--/TOC=h2-->
+<a name="51101"></a> 
+
+<p class="BP">In <a href="concept.htm#50055">Figure&nbsp;1-2</a>, you need to clean and process your operational data before putting it into the warehouse. You can do this programmatically, although most data warehouses use a <strong class="Bold"><a href="glossary.htm#433213">staging area</a></strong> instead. A staging area simplifies building summaries and general warehouse management. <a href="concept.htm#50067">Figure&nbsp;1-3</a> illustrates this typical architecture.</p>
+
+<a name="50067"></a> 
+
+<h4 class="FT"><font face="Arial, Helvetica, sans-serif"><em>Figure 1-3 Architecture of a Data Warehouse with a Staging Area</em></font></h4>
+
+<a name="49902"><img src="dwhsg015.gif" alt="Text description of dwhsg015.gif follows"></a><a href="img_text/dwhsg015.htm"><br>
+Text description of the illustration dwhsg015.gif</a><br>
+<br>
+ <a name="51078"></a> <!--TOC=h2-"51078"-->
+<h3 class="H2"><font face="Arial, Helvetica, sans-serif" color="#330099">Data Warehouse Architecture (with a Staging Area and Data Marts)</font></h3>
+
+<!--/TOC=h2-->
+<a name="51158"></a> 
+
+<p class="BP">Although the architecture in <a href="concept.htm#50067">Figure&nbsp;1-3</a> is quite common, you may want to customize your warehouse's architecture for different groups within your organization. You can do this by adding <strong class="Bold">data</strong> <strong class="Bold">marts</strong>, which are systems designed for a particular line of business. <a href="concept.htm#50867">Figure&nbsp;1-4</a> illustrates an example where purchasing, sales, and inventories are separated. In this example, a financial analyst might want to analyze historical data for purchases and sales.</p>
+
+<a name="50867"></a> 
+
+<h4 class="FT"><font face="Arial, Helvetica, sans-serif"><em>Figure 1-4 Architecture of a Data Warehouse with a Staging Area and Data Marts</em></font></h4>
+
+<a name="51220"><img src="dwhsg064.gif" alt="Text description of dwhsg064.gif follows"></a><a href="img_text/dwhsg064.htm"><br>
+Text description of the illustration dwhsg064.gif</a><br>
+<br>
+ <a name="51241"></a> 
+
+<div align="center">
+<table class="Note" border="0" width="80%" cellpadding="0" cellspacing="0" dir="ltr" summary="This is a layout table to format a note" title="This is a layout table to format a note">
+<tr class="Note">
+<td class="Note">
+<hr>
+<a name="51239"></a><font face="Arial, Helvetica, sans-serif"><strong class="NH">Note:</strong></font> <a name="51240"></a> 
+
+<p class="NB">Data marts are an important part of many warehouses, but they are not the focus of this book.</p>
+
+<hr>
+</td>
+</tr>
+</table>
+</div>
+
+<a name="51228"></a> 
+
+<div align="center">
+<table class="NoteAlso" border="0" width="80%" cellpadding="0" cellspacing="0" dir="ltr" summary="This is a layout table to format a note" title="This is a layout table to format a note">
+<tr class="NoteAlso">
+<td class="NoteAlso"><a name="51223"></a><font face="Arial, Helvetica, sans-serif"><strong class="NH">See Also:</strong></font> <a name="51224"></a> 
+
+<p class="NB"><em class="Italic">Data Mart Suites</em> documentation for further information regarding data marts</p>
+</td>
+</tr>
+</table>
+</div>
+
+<!-- Start Footer -->
+</div>
+
+<div class="OUTD">
+<hr>
+<table summary="" cellspacing="0" cellpadding="0" width="100%">
+<tr>
+<td valign="bottom" width="33%">
+<table summary="" cellspacing="0" cellpadding="0">
+<tr>
+<td align="center"><a href="part1.htm"><img src="../../dcommon/gifs/larrow.gif" alt="Go to previous page" border="0"></a></td>
+<td align="center"><a href="part2.htm"><img src="../../dcommon/gifs/rarrow.gif" alt="Go to next page" border="0"></a></td>
+</tr>
+</table>
+</td>
+<td align="center" width="34%"><a href="../../dcommon/html/cpyr.htm"><img src="../../dcommon/gifs/oracle.gif" alt="Oracle" border="0"><br>
+<font size="-2">Copyright &copy; 1996, 2002 Oracle Corporation.</font></a><br>
+<font size="-2">All Rights Reserved.</font></td>
+<td valign="bottom" align="right" width="33%">
+<table summary="" cellspacing="0" cellpadding="0" width="144">
+<tr>
+<td align="center" valign="top" width="16%"><a href="../../index.htm"><img src="../../dcommon/gifs/prodicon.gif" alt="Go To Documentation Library" border="0"><br>
+<font size="-2">Home</font></a></td>
+<td align="center" valign="top" width="17%"><a href="../../nav/docindex.htm"><img src="../../dcommon/gifs/bookicon.gif" alt="Go To Product List" border="0"><br>
+<font size="-2">Book List</font></a></td>
+<td align="center" valign="top" width="17%"><a href="toc.htm"><img src="../../dcommon/gifs/conticon.gif" alt="Go To Table Of Contents" border="0"><br>
+<font size="-2">Contents</font></a></td>
+<td align="center" valign="top" width="20%"><a href="index.htm"><img src="../../dcommon/gifs/indxicon.gif" alt="Go To Index" border="0"><br>
+<font size="-2">Index</font></a></td>
+<!--  mix  -->
+<td align="center" valign="top" width="17%"><a href="../../mix.920/a96625/toc.htm"><img src="../../dcommon/gifs/mix.gif" alt="" border="0"><br>
+<font size="-2">Master Index</font></a></td>
+<!--  fdbk  -->
+<td align="center" valign="top" width="17%"><a href="../../dcommon/html/feedback.htm"><img src="../../dcommon/gifs/feedback.gif" alt="" border="0"><br>
+<font size="-2">Feedback</font></a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
+

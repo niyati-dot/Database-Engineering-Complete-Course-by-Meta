@@ -1,0 +1,473 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Introduction
+  </strong>
+ </h2>
+ <p variant="body1">
+  In this exercise you'll design a simplified logical relational database model for Mangata and Gallo.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Scenario
+  </strong>
+ </h2>
+ <p variant="body1">
+  Mangata and Gallo (M&amp;G) has built an ad hoc database system to store data about their customers, products, orders and delivery status in one large table as shown below.
+ </p>
+ <table columns="11" rows="5">
+  <thead>
+   <tr>
+    <th>
+     <p variant="body1">
+      <strong>
+       Order ID
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Client name
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Client address
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Order Date
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Delivery Status
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Delivery Date
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Contact Number
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Email
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Item name
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Item price
+      </strong>
+     </p>
+    </th>
+    <th>
+     <p variant="body1">
+      <strong>
+       Total cost
+      </strong>
+     </p>
+    </th>
+   </tr>
+  </thead>
+  <tr>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+   <td>
+    <p variant="body1">
+     Data
+    </p>
+   </td>
+  </tr>
+ </table>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  This database is difficult to manage and includes loads of redundant data. M&amp;G need you to help them create a proper database model for a simplified and logical relational database.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Instructions
+  </strong>
+ </h2>
+ <p variant="body1">
+  You can create the required relational data model using any database modeling tool of your choice such as
+  <var>
+   staruml.io
+  </var>
+  or
+  <var>
+   draw.io
+  </var>
+  .
+ </p>
+ <p variant="body1">
+ </p>
+ <h3 level="3" variant="h3bold">
+  Step 1: Create a conceptual model
+ </h3>
+ <p variant="body1">
+  Create a conceptual model to support M&amp;G’s online ordering system.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    The model should consider the entities listed in the M&amp;G big table.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    All entities must be connected using meaningful labels.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <h3 level="3" variant="h3bold">
+  Step 2: Create a logical ER diagram
+ </h3>
+ <p variant="body1">
+  Based on the conceptual model that you developed in the first task, create a logical ER diagram as follows:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Translate each entity in the conceptual diagram into a table with relevant attributes (Feel free to add attributes that do not exist in the table).
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Specify the primary key of each table.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Create a multiplicity relationship between the tables.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Define relevant constraints such as NOT NULL and foreign keys.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <h3 level="3" variant="h3bold">
+  <strong>
+   Step 3: Review your diagram
+  </strong>
+ </h3>
+ <p variant="body1">
+  Review the logical ER diagram, and make sure that your data model conforms to the first normal form by applying the data atomicity rule.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Conclusion
+  </strong>
+ </h2>
+ <p variant="body1">
+  In this exercise you practiced designing a database model. You created a high-level conceptual data model, designed a logical ER diagram and applied relevant normalization forms.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
