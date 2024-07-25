@@ -1,0 +1,302 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  There are some scenarios in which a given value's data type needs to be changed to some other data type.
+ </p>
+ <p>
+  This process is known as type casting.
+ </p>
+ <p>
+  Another, more informal way to refer to it is "data type conversion".
+ </p>
+ <p>
+  The simplest example of converting data could be the following comparison:
+ </p>
+ <pre language="python">print(10 == 10)</pre>
+ <p>
+  In the above piece of code, I'm asking Python if the number 10 is equal to the number 10, and I'll get the boolean value of
+  <var>
+   True
+  </var>
+  printed, confirming that indeed, they are the same.
+ </p>
+ <p>
+  What if I do this?
+ </p>
+ <pre language="python">print(10 == 10.00)</pre>
+ <p>
+  Again, the boolean value of
+  <var>
+   True
+  </var>
+  is output on the screen.
+ </p>
+ <p>
+  Now, you might complain that, well,
+  <var>
+   10
+  </var>
+  is not
+  <em>
+   <strong>
+    technically
+   </strong>
+  </em>
+  equal to
+  <var>
+   10.0
+  </var>
+  - because, one might argue, the first number is an integer, and the second number is a float. You would be right - although these are the same numbers, they are not the same data types.
+ </p>
+ <p>
+  However, Python here perfoms what's known as
+  <strong>
+   "implicit type conversion"
+  </strong>
+  .
+ </p>
+ <p>
+  To understand how this works, I'll slightly tweak the previous example. Instead of asking Python to compare the two numbers and return if they are the same or not, I'll ask Python to print the result of adding these two numbers together.
+ </p>
+ <pre language="python">print(10 + 10.0)</pre>
+ <p>
+  The printed result is
+  <var>
+   20.0
+  </var>
+  .
+ </p>
+ <p>
+  This output allows me to conclude that
+  <strong>
+   when Python runs operations involving integers and floats, it implicitly converts the integers type to a float, and then completes the operation
+  </strong>
+  .
+ </p>
+ <p>
+  To really drive this point home, I can extend my previous example, using the
+  <var>
+   type()
+  </var>
+  function:
+ </p>
+ <pre language="python">print(type(10 + 10.0))</pre>
+ <p>
+  The output is
+  <var>
+   &lt;class 'float'&gt;
+  </var>
+  , so this confirms my conclusion.
+ </p>
+ <p>
+  Let me know show you a small program in Python, working with numbers:
+ </p>
+ <pre language="python">user_num_1 = input('First number is: ')
+user_num_2 = input('Second number is: ')
+user_sum = user_num_1 + user_num_2
+print(user_sum)</pre>
+ <p>
+  When I run this program, I could, for example, provide the first number's value as
+  <var>
+   5
+  </var>
+  , and the second number's value also as
+  <var>
+   5
+  </var>
+  , expecting that the printed
+  <var>
+   user_sum
+  </var>
+  value will be
+  <var>
+   10
+  </var>
+  .
+ </p>
+ <p>
+  However, when I do exactly that, the number
+  <var>
+   55
+  </var>
+  gets printed instead.
+ </p>
+ <p>
+  Why was this not working?
+ </p>
+ <p>
+  Well, the answer is pretty simple: everything that a user types in, is converted, by Python, to the string data type.
+ </p>
+ <p>
+  This means that, although I typed numbers into these two inputs, what was saved in
+  <var>
+   user_num_1
+  </var>
+  and
+  <var>
+   user_num_2
+  </var>
+  were actually strings.
+ </p>
+ <p>
+  Effectively, it's exactly the same as if I just did this:
+ </p>
+ <pre language="python">user_num_1 = "5"
+user_num_2 = "5"
+user_sum = user_num_1 + user_num_2
+print(user_sum)</pre>
+ <p>
+  This time, the output of printing
+  <var>
+   user_sum
+  </var>
+  is still
+  <var>
+   "55"
+  </var>
+  , but this comes at no surprise.
+ </p>
+ <p>
+  In order to have my Python code work as I intended, I need to perform
+  <strong>
+   explicit type conversion
+  </strong>
+  .
+ </p>
+ <p>
+  In other words, I have to convert the value of
+  <var>
+   "5"
+  </var>
+  to the value of
+  <var>
+   5
+  </var>
+  .
+ </p>
+ <p>
+  Here's my updated code:
+ </p>
+ <pre language="python">user_num_1 = input('First number is: ')
+user_num_2 = input('Second number is: ')
+user_sum = float(user_num_1) + float(user_num_2)
+print(user_sum)</pre>
+ <p>
+  What I'm doing here is, I'm making sure that my program can handle even accepting floats as inputs, and still work correctly.
+ </p>
+ <p>
+  In other words, I'm making sure that if a user provided, say, the float value of
+  <var>
+   5.5
+  </var>
+  as both the first and second numbers when running the above code, the output would not throw an error. Instead, it will be the expected
+  <var>
+   11.0
+  </var>
+  .
+ </p>
+ <p>
+  What if I decide to output some words to the user, telling them what happened?
+ </p>
+ <p>
+  Here's an attempt at doing that:
+ </p>
+ <pre language="python">num_1 = input('First number is: ')
+num_2 = input('Second number is: ')
+user_sum = float(num_1) + float(num_2)
+print("The sum of: " + num_1 + " and " + num_2 + " is " + user_sum)</pre>
+ <p>
+  If I run the above code, it will throw the following error:
+ </p>
+ <p>
+  <var>
+   Traceback (most recent call last):
+  File "&lt;string&gt;", line 4, in &lt;module&gt;
+TypeError: can only concatenate str (not "float") to str
+  </var>
+ </p>
+ <p>
+  What this means is, I cannot concatenate a string and a float like that. In other words, although Python's
+  <strong>
+   implicit type conversion
+  </strong>
+  works when I use the
+  <var>
+   +
+  </var>
+  operator
+  <em>
+   on strings and integers
+  </em>
+  , it does not work
+  <em>
+   on strings and floats
+  </em>
+  .
+ </p>
+ <p>
+  The solution to this is to perform explicit type conversion, as follows.
+ </p>
+ <pre language="python">n1 = input('First number is: ')
+n2 = input('Second number is: ')
+user_sum = float(n1) + float(n2)
+print("The sum of " + str(n1) + " and " + str(n2) + " is " + str(user_sum))</pre>
+ <p>
+  This time, the output is:
+  <var>
+   The sum of 5.5 and 5.5 is 11.0
+  </var>
+  .
+ </p>
+ <p>
+  In Python, it's easy to perform explicit conversions, and sometimes they are very useful. You'll learn more about how this works as you get more experience in Python.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

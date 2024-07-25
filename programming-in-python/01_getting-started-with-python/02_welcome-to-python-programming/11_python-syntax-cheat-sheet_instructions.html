@@ -1,0 +1,108 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  This reading provides you with a cheat sheet that can be used for quick reference.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Spacing
+ </h2>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Correct
+  </strong>
+ </h3>
+ <pre evaluatorid="NVKAODJTScOSgDgyU8nDHQ" language="python">#any ammount of whitespace on a single line is ok
+x     =        1        +        2
+</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Incorrect
+  </strong>
+ </h3>
+ <pre evaluatorid="8HAfgRRmSVOwH4EUZolTxQ" language="python">x = 1
++ 2
+</pre>
+ <h2 level="2" variant="h2semibold">
+  Indentation
+ </h2>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Correct
+  </strong>
+ </h3>
+ <pre evaluatorid="Ua4KQE34RVOuCkBN-MVTRA" language="python">def say_hello():
+    print("Hello there!")
+
+print(say_hello())</pre>
+ <pre evaluatorid="IXIMd08BQhWyDHdPAQIVDQ" language="python">def say_hello(): print("Hello there!")
+
+print(say_hello())
+</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Incorrect
+  </strong>
+ </p>
+ <pre evaluatorid="w3DibZYCSFCw4m2WAshQLw" language="python">def say_hello():
+print("Hello there!")
+</pre>
+ <pre evaluatorid="944eEQIvQWuOHhECLzFrLw" language="python">    def say_hello():
+print("Hello there")
+</pre>
+ <p>
+ </p>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

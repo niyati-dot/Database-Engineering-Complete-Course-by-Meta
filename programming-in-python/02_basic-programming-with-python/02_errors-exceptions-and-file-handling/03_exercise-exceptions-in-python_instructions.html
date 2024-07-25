@@ -1,0 +1,105 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  By the end of this exercise, you will be able to trap exceptions.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Exercise
+  </strong>
+ </h2>
+ <p>
+  Your task in this exercise is to add code to trap exceptions and handle them in a more user-friendly way.
+ </p>
+ <h3 level="3" variant="h3semibold">
+  IndexError
+ </h3>
+ <p>
+  The below code has one problem. It is trying to locate an item from the list that does not exist. Running the code will throw the
+  <strong>
+   IndexError
+  </strong>
+  . Add exception handling to stop the error from being thrown and return a more user-friendly message such as "Item does not exist in the list".
+ </p>
+ <pre evaluatorid="3b0JNdvKTWG9CTXbyj1hoQ" language="python"># Starter code
+items = [1,2,3,4,5]
+item = items[6]
+print(item)
+</pre>
+ <h3 level="3" variant="h3semibold">
+  ZeroDivisionError
+ </h3>
+ <p>
+  In math there are rules about dividing by zero. The below code is trying to do just that and will throw a ZeroDivisionError. Add exception handling to return back 0 instead of allowing the error to be thrown.
+ </p>
+ <pre evaluatorid="L6Rcs7rhRD6kXLO64aQ-Zg" language="python"># Starter code
+def divide_by(a, b):
+    return a / b
+
+
+ans = divide_by(40, 0)
+print(ans)
+</pre>
+ <h3 level="3" variant="h3semibold">
+  FileNotFoundError
+ </h3>
+ <p>
+  The code below is looking for a file that does not exist. Add exception handling to catch this error and return the following "The file could not be found".
+ </p>
+ <pre evaluatorid="5vL0GFUaRE-y9BhVGuRPvQ" language="python"># Starter code
+with open('file_does_not_exist.txt', 'r') as file:
+    print(file.read())
+</pre>
+ <h2 level="2" variant="h2semibold">
+ </h2>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

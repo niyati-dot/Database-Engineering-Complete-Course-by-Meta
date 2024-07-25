@@ -1,0 +1,144 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  This reading illustrates the importance of chosing the correct data structure for the task at hand.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Which data structure to choose?
+ </h2>
+ <p>
+  The tricky part for new developers is understanding which data structure is suited to the required solution. Each data structure offers a different approach to storing, accessing and updating the information stored inside it. There can be many factors to select from, including
+  <strong>
+   size
+  </strong>
+  ,
+  <strong>
+   speed
+  </strong>
+  and
+  <strong>
+   performance
+  </strong>
+  . The best way to try and understand which one is more suitable is through an example.
+ </p>
+ <h3 level="3" variant="h3bold">
+  Example: Employees list
+ </h3>
+ <p>
+  In this example, there's a list of employees that work in a restaurant. You need to be able to find an employee by their employee ID - an integer-based numeric ID. The function
+  <var>
+   get_employee
+  </var>
+  contains a
+  <var>
+   for
+  </var>
+  loop to iterate over the list of employees and returns an employee object if the ID matches.
+ </p>
+ <pre evaluatorid="_cf33WjLRX6H991oy_V-NQ" language="python">employee_list = [{"id": 12345, "name": "John", "department": "Kitchen"}, {"id": 12458, "name": "Paul", "department": "House Floor"}]
+
+def get_employee(id): 
+    for employee in employee_list:
+        if employee['id'] == id:
+            return employee
+
+print(get_employee(12458));
+## OUTPUT
+{'id': 12458, 'name': 'Paul', 'department': 'House Floor'}
+</pre>
+ <p>
+  The code runs well and will return the user Paul, as its ID, 12458, is matched. The challenge comes when the list gets bigger.
+ </p>
+ <p>
+  Instead of two employees, you may have 2000 or even 20,000. The code will have to iterate over the list sequentially until the number is matched.
+ </p>
+ <p>
+  You could optimize the code to split the search, but even with this, it still lacks in performance in comparison to other data structures, such as the dictionary.
+ </p>
+ <pre evaluatorid="y53GThC2QEedxk4QtrBHvA" language="python">employee_dict = {
+    12345: {
+        "id": "12345",
+        "name": "John", 
+        "department": "Kitchen"    
+    },
+    12458: {
+        "id": "12458",
+        "name": "Paul", 
+        "department": "House Floor"    
+    }
+}
+
+def get_employee_from_dict(id):
+    return employee_dict[id];
+
+
+print(get_employee_from_dict(12458));
+## OUTPUT
+{'id': 12458, 'name': 'Paul', 'department': 'House Floor'}
+</pre>
+ <p>
+  Notice how, in this code block, if you change the data structure to use a dictionary, it will allow you to find the employee. The main difference is that you no longer need to iterate over the list to locate them. If the list expands to a much larger size, the seek time to find the employee stays the same.
+ </p>
+ <p>
+  This is a prime example of how to choose the right data structure to suit the solution.
+ </p>
+ <p>
+  Both work well, but the trade-off to be considered is that of time and scale. The first solution will work well for smaller amounts of data, but loses performance as the data scales.
+ </p>
+ <p>
+  The second solution is better suited to large amounts of data as its structure alows for a constant seek time allowing large amounts of data to be accessed at a constant rate.
+ </p>
+ <p>
+  This example shows that there is no one size fits all solution and careful consideration should be given to the choice of data structure to be used depending on the constraints of the solution.
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

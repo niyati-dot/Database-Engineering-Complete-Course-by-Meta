@@ -1,0 +1,100 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  Solution code
+ </h2>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Task 1 : IndexError
+  </strong>
+ </h3>
+ <pre evaluatorid="LoknyvS2RXmJJ8r0tvV5qQ" language="python">try:
+    item = items[6]
+    print(item)
+except: 
+    print("The index does not exist in the list.")
+</pre>
+ <p>
+ </p>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Task 2 : ZeroDivisionError
+  </strong>
+ </h3>
+ <pre evaluatorid="_DCSzrbrSFuwks6261hb6w" language="python">def divide_by(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return 0
+    except Exception as e:
+        print(e, 'Something went wrong!')
+
+ans = divide_by(10,0)
+print(ans)
+</pre>
+ <p>
+ </p>
+ <p>
+ </p>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Task 3 : FileNotFoundError
+  </strong>
+ </h3>
+ <pre evaluatorid="c-coRaoHTKinKEWqB2yo9Q" language="python">try:
+    with open('file_does_not_exist.txt', 'r') as file:
+        print(file.read())
+except:
+    print("Unable to locate file")  
+</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

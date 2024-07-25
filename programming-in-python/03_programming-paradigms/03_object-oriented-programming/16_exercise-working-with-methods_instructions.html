@@ -1,0 +1,113 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+ </p>
+ <p>
+  1. Guess the output for the following block of code and try running the code once you have a solution in mind:
+ </p>
+ <pre evaluatorid="-GpIr6UEScmqSK-lBOnJ1A" language="python">class A:
+    def b(self):
+        return "Function inside A"
+
+class B:
+    pass
+
+class C:
+    def b(self):
+        return "Function inside C"
+
+class D(B, C, A):
+    pass
+
+class D(C):
+    pass
+
+d = D()
+print(d.b())</pre>
+ <p>
+  2. Guess the output for the following block of code and try running the code once you have a solution in mind:
+ </p>
+ <pre evaluatorid="Jf6AV3EOQNu-gFdxDkDbWg" language="python">class A:
+    def c(self):
+        return "Function inside A"
+
+class B(A):
+    def c(self):
+        return "Function inside B"
+
+class C(A,B):
+    pass
+
+class D(C):
+    pass
+
+d = D()
+print(d.a)</pre>
+ <p>
+  3. Guess the output for the following block of code and try running the code once you have a solution in mind:
+ </p>
+ <pre evaluatorid="yJ49o3m7RhGePaN5u3YRXQ" language="python">class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+
+
+c = C()
+print(c.a())</pre>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

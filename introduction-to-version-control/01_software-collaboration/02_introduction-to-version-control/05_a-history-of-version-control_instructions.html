@@ -1,0 +1,147 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  As you know by now, version control is a system that records changes to a file or set of files over time so that you can access specific versions later. In software development,
+  <strong>
+   Version Control Systems (VCS)
+  </strong>
+  allows developers to manage changes to their code and track who made each change. But how did this software come about?
+ </p>
+ <p>
+  Version Control has a long history going back to the 1980s. In fact, version control systems were created before the Internet!
+ </p>
+ <p>
+  One of the first significant Version Control Systems was the
+  <strong>
+   Concurrent Versions System (CVS)
+  </strong>
+  . It was first developed in 1986 by Walter F. Tichy at Purdue University and released publicly in 1990.
+ </p>
+ <p>
+  <strong>
+   CVS
+  </strong>
+  stores information about every file in a folder structure, including the name of the file, its location in the folder structure, who last modified it, and when it was last modified. The
+  <strong>
+   CVS
+  </strong>
+  also stores information about folders, including their names and who created them.
+ </p>
+ <p>
+  It was popular for many years; however, it has some significant flaws in its design.
+  <strong>
+   CVS
+  </strong>
+  does not include integrity checks which means your data can become corrupted. When you update or submit changes to the system, if an error occurs, the system accepts the partial or corrupted files. Additionally, the system was designed mainly for text files, not binary files such as images or videos.
+ </p>
+ <p>
+  The main successor to
+  <strong>
+   CVS
+  </strong>
+  was
+  <strong>
+   Subversion (SVN)
+  </strong>
+  .
+ </p>
+ <p>
+  CollabNet developed Subversion in 2000 and solved many of the issues present in
+  <strong>
+   CVS
+  </strong>
+  . To ensure data integrity, it included integrity checks in its design. It also supported the versioning of binary files better than
+  <strong>
+   CVS
+  </strong>
+  . Thanks to these improvements, SVN became popular in the open-source community with free hosting being offered for open-source projects by Google and SourceForge.
+ </p>
+ <p>
+  However, Subversion used a centralized
+  <strong>
+   VCS
+  </strong>
+  model. This means that all operations have to be done using a centralized server. If the server were down or slow, this would impede development.
+ </p>
+ <p>
+  In 2005, two new projects were started to develop distributed version control systems; Mercurial and Git. Both projects were created in response to an event involving the Linux kernel development.
+ </p>
+ <p>
+  Previously, the Linux kernel was using a proprietary
+  <strong>
+   VCS
+  </strong>
+  known as BitKeeper. BitKeeper was one of the first distributed version control systems initially released in 2000. BitKeeper had originally provided a free license to Linus Torvalds to support Linux’s development. However, in 2005, the license was revoked. This controversy led to the creation of the Mercurial and Git projects.
+ </p>
+ <p>
+  Mercurial was developed by Olivia Mackal. It is developed as a high-performance distributed
+  <strong>
+   VCS
+  </strong>
+  . Many platforms offering Subversion hosting began to offer Mercurial hosting too. It became popular as Subversion users found it easy to transition to a Mercurial repository, thanks to the hosting providers and its small learning curve.
+ </p>
+ <p>
+  Git was developed by Linus Torvalds to host the Linux kernel’s source code. Like Mercurial, it is a distributed
+  <strong>
+   VCS
+  </strong>
+  . Its first public release came in 2007.
+ </p>
+ <p>
+  Git became popular in the open-source community due to its distributed
+  <strong>
+   VCS
+  </strong>
+  design and Github offering free Git hosting for open-source projects. Git has since become the selected version control system for many open-source and proprietary software projects.
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

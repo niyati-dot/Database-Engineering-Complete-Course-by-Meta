@@ -1,0 +1,217 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  Controlling loops
+ </h2>
+ <p>
+  So far, you have only looped over sequences based on the length of the data you wanted to iterate over. In many cases, this is not necessary and depending on the amount of the data it can also be quite costly. You'll now examine how you can control the flow of the loop and exit out when a specific condition is met. You will also look at control statements such as
+  <var>
+   break
+  </var>
+  ,
+  <var>
+   continue
+  </var>
+  and
+  <var>
+   pass
+  </var>
+  .
+ </p>
+ <h2 level="2" variant="h2semibold">
+  If else
+ </h2>
+ <p>
+  In many cases, you may need to search for a particular item in a list. Once the item is found, there is no need to continue looping over the other results. Using the same example as before, let's assume you only need to check if the dessert "Churros" is in the list and if it is, print a single statement.
+ </p>
+ <pre evaluatorid="VATx4dUWQGyE8eHVFmBsmg" language="python">#Starter Code
+favorites = ['Creme Brulee', 'Apple Pie', 'Churros', 'Tiramisú', 'Chocolate Cake']
+
+for dessert in favorites:
+    if dessert == 'Churros':
+        print('Yes! One of my favorite desserts is', dessert)        
+</pre>
+ <p>
+  Running the above code will output the following:
+ </p>
+ <p>
+  <strong>
+   Yes! One of my favorite desserts is Churros
+  </strong>
+ </p>
+ <p>
+  But what happens if you look for a dessert and that dessert is not on the list? The code above is currently not set up to handle this. Let's look for the dessert "Pudding" which is not on the list, and also add an
+  <var>
+   else
+  </var>
+  statement to handle the case of when it's not found. If the dessert is not part of the list, you will print a new statement.
+ </p>
+ <pre evaluatorid="Jz1ye4ikStK9cnuIpMrSxQ@3" language="python">#Starter Code
+favorites = ['Creme Brulee', 'Apple Pie', 'Churros', 'Tiramisú', 'Chocolate Cake']
+
+for dessert in favorites:
+    if dessert == 'Pudding':
+        print('Yes one of my favorite desserts is', dessert) 
+else:
+    print('No sorry, that dessert is not on my list')
+</pre>
+ <p>
+  Running the above code will result in the following output:
+ </p>
+ <p>
+  <strong>
+   No sorry, that dessert is not on my list
+  </strong>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Loop control statements
+ </h2>
+ <h3 level="3" variant="h3bold">
+  Break
+ </h3>
+ <p>
+  The code works as intended but you may notice one flaw. If you change the search term to something that is on the list like "Churros" and run it again you will get the following output:
+ </p>
+ <p>
+  <strong>
+   Yes one of my favorite desserts is Churros No sorry, not a dessert on my list
+  </strong>
+ </p>
+ <p>
+  This is not what you want! The dessert is on the list but it still printed out the
+  <var>
+   else
+  </var>
+  condition. To fix it, you need to use a control statement called
+  <var>
+   break
+  </var>
+  .
+ </p>
+ <p>
+  Add the following:
+ </p>
+ <pre evaluatorid="samuocP6QwOprqHD-qMDRg@2" language="python">#Starter Code
+favorites = ['Creme Brulee', 'Apple Pie', 'Churros', 'Tiramisú', 'Chocolate Cake']
+
+for dessert in favorites:
+    if dessert == 'Pudding':
+        print('Yes one of my favorite desserts is', dessert)
+        break 
+else:
+    print('No sorry, not a dessert on my list')
+</pre>
+ <p>
+  Running the above code will resolve the issue. The
+  <var>
+   break
+  </var>
+  statement is used to stop the loop, which in turn also stops the
+  <var>
+   else
+  </var>
+  condition. Without the
+  <var>
+   break
+  </var>
+  the loop will continue even after the
+  <var>
+   if
+  </var>
+  condition is satisfied.
+ </p>
+ <h3 level="3" variant="h3bold">
+  Continue
+ </h3>
+ <p>
+  Similar to
+  <var>
+   break
+  </var>
+  ,
+  <var>
+   continue
+  </var>
+  can be used to control the iteration of the loop. The key difference is that it can allow you to skip over a section of the loop but then continue on with the rest. If you change your code to this, you will notice the outcome will print everything except the Churros dessert.
+ </p>
+ <pre evaluatorid="uP6jAg5QTcy-owIOUL3MMA@2" language="python">#Starter Code
+favorites = ['Creme Brulee', 'Apple Pie', 'Churros', 'Tiramisú', 'Chocolate Cake']
+
+for dessert in favorites:
+    if dessert == 'Churros':
+        continue
+    print('Other desserts I like are', dessert) 
+</pre>
+ <h3 level="3" variant="h3bold">
+  Pass
+ </h3>
+ <p>
+  The
+  <var>
+   pass
+  </var>
+  statement allows you to run through the loop in its entirety and effectively ignore that the
+  <var>
+   if
+  </var>
+  condition has been satisfied.
+ </p>
+ <pre evaluatorid="FLQcEnUMQIy0HBJ1DHCMIA@2" language="python">#Starter Code
+favorites = ['Creme Brulee', 'Apple Pie', 'Churros', 'Tiramisú', 'Chocolate Cake']
+
+for dessert in favorites:
+    if dessert == 'Churros':
+        pass
+    print('Other desserts I like are', dessert) 
+</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

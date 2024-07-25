@@ -1,0 +1,388 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Here's a quick reference for data types in Python.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Data types
+ </h2>
+ <table columns="3" rows="4">
+  <thead>
+   <tr>
+    <th>
+     <p>
+      Data type
+     </p>
+    </th>
+    <th>
+     <p>
+      Meaning
+     </p>
+    </th>
+    <th>
+     <p>
+      Example
+     </p>
+    </th>
+   </tr>
+  </thead>
+  <tr>
+   <td>
+    <p>
+     string
+    </p>
+   </td>
+   <td>
+    <p>
+     Text
+    </p>
+   </td>
+   <td>
+    <p>
+     'Hello', 'Testing 123'
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     integer
+    </p>
+   </td>
+   <td>
+    <p>
+     Numbers
+    </p>
+   </td>
+   <td>
+    <p>
+     -5, 4, 3, 2, 0
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     float
+    </p>
+   </td>
+   <td>
+    <p>
+     Decimals
+    </p>
+   </td>
+   <td>
+    <p>
+     2.4, 5.2, 1000.00
+    </p>
+   </td>
+  </tr>
+ </table>
+ <h2 level="2" variant="h2semibold">
+  Flow Control
+ </h2>
+ <h3 level="3" variant="h3bold">
+  Comparison operators
+ </h3>
+ <table columns="3" rows="7">
+  <thead>
+   <tr>
+    <th>
+     <p>
+      Operator
+     </p>
+    </th>
+    <th>
+     <p>
+      Meaning
+     </p>
+    </th>
+    <th>
+     <p>
+      Example
+     </p>
+    </th>
+   </tr>
+  </thead>
+  <tr>
+   <td>
+    <p>
+     ==
+    </p>
+   </td>
+   <td>
+    <p>
+     Equals
+    </p>
+   </td>
+   <td>
+    <p>
+     a == b
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     !=
+    </p>
+   </td>
+   <td>
+    <p>
+     Not Equal
+    </p>
+   </td>
+   <td>
+    <p>
+     a != b
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     &lt;
+    </p>
+   </td>
+   <td>
+    <p>
+     Less than
+    </p>
+   </td>
+   <td>
+    <p>
+     a &lt; b
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     &gt;
+    </p>
+   </td>
+   <td>
+    <p>
+     Greater than
+    </p>
+   </td>
+   <td>
+    <p>
+     a &gt; b
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     &lt;=
+    </p>
+   </td>
+   <td>
+    <p>
+     Less than or Equal to
+    </p>
+   </td>
+   <td>
+    <p>
+     a &lt;= b
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     &gt;=
+    </p>
+   </td>
+   <td>
+    <p>
+     Greater than or Equal to
+    </p>
+   </td>
+   <td>
+    <p>
+     a &gt;= b
+    </p>
+   </td>
+  </tr>
+ </table>
+ <h2 level="2" variant="h2semibold">
+  Comments
+ </h2>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Single-line comments
+  </strong>
+ </h3>
+ <p>
+  Placing a  #  symbol in front of the text you want to be a comment causes Python to ignore everything from that point until the end of the current line.
+ </p>
+ <pre evaluatorid="Kq_8MSH4R3yv_DEh-Nd8bg" language="python"># Single Line comment
+</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Multi-line comments
+  </strong>
+ </h3>
+ <p>
+  Python does not really have a method for multi line comments, so a #  symbol can be used on every line.
+ </p>
+ <pre evaluatorid="kevB7KFNRRKrweyhTfUS0g" language="python"># This is a multiline comment
+# which can be used for long comments
+</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   Inline/code comments
+  </strong>
+ </h3>
+ <p>
+  The  #  symbol will cause Python to ignore everything from that point until the end of the current line, so inline comments can be created in this way.
+ </p>
+ <pre evaluatorid="1hPXCXiFQ6iT1wl4haOovQ" language="python">x = 1 # assigns value of 1 to x
+</pre>
+ <h2 level="2" variant="h2semibold">
+  Built-in Functions
+ </h2>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   print()
+  </strong>
+ </h3>
+ <p>
+  This function looks for the default output device, your terminal, and displays the value passed to it.
+ </p>
+ <pre evaluatorid="5uQpX70xRGikKV-9MdRoZQ" language="python">print("Hello")
+</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   input()
+  </strong>
+ </h3>
+ <p>
+  This function looks for the default input device, your keyboard, and captures the value. This value can then be assigned or used.
+ </p>
+ <pre evaluatorid="nbFCdtEoQWCxQnbRKOFgfQ" language="python">print("Where do you live?")
+location = input()
+print("So you live in " + location)</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   len()
+  </strong>
+ </h3>
+ <p>
+  This function returns the length or the count of the elements contained within the structure it is applied on. This may be a string, array, list, tuple, dictionary or any sequence.
+ </p>
+ <pre evaluatorid="qCDd4A9VTx-g3eAPVd8f9w" language="python">len("Hello")
+5</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   str()
+  </strong>
+ </h3>
+ <p>
+  This function can be used to convert the provided value into a
+  <var>
+   String
+  </var>
+ </p>
+ <pre evaluatorid="rQ6fu-FGQS6On7vhRnEueA" language="python">str(55)
+'55'
+</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   int()
+  </strong>
+ </h3>
+ <p>
+  This function can be used to convert the provided value into an
+  <var>
+   int
+  </var>
+ </p>
+ <pre evaluatorid="W-UktdKcRN2lJLXSnNTdFw" language="python">int('75')
+75</pre>
+ <h3 level="3" variant="h3semibold">
+  <strong>
+   float()
+  </strong>
+ </h3>
+ <p>
+  This function can be used to convert the provided value into a
+  <var>
+   float
+  </var>
+ </p>
+ <pre evaluatorid="86HzgRzCSMih84EcwljIHg" language="python">some_int = 10
+float(some_int)
+10.0
+</pre>
+ <h2 level="2" variant="h2semibold">
+  Creating Functions
+ </h2>
+ <p>
+  Functions in Python require a keyword to define them :
+  <var>
+   def
+  </var>
+  followed by an identifier (a name) this forms the function signature. The body of the function contains the code to run when the function is called.
+ </p>
+ <pre evaluatorid="4kqw2wZSSCeKsNsGUmgneA" language="python">
+def say_hello():
+    return "Hello there!"
+
+# With parameters
+def say_hello(you):
+    return "Hello " +  you
+</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

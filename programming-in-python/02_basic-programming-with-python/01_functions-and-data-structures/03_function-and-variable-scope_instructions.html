@@ -1,0 +1,185 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  Functions and variables
+ </h2>
+ <p>
+  It is essential to understand the levels of scope in Python and how things can be accessed from the four different scope levels. Below are the four scope levels and a brief explanation of where and how they are used.
+ </p>
+ <h3 level="3" variant="h3semibold">
+  1. Local scope
+ </h3>
+ <p>
+  Local scope refers to a variable declared inside a function. For example, in the code below, the variable
+  <var>
+   total
+  </var>
+  is only available to the code within the
+  <var>
+   get_total
+  </var>
+  function. Anything outside of this function will not have access to it.
+ </p>
+ <pre evaluatorid="0dt16Kb2QZ-bdeim9nGf0g" language="python">def get_total(a, b):
+    #local variable declared inside a function
+    total = a + b;
+    return total
+
+print(get_total(5, 2))
+7
+
+# Accessing variable outside of the function:
+print(total)
+NameError: name 'total' is not defined</pre>
+ <h3 level="3" variant="h3semibold">
+  2. Enclosing scope
+ </h3>
+ <p>
+  Enclosing scope refers to a function inside another function or what is commonly called a
+  <strong>
+   nested function
+  </strong>
+  .
+ </p>
+ <p>
+  In the code below, I added a nested function called
+  <var>
+   double_it
+  </var>
+  to the
+  <var>
+   get_total
+  </var>
+  function.
+ </p>
+ <p>
+  As
+  <var>
+   double_it
+  </var>
+  is inside the scope for the
+  <var>
+   get_total
+  </var>
+  function it can then access the variable. However, the enclosed variable inside the
+  <var>
+   double_it
+  </var>
+  function cannot be accessed from inside the
+  <var>
+   get_total
+  </var>
+  function.
+ </p>
+ <pre evaluatorid="XTUA4bnsT5-1AOG57E-fHg" language="python">def get_total(a, b):
+    #enclosed variable declared inside a function
+    total = a + b
+
+    def double_it():
+        #local variable
+        double = total * 2
+        print(double)
+
+    double_it()
+    #double variable will not be accessible
+    print(double)
+
+    return total</pre>
+ <h3 level="3" variant="h3semibold">
+  3. Global scope
+ </h3>
+ <p>
+  Global scope is when a variable is declared outside of a function. This means it can be accessed from anywhere.
+ </p>
+ <p>
+  In the code below, I  added a global variable called
+  <var>
+   special
+  </var>
+  . This can then be accessed from both functions
+  <var>
+   get_total
+  </var>
+  and
+  <var>
+   double_it
+  </var>
+  :
+ </p>
+ <pre evaluatorid="D62XGFC7QFOtlxhQuzBThQ" language="python">
+special = 5
+
+def get_total(a, b):
+    #enclosed scope variable declared inside a function
+    total = a + b
+    print(special)
+
+    def double_it():
+        #local variable
+        double = total * 2
+        print(special)
+
+    double_it()
+
+    return total</pre>
+ <h3 level="3" variant="h3semibold">
+  4. Built-in scope
+ </h3>
+ <p>
+  Built-in scope refers to the reserved keywords that Python uses for its built-in functions, such as
+  <var>
+   print, def, for, in
+  </var>
+  , and so forth.  Functions with built-in scope can be accessed at any level.
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,238 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  This reading introduces you to the conditional statements of
+  <var>
+   if
+  </var>
+  ,
+  <var>
+   else
+  </var>
+  and
+  <var>
+   elif
+  </var>
+  .
+ </p>
+ <h2 level="2" variant="h2semibold">
+  If
+ </h2>
+ <p>
+  In keeping with the light switch example, the state of the switch can be stored with a Boolean value of
+  <var>
+   True
+  </var>
+  or
+  <var>
+   False
+  </var>
+  .
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    On = True
+   </p>
+  </li>
+  <li>
+   <p>
+    Off = False
+   </p>
+  </li>
+ </ul>
+ <pre evaluatorid="C8GuUkQrTVCBrlJEK81QXA" language="python">
+#Light is currently off
+current = False
+
+if current:
+    current = False
+    print('Turning light off')
+
+if not current:
+    current = True
+    print('Turning light on')
+
+</pre>
+ <p>
+  The code snippet above has a variable called
+  <var>
+   current
+  </var>
+  which keeps track of the state of the light - on or off. The first
+  <var>
+   if
+  </var>
+  statement will check if the light is on and if it is, the flow will go inside the condition and set the
+  <var>
+   current
+  </var>
+  variable to
+  <var>
+   False
+  </var>
+  - turning the light off. In the above code snippet, the value of the
+  <var>
+   current
+  </var>
+  variable is initially set to
+  <var>
+   False
+  </var>
+  , so this condition is not met.
+ </p>
+ <p>
+  The second
+  <var>
+   if
+  </var>
+  statement will check if the light is off and if it is, the flow will go inside the condition and will set the
+  <var>
+   current
+  </var>
+  varaible to
+  <var>
+   True
+  </var>
+  - turning the light on.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  If else
+ </h2>
+ <p>
+  The above code works fine but it can be rewritten more effectively by using another condition called
+  <var>
+   else
+  </var>
+  . The following code is an example:
+ </p>
+ <pre evaluatorid="jqjYNQIrTUuo2DUCK51LCQ" language="python">current = False
+
+if current:
+    current = False
+    print('Turning light off')
+else: 
+    current = True
+    print('Turning light on')
+</pre>
+ <p>
+  The
+  <var>
+   else
+  </var>
+  statement has made your code a bit easier to read and given that the flow relates to the same condition, it makes more sense to combine them as part of a single unit.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  elif
+ </h2>
+ <p>
+  Python also has another condition called
+  <var>
+   elif
+  </var>
+  which helps when you have multiple conditions to satisfy. The light switch example is pretty straightforward in that you only have to check for the state of on or off -
+  <var>
+   True
+  </var>
+  or
+  <var>
+   False
+  </var>
+  . In certain conditions, it may not be that easy. Thankfully
+  <var>
+   elif
+  </var>
+  is here to help.
+ </p>
+ <p>
+  Let's say you want to give a certain discount to customers if they spend over $100. You will also provide an extra discount if that customer is part of a loyalty program. If the customer is not part of the loyalty program and did not spend over a $100, a service charge of 5% is applied.
+ </p>
+ <pre evaluatorid="_fJetVI8TyiyXrVSPL8oRw" language="python">loyalty_customer = True
+total_bill = 124
+
+if loyalty_customer and total_bill &gt; 100:
+    #give 20% discount
+    total_bill = total_bill - (float(total_bill)/ 100) * 20
+elif total_bill &gt; 100:
+    #give 10% discount
+    total_bill = total_bill - (float(total_bill)/ 100) * 10
+else:
+    #sorry no discount, 5% service charge applied.
+    print('Sorry, no discount ...')
+
+print('Total Bill: ', float(total_bill))</pre>
+ <p>
+  The above code snippet first checks to see if the customer is part of the loyalty program and if they are spending over $100. If both conditions are met, a discount of 20% is applied to the bill. The
+  <var>
+   elif
+  </var>
+  statement will only be executed if the first
+  <var>
+   if
+  </var>
+  condition is not met. The
+  <var>
+   elif
+  </var>
+  statement will only check if the bill is over $100 and if it is, it will apply a discount of 10%  to the bill.
+ </p>
+ <p>
+  The final
+  <var>
+   else
+  </var>
+  statement is only executed if neither of the other two conditions are met. In this case, a charge of 5% is applied to the bill.
+ </p>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

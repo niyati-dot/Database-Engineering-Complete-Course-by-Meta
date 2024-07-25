@@ -1,0 +1,177 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  An algorithm is a set of instructions that is completed in a step-by-step way to solve a particular problem. But how do you go about writing one from scratch? There are different approaches to this. Some people like to write pseudocode, English-like syntax that resembles code, to explain the problem in a series of steps. Another approach is to use a flow chart that provides a graphical representation of the series of steps. The flow chart goes through the logical flow of the algorithm and shows the different decisions that need to be made in order to solve it.
+ </p>
+ <p>
+  Say you want to create an algorithm to determine how many food order tickets are in the queue to the kitchen on the rail board in a restaurant. If you had to do it without a computer you would just count the number of slips and get the total number of tickets. In code, it can be quite similar. Let's create some pseudocode to represent this.
+ </p>
+ <pre language="plain_text">    let T = 0
+
+    for each ticket on rail
+        Set T = T + 1
+    
+    Return T</pre>
+ <p>
+  The pseudocode starts at 0 and then it checks to see how many tickets are on the rail. If a ticket is found it will then increase the counter by 1. And finally, it will return the total count.
+ </p>
+ <p>
+  One aspect of writing an algorithm is how efficient it is. This is referred to as optimizing the code. If I want to optimize the code above I need to look at how I can make it get to the answer faster. In the physical world, I could instead of counting one by one, count two tickets at a time. How can I represent this in my pseudocode? I just have to change the increment from 1 to 2.
+ </p>
+ <pre language="plain_text">let T = 0
+
+for each pair of ticket on rail
+    Set T = T + 2
+
+Return T </pre>
+ <p>
+  This is a pretty easy optimization, but will it work in all scenarios? What happens, for example, if there are three orders on the rail? The code would work as follows:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Tickets = 0
+   </p>
+  </li>
+  <li>
+   <p>
+    Each pair = 1
+   </p>
+  </li>
+  <li>
+   <p>
+    Increment counter by 2
+   </p>
+  </li>
+  <li>
+   <p>
+    Return 2
+   </p>
+  </li>
+ </ul>
+ <p>
+  This code is buggy. It does not account for the single ticket on the rail and only returns 2. I can fix the code by adding a condition to handle this edge case.
+ </p>
+ <pre language="plain_text">    let T = 0
+
+    for each pair of ticket on rail
+        Set T = T + 2
+    
+    if 1 ticket remains then
+        Set T = T + 1
+    
+    Return T</pre>
+ <p>
+  Let's check the code to see if it meets the requirements:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Tickets = 0
+   </p>
+  </li>
+  <li>
+   <p>
+    Each pair = 1
+   </p>
+  </li>
+  <li>
+   <p>
+    Increment counter by 2
+   </p>
+  </li>
+  <li>
+   <p>
+    Check for any single tickets
+   </p>
+  </li>
+  <li>
+   <p>
+    Increment counter by 1
+   </p>
+  </li>
+  <li>
+   <p>
+    Return 3
+   </p>
+  </li>
+ </ul>
+ <p>
+  Yes! The code works and it can handle the edge case. Algorithms are designed to solve problems but they should also be efficient. I needed to change my code to make sure it works as expected.
+ </p>
+ <p>
+  There are many different types of algorithms that have been designed to solve all kinds of different types of problems in computer science. When writing an algorithm, it can be solved in many different ways and each can have its own pros and cons.
+ </p>
+ <h3 level="3" variant="h3semibold">
+  Recursion
+ </h3>
+ <p>
+  Recursion refers to a method or a function that will call itself. It is used to resolve problems by breaking the problem down into sub-problems. Let us take a look at some of the most popular types of recursive algorithms.
+ </p>
+ <h3 level="3" variant="h3semibold">
+  Divide and conquer
+ </h3>
+ <p>
+  This consists of two parts. The first is breaking the problem down into smaller sub-problems and the second is solving the final solution.
+ </p>
+ <h3 level="3" variant="h3semibold">
+  Dynamic programming
+ </h3>
+ <p>
+  This is mainly used for optimization problems. It is similar to the divide and conquer algorithm in that it splits the problems into sub-problems.
+ </p>
+ <h3 level="3" variant="h3semibold">
+  Greedy algorithm
+ </h3>
+ <p>
+  This one finds the best solution in each and every step instead of approaching optimization in a global way.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

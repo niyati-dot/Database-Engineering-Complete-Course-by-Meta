@@ -1,0 +1,313 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Imagine you are trying to come up with a name for your new dog. You're really unsure of what you'd like to call the dog, so you decide to use your Python skills to help you decide.
+ </p>
+ <p>
+  You start by accessing a file with a shortlist of names you'd like to use for your new pet.
+ </p>
+ <p>
+  The file is named petnames.txt, and has the following content:
+ </p>
+ <pre language="plain_text">Ace
+Atlas
+Bailey
+Bear
+Blaze
+Boomer
+Buddy
+Coco
+Cooper
+Duke
+Dozer
+Echo
+Gizmo
+Harley
+Mac
+Max
+Milo
+Oscar
+Rex
+Rocky
+Rocket
+Wolfie</pre>
+ <p>
+  Now that you have the file
+  <var>
+   petnames.txt
+  </var>
+  , you'd like to use this file inside your Python program to randomly pick a single pet name.
+ </p>
+ <p>
+  To do this, you'll need to have a Python file into which you'll be importing the
+  <var>
+   petnames.txt
+  </var>
+  file, as follows:
+ </p>
+ <p>
+  <var>
+   f = open("petnames.txt", "r")
+  </var>
+ </p>
+ <p>
+  The
+  <var>
+   open()
+  </var>
+  function reads in a file outside of the program itself.
+ </p>
+ <p>
+  The
+  <var>
+   open()
+  </var>
+  function accepts two parameters:
+ </p>
+ <ol bullettype="numbers">
+  <li>
+   <p>
+    The path and the filename in the form of a string.
+   </p>
+  </li>
+  <li>
+   <p>
+    The import mode (the default being
+    <var>
+     "r"
+    </var>
+    - which means "read")
+   </p>
+  </li>
+ </ol>
+ <p>
+  In the line above, I am importing the file at the root of the project. I am only specifying the filename, without the path. I I am also using the default
+  <var>
+   "r"
+  </var>
+  mode to read in the file. I am saving the imported file into a variable named
+  <var>
+   f
+  </var>
+  .
+ </p>
+ <p>
+  Next, I'm going to add another variable,
+  <var>
+   f_content
+  </var>
+  , and I'm assigning to it the result of reading the
+  <var>
+   f
+  </var>
+  file.
+ </p>
+ <p>
+  On the third line, I'm printing the
+  <var>
+   f_content
+  </var>
+  variable.
+ </p>
+ <p>
+  The
+  <var>
+   print(f_content)
+  </var>
+  line returns the exact content of the file, as is:
+ </p>
+ <pre language="plain_text">Ace
+Atlas
+Bailey
+Bear
+Blaze
+Boomer
+Buddy
+Coco
+Cooper
+Duke
+Dozer
+Echo
+Gizmo
+Harley
+Mac
+Max
+Milo
+Oscar
+Rex
+Rocky
+Rocket
+Wolfie</pre>
+ <p>
+  Now that I've confirmed that I'm successfully reading in the file, it would not be useful to keep printing out the file's contents, so I can comment out the
+  <var>
+   print(f_content)
+  </var>
+  line.
+ </p>
+ <p>
+  Additionally, I can get the
+  <var>
+   f_content
+  </var>
+  variable into a list. The string
+  <var>
+   "\n"
+  </var>
+  is used to split the text where a new line is found.
+ </p>
+ <p>
+  <var>
+   f_content_list = f_content.split("\n")
+  </var>
+ </p>
+ <p>
+  Now I'm ready to print the
+  <var>
+   f_content_list
+  </var>
+  variable, as follows:
+ </p>
+ <p>
+  <var>
+   print(f_content_list)
+  </var>
+ </p>
+ <p>
+  This time, the output is as follows:
+ </p>
+ <pre language="plain_text">['Ace', 'Atlas', 'Bailey', 'Bear', 'Blaze', 'Boomer', 'Buddy', 'Coco', 'Cooper', 'Duke', 'Dozer', 'Echo', 'Gizmo', 'Harley', 'Mac', 'Max', 'Milo', 'Oscar', 'Rex', 'Rocky', 'Rocket', 'Wolfie']</pre>
+ <p>
+  Here's my complete code up to this point, with the redundant
+  <var>
+   print()
+  </var>
+  calls deleted.
+ </p>
+ <pre evaluatorid="MIvmSTZpRGGL5kk2aURh1w" language="python">f = open("petnames.txt", "r")
+f_content = f.read()
+f_content_list = f_content.split("\n")</pre>
+ <p>
+  Now that I have all my potential pet names in a list, I can randomly pick a name from the
+  <var>
+   f_content_list
+  </var>
+  of names.
+ </p>
+ <p>
+  To do this, I'll need to import the random module at the top of my code:
+  <var>
+   import random
+  </var>
+  .
+ </p>
+ <p>
+  Now I can use the random module's
+  <var>
+   choice()
+  </var>
+  function:
+  <var>
+   random.choice()
+  </var>
+  .
+ </p>
+ <p>
+  The
+  <var>
+   choice()
+  </var>
+  function accepts a sequence parameter. A list is one of its accepted values. This means that I can now add another line of code at the very bottom of my program:
+ </p>
+ <p>
+  <var>
+   print(random.choice(f_content_list))
+  </var>
+ </p>
+ <p>
+  Running the code now will output a random pet name. The first time I ran it, I got the name "Milo", and the second time I ran it, I got the name "Dozer". It's always good to double-check your programs like this by running them multiple times as a quick way to confirm that they behave as intended.
+ </p>
+ <p>
+  Here's the full code of my program now (including the commented-out lines of code):
+ </p>
+ <pre evaluatorid="4J5tYvoVTlaebWL6FS5Wkw" language="python">import random
+f = open("petnames.txt", "r")
+f_content = f.read()
+f_content_list = f_content.split("\n")
+print(random.choice(f_content_list))</pre>
+ <p>
+  Finally, If I had multiple files in my folder, I could allow myself to pick a file from which to read in a list of names.
+ </p>
+ <p>
+  Here's how that would work:
+ </p>
+ <pre evaluatorid="NbwENhf6SCO8BDYX-pgjMg" language="python">import random
+f_name = input('Type the file name: ')
+f = open(f_name) # "r" omitted as it's the default
+f_content = f.read()
+f_content_list = f_content.split("\n")
+print(random.choice(f_content_list))</pre>
+ <p>
+  The only difference between this improvement and the previous program is that now I'm saving the
+  <var>
+   f_name
+  </var>
+  variable as the result of user-provided input. Once I have the
+  <var>
+   f_name
+  </var>
+  variable, I'm running the
+  <var>
+   open()
+  </var>
+  function on it and then proceeding with other steps as already explained.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,208 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  If you want to work on your local device and have an Apple Mac computer you will need to install Python 3. By default, an Apple Mac has Python installed with version 2.7. You can verify this by opening up a terminal and running the following command:
+ </p>
+ <p>
+  <var>
+   python --version
+  </var>
+ </p>
+ <p>
+  For the lessons in this course, you will need Python 3.
+ </p>
+ <p>
+  Before you can install Python you will need to install a few dependencies.  These are 'XCode' and' brew'.  You will find details of these in the "Required dependencies" reading. Mac has a few different ways to do installations but the most common way is to use the package manager called 'brew' to handle installations.
+ </p>
+ <p>
+  Once the dependencies are installed you can begin to install Python. Run the following command:
+ </p>
+ <p>
+  <var>
+   brew install python
+  </var>
+ </p>
+ <p>
+  When you install Python via brew it will install version 3.x. To verify that you have both versions installed run the following:
+ </p>
+ <p>
+  <var>
+   python --version
+  </var>
+ </p>
+ <p>
+  <var>
+   python3 --version
+  </var>
+ </p>
+ <p>
+  To reduce confusion you need to set the paths to point to the brew install of python3. First, let's figure out where it was installed by the package manager brew. Run the following command:
+ </p>
+ <p>
+  <var>
+   brew info python
+  </var>
+ </p>
+ <p>
+  The section you are interested in is the location of where it was installed.
+ </p>
+ <p>
+  <var>
+   Unversioned symlinks `python`, `python-config`, `pip` etc. pointing to `python3`, `python3-config`, `pip3` etc., respectively, have been installed into   /opt/homebrew/opt/python@3.9/libexec/bin
+  </var>
+ </p>
+ <p>
+  The
+  <var>
+   /opt/homebrew/opt/python@3.x/libexec/bin
+  </var>
+  is the one you want to use and set for your path. Copy it from the terminal. Depending on the version of Mac OS you are running the next steps may vary slightly.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Zsh
+ </h2>
+ <p>
+  <var>
+   vim ~/.zshrc
+  </var>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Bash
+ </h2>
+ <p>
+  <var>
+   vim ~/.bashrc
+  </var>
+ </p>
+ <p>
+  Vim is a text editor and allows you to make changes to files directly from the shell. To make the edits:
+
+1. Press the "I" key on your keyboard.
+2.  Add the following line and remember to replace 3.x with the Python version that was installed on your system:
+ </p>
+ <p>
+  <var>
+   shell PATH="/opt/homebrew/opt/python@3.x/libexec/bin:${PATH}"
+  </var>
+ </p>
+ <p>
+  3. Press the
+  <strong>
+   esc
+  </strong>
+  key to exit from insert mode.
+ </p>
+ <p>
+  4. Hold down the
+  <strong>
+   shift
+  </strong>
+  key and press the
+  <strong>
+   colon
+  </strong>
+  key represented by
+  <strong>
+   :
+  </strong>
+  &amp;
+  <strong>
+   ;
+  </strong>
+ </p>
+ <p>
+  5. Type
+  <strong>
+   wq!
+  </strong>
+  and then hit
+  <strong>
+   Enter
+  </strong>
+  to exit
+  <strong>
+   vim
+  </strong>
+  .
+ </p>
+ <p>
+  6. Run the following:
+ </p>
+ <p>
+  <strong>
+   Zsh
+  </strong>
+  <var>
+   shell source ~/.zshrc
+  </var>
+ </p>
+ <p>
+  <strong>
+   Bash
+  </strong>
+  <var>
+   shell source ~/.bashrc
+  </var>
+ </p>
+ <p>
+  7. To verify everything is working as you would expect, run the following:
+ </p>
+ <p>
+  <var>
+   shell python --version Python 3.9.10
+  </var>
+ </p>
+ <p>
+  8. You should see the output similar to the above depending on your install version.
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

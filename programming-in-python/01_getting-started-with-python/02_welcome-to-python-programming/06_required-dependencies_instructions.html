@@ -1,0 +1,111 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  On completion of this reading, you will be able to identify any required dependencies for your operating system.
+ </p>
+ <p>
+  Setting up Python on
+  <strong>
+   Windows
+  </strong>
+  is straightforward and it will install
+  <strong>
+   without any required dependencies
+  </strong>
+  . On Mac, however, you do need some additional dependencies prior to installing Python.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  XCode
+ </h2>
+ <p>
+  To install brew, you need to install Xcode first. Homebrew does not come with its own compiler and it needs Xcode installed for it to work correctly. To install Xcode do the following:
+ </p>
+ <ol bullettype="numbers">
+  <li>
+   <p>
+    Open a terminal.
+   </p>
+  </li>
+  <li>
+   <p>
+    Run the following:
+   </p>
+   <p>
+    <var>
+     shell xcode-select --install
+    </var>
+   </p>
+  </li>
+  <li>
+   <p>
+    A popup will appear asking you to confirm the installation. Click on the Install button.
+   </p>
+  </li>
+  <li>
+   <p>
+    Agree to the license agreement.
+   </p>
+  </li>
+ </ol>
+ <h2 level="2" variant="h2semibold">
+  brew
+ </h2>
+ <p>
+  Macs do not come with package managers like most Linux distributions. To make up for this an external tool called brew was created. To install brew, do the following:
+ </p>
+ <pre language="sh">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</pre>
+ <p>
+ </p>
+ <p>
+  <var>
+  </var>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

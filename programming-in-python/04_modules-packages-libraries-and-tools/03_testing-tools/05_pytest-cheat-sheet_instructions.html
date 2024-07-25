@@ -1,0 +1,208 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  Installation
+ </h2>
+ <p>
+  Run the following on the Terminal:
+ </p>
+ <p>
+  <var>
+   pip3 install pytest (Mac)
+  </var>
+ </p>
+ <p>
+  Or
+ </p>
+ <p>
+  <var>
+   pip install pytest (Windows)
+  </var>
+ </p>
+ <p>
+  <strong>
+   # Nomenclature
+  </strong>
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Add suffix 'test_' to the file that needs to be tested.
+   </p>
+  </li>
+  <li>
+   <p>
+    Add suffix 'test_' to the functions to be tested.
+   </p>
+  </li>
+ </ul>
+ <h2 level="2" variant="h2semibold">
+  Running pytest
+ </h2>
+ <p>
+  This is the command that has to be executed on the Terminal prompt:
+ </p>
+ <p>
+  <var>
+   python3 -m pytest test_file.py
+  </var>
+ </p>
+ <p>
+  <strong>
+   Alternative method
+  </strong>
+ </p>
+ <p>
+  py.test will look for the keyword test and run the tests over those files and functions automatically.
+ </p>
+ <p>
+  <var>
+   py.test test_file.py
+  </var>
+ </p>
+ <p>
+  When you run pytest for a specific function add     ::    to run a specific function in a given file.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Flags used
+ </h2>
+ <p>
+  For example, -v is the flag:
+ </p>
+ <p>
+  <var>
+   python3 -m pytest abc.py -v
+  </var>
+ </p>
+ <p>
+  Some other flag options are:
+ </p>
+ <pre language="plain_text">-v for verbose
+-q quiet mode
+-s allows the print statement inside the functions to be executed
+-x is to flag the tests to stop execution after first failure
+-m is used to mark a specific function
+-k is a flag for searching and running tests with a specific keyword
+--tb is to disable the traceback code of errors
+--maxfail n specifies maximum number of test fails allowed</pre>
+ <h2 level="2" variant="h2semibold">
+  Tips
+ </h2>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    The rule of thumb is that the assert statement looks for a Boolean result. You can use in, not in, is, &lt;, &gt;, other than == to check Boolean values.
+   </p>
+  </li>
+  <li>
+   <p>
+    You can add multiple assert statements inside a single test function.
+   </p>
+  </li>
+ </ul>
+ <h2 level="2" variant="h2semibold">
+  Additional reading
+ </h2>
+ <h3 level="3" variant="h3bold">
+  Fixtures
+ </h3>
+ <p>
+  Fixtures are a type of function that is applied to functions to be tested. These functions must run before that test is executed. The purpose of fixtures is to supply data from multiple sources including URLs and databases to the test before running the test. Fixtures are used in cases where code repeats initialization.
+ </p>
+ <p>
+  Format:
+ </p>
+ <p>
+  <var>
+   @pytest.fixture
+  </var>
+ </p>
+ <h3 level="3" variant="h3bold">
+  Markers
+ </h3>
+ <p>
+  Markers are used to 'mark' specific functions to be executed by letting users create special names. There are many built-in markers such as xfail, xpass, skip and so on.
+ </p>
+ <p>
+  They follow a format such as:
+ </p>
+ <p>
+  <var>
+   @pytest.mark.&lt;markername&gt;
+  </var>
+ </p>
+ <p>
+  For example:
+ </p>
+ <p>
+  <var>
+   @pytest.mark.alpha
+  </var>
+ </p>
+ <p>
+  Running the specific marked test in the command line can be done with the following command:
+ </p>
+ <p>
+  <var>
+   pytest -m &lt;markername&gt; -v
+  </var>
+ </p>
+ <p>
+  Which will be as follows for a marker called alpha.
+ </p>
+ <p>
+  <var>
+   pytest -m alpha -v
+  </var>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,110 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  On completion of this reading, you will be able to explain why and where to use comments in coding.
+ </p>
+ <p>
+  Adding comments to code not only helps you as a developer but also helps other members of your team. Comments are great for refreshing your memory of code you may have written months ago and you may have forgotten what it was intended to do. There are multiple reasons why you need to add comments to a code file. They can range from the following:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Explaining what the code is intended to do.
+   </p>
+  </li>
+  <li>
+   <p>
+    Let developers know that code is deprecated.
+   </p>
+  </li>
+  <li>
+   <p>
+    Add TODO comments for work to be completed at a later time.
+   </p>
+  </li>
+ </ul>
+ <p>
+  Below are examples of the different types of comments that can be used.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Single-line comments
+ </h2>
+ <p>
+  The use of a  #   symbol tells Python to ignore everything after this point until the end of the current line.
+ </p>
+ <pre language="python"># Don't try to Run Me, I'm a comment
+x = 10
+</pre>
+ <h2 level="2" variant="h2semibold">
+  Multi-line comments
+ </h2>
+ <p>
+  Python does not really have a method of declaring multiline comments so a  #  symbol can be used at the beginning of every line of the comment.
+ </p>
+ <pre language="python"># The function below accepts two integers and
+# adds both numbers to return the value.
+def add_two_numbers(a, b):
+    return a + b
+</pre>
+ <h2 level="2" variant="h2semibold">
+  Inline comments
+ </h2>
+ <p>
+  The  #  symbol tells Python to ignore everything after this point until the end of the current line, this allows the placement of comments within the code itself. Inline comments should be used to supply important information about the code they deal with.
+ </p>
+ <pre language="python">x = 1  # Resetting buffer size
+</pre>
+ <p>
+  Remember to always have a reason for a comment, they should supply information to the reader and not be a distracting nuisance
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

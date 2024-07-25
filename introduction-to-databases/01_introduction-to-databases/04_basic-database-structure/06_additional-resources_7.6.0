@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2014" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2014" />
+<meta name="security" content="public" />
+<meta name="Robots" content="index,follow" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Relational database structure" />
+<meta name="abstract" content="The database and the database structure are defined in the installation process. The structure of the database depends on whether the database is Oracle Database, IBM DB2, or Microsoft SQL Server." />
+<meta name="Description" content="The database and the database structure are defined in the installation process. The structure of the database depends on whether the database is Oracle Database, IBM DB2, or Microsoft SQL Server." />
+<meta name="DC.subject" content="database configuration, relational database structure" />
+<meta name="keywords" content="database configuration, relational database structure" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_ctr_database_design.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/r_data_dictionary_tables.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_integrity_checker.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_storage_partitions.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_bos.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_user_defined_objects.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_site_org_types.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_db_relationships.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_bo_attributes.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/r_attribute_data_types.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_views.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_indexes.html" />
+<meta name="DC.Relation" scheme="URI" content="../configur/c_primary_key.html" />
+<meta name="DC.Date" scheme="iso8601" content="2014-11-06" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="r_ctr_db_structures" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="../ibmdita.css" />
+<link rel="stylesheet" type="text/css" href="../swg_info_common.css" />
+<link rel="Start" href="../configur/c_ctr_database_design.html" />
+<title>Relational database structure</title>
+<script type="text/javascript" src="../../com.ibm.srcf.doc/srcfv3_mam750.js"> </script>
+</head>
+<body role="main" id="r_ctr_db_structures">
+<h1 class="title topictitle1">Relational database structure</h1>
+<div class="body refbody"><p class="shortdesc">The database and the database structure are defined in
+the installation process. The structure of the database depends on
+whether the database is <span class="keyword">Oracle Database</span>, <span class="keyword">IBM® DB2®</span>,
+or <span class="keyword">Microsoft SQL
+Server</span>.</p>
+<div class="section"><div class="p">A database that can be perceived as a set of tables and
+manipulated in accordance with the relational model of data. Each
+database includes: <ul class="ul"><li class="li">a set of system catalog tables that describe the logical and physical
+structure of the data</li>
+<li class="li">a configuration file containing the parameter values allocated
+for the database</li>
+<li class="li">a recovery log with ongoing transactions and archivable transactions</li>
+</ul>
+</div>
+</div>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" rules="all" frame="border" border="1"><caption><span class="tablecap">Table 1. Database hierarchy</span></caption><thead class="thead" align="left"><tr class="row" valign="bottom"><th class="entry" valign="bottom" id="d55772e48">Component</th>
+<th class="entry" valign="bottom" id="d55772e50">Description</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Data dictionary</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">A repository of information about the application
+programs, databases, logical data models, and authorizations for an
+organization. <p class="p">When you change the data dictionary, the change process
+includes edit checks that can prevent the data dictionary from being
+corrupted. The only way to recover a data dictionary is to restore
+it from a backup. </p>
+</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Container</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">A data storage location, for example, a file,
+directory, or device that is used to define a database.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 ">Storage partition</td>
+<td class="entry" valign="top" headers="d55772e50 ">A logical unit of storage in a database such
+as a collection of containers. Database storage partitions are called <dfn class="term">table
+spaces</dfn> in <span class="keyword">DB2</span> and <span class="keyword">Oracle</span>,
+and called <dfn class="term">file groups</dfn> in <span class="keyword">SQL
+Server</span>.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 ">Business object</td>
+<td class="entry" valign="top" headers="d55772e50 ">A tangible entity within an application that
+users create, access, and manipulates while performing a use case.
+Business objects within a system are typically stateful, persistent,
+and long-lived. Business objects contain business data and model the
+business behavior.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Database object</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">An object that exists in an installation of
+a database system, such as an instance, a database, a database partition
+group, a buffer pool, a table, or an index. A database object holds
+data and has no behavior.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Table</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">A database object that holds a collection of
+data for a specific topic. Tables consist of rows and columns.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Column</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">The vertical component of a database table.
+A column has a name and a particular data type for example, character,
+decimal, or integer.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Row</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">The horizontal component of a table, consisting
+of a sequence of values, one for each column of the table.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">View</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">A logical table that is based on data stored
+in an underlying set of tables. The data returned by a view is determined
+by a SELECT statement that is run on the underlying tables.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Index</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">A set of pointers that is logically ordered
+by the values of a key. Indexes provide quick access to data and can
+enforce uniqueness of the key values for the rows in the table.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Relationship</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">A link between one or more objects that is created
+by specifying a join statement.</td>
+</tr>
+<tr class="row"><td class="entry" valign="top" headers="d55772e48 "><dfn class="term">Join</dfn></td>
+<td class="entry" valign="top" headers="d55772e50 ">An SQL relational operation in which data can
+be retrieved from two tables, typically based on a join condition
+specifying join columns.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="related-links">
+<ul class="ullinks">
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/r_data_dictionary_tables.html">Data dictionary tables</a></span><br />
+The structure of a relational database is stored in the
+data dictionary tables of the database.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_integrity_checker.html">Integrity checker</a></span><br />
+The integrity checker is a database configuration utility
+that you can use to assesses the health of the base layer data dictionary.
+The tool compares the data dictionary with the underlying physical
+database schema. If errors are detected, the tool produces error messages
+detailing how to resolve the issues.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_storage_partitions.html">Storage partitions</a></span><br />
+A database storage partition is the location where a database
+object is stored on a disk. Database storage partitions are called <dfn class="term">table
+spaces</dfn> in <span class="keyword">DB2</span> and <span class="keyword">Oracle</span>,
+and called <dfn class="term">file groups</dfn> in <span class="keyword">SQL
+Server</span>.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_bos.html">Business objects</a></span><br />
+A business object is an object that has a set of attributes
+and values, operations, and relationships to other business objects.
+Business objects contain business data and model the business behaviour.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_user_defined_objects.html">User-defined objects</a></span><br />
+Objects can be created in two ways: you can create an object
+in the database or an object can be natively defined in the database.
+User-defined objects are always created in the Database Configuration
+application.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_site_org_types.html">Configuration levels for objects</a></span><br />
+Levels describe the scope of objects and must be applied
+to objects. Depending on the level that you assign to objects, you
+must create certain attributes. For users to access an object, an
+attribute value must exist at the level to which they have authority.
+The level that you assign to an object sometimes depends on the level
+of the record in the database.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_db_relationships.html">Database relationships</a></span><br />
+Database relationships are associations between tables
+that are created using join statements to retrieve data.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_bo_attributes.html">Business object attributes</a></span><br />
+Attributes of business objects contain the data that is
+associated with a business object. A persistent attribute represents
+a database table column or a database view column. A nonpersistent
+attribute exists in memory only, because the data that is associated
+with the attribute is not stored in the database.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/r_attribute_data_types.html">Attribute data types</a></span><br />
+Each database record contains multiple attributes. Every
+attribute has an associated data type.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_views.html">Database views</a></span><br />
+A <dfn class="term">database view</dfn> is a subset of a database and is based on a query that
+      runs on one or more database tables. Database views are saved in the database as named queries
+      and can be used to save frequently used, complex queries.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_indexes.html">Indexes</a></span><br />
+You can use indexes to optimize performance for fetching
+data. Indexes provide pointers to locations of frequently accessed
+data. You can create an index on the columns in an object that you
+frequently query.</li>
+<li class="link ulchildlink"><span class="ulchildlinktext"><a href="../configur/c_primary_key.html">Primary keys</a></span><br />
+When you assign a primary key to an attribute, the key
+uniquely identifies the object that is associated with that attribute.
+The value in the primary column determines which attributes are used
+to create the primary key. </li>
+</ul>
+
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../configur/c_ctr_database_design.html" title="You typically extend the scope of your system because you have a use case that you want to include in the system. During the design phase you define the use case, the business objects, and the relationships between the business objects. To configure objects in the database, you must understand the structure of the database and the implications of the changes that you make to existing objects, tables, indexes, and relationships.">Database design</a></div>
+</div>
+</div><div>
+<script type="text/javascript">
+	var mProductName = "Tivoli's process automation engine";
+	var mProductVersion = "7.6.0";
+	var mToList = "Tpae-OnlineFeedback";
+</script>
+<br /><hr align="left" />
+<a class="runningfooter" href="javascript:ibm_id_form()"><strong>Feedback</strong></a>
+</div>
+<script type="text/javascript"  src="/Z2Pbv46CC2rCV-q2U5mUkY0FnME/bu5DQhGXazOcb3/ND1AAQ/XSg/aLycFFx4"></script><link rel="stylesheet" type="text/css"  href="/_sec/cp_challenge/sec-3-9.css">
+          <script  src="/_sec/cp_challenge/sec-cpt-3-9.js" async defer></script>
+          <div id="sec-overlay" style="display:none;">
+          <div id="sec-container">
+          </div>
+        </div></body>
+</html>

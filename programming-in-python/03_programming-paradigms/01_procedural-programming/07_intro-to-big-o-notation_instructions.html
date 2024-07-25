@@ -1,0 +1,207 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  Big-O
+ </h2>
+ <p>
+  Everything we do needs to be measured. Why you might ask? To make something better you need a metric to start from. If a car company needs to make a faster car they need to know the top speed of the existing car to improve on it. In computer science, Big-O notation is the most fundamental tool to measure the cost of an algorithm. It describes the complexity of the code using algebraic terms.
+ </p>
+ <p>
+  <strong>
+   &lt;Image to be inserted&gt;
+  </strong>
+ </p>
+ <p>
+  Big-O has different types of measures as you can see in the diagram above. These measures determine the running speed and cost of your code.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Algorithmic complexity
+ </h2>
+ <p>
+  Algorithmic complexity is a measure of how long an algorithm will take to complete given the size of the input, or what is commonly called
+  <strong>
+   n
+  </strong>
+  or
+  <strong>
+   n times
+  </strong>
+  . The
+  <strong>
+   n
+  </strong>
+  represents the number of elements.  Algorithm complexity can be divided into two types:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Time complexity
+   </p>
+  </li>
+  <li>
+   <p>
+    Space complexity
+   </p>
+  </li>
+ </ul>
+ <p>
+  In computer science, time refers to how long an algorithm takes to complete. Space complexity refers to the amount of memory needed to complete the algorithm. When an algorithm is created by a programmer they also need to consider these two critical measures so that the program runs efficiently. You can measure the efficiency by using a concept called Big-O Notation. The below table showcases the fastest to slowest of these different categories:
+ </p>
+ <table columns="2" rows="8">
+  <thead>
+   <tr>
+    <th>
+     <p>
+      Function
+     </p>
+    </th>
+    <th>
+     <p>
+      Big O Notation
+     </p>
+    </th>
+   </tr>
+  </thead>
+  <tr>
+   <td>
+    <p>
+     Constant
+    </p>
+   </td>
+   <td>
+    <p>
+     O(c)
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Logarithmic
+    </p>
+   </td>
+   <td>
+    <p>
+     O(log(n))
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Linear
+    </p>
+   </td>
+   <td>
+    <p>
+     O(n)
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Quadratic
+    </p>
+   </td>
+   <td>
+    <p>
+     O(n^2)
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Cubic
+    </p>
+   </td>
+   <td>
+    <p>
+     O(n^3)
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Exponential
+    </p>
+   </td>
+   <td>
+    <p>
+     O(2^n)
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     Factorial
+    </p>
+   </td>
+   <td>
+    <p>
+     O(n!)
+    </p>
+   </td>
+  </tr>
+ </table>
+ <h2 level="2" variant="h2semibold">
+  Why does it matter?
+ </h2>
+ <p>
+  You might be wondering why you as a developer need to know about Big O and the importance of applying and understanding it. Badly written code is costly in today's world of scalable solutions. Optimized code has many benefits. For one, it will ensure your user experience is delivered to the highest standard. Faster code means a better experience from a user's perspective. No one likes looking at a spinner on-screen while they wait for items to load.
+ </p>
+ <p>
+  Learning about and knowing how to apply Big-O to your code will help you grow as a developer and it will improve your code.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
