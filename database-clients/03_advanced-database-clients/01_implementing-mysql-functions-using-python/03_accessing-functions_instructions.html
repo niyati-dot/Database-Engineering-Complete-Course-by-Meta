@@ -1,0 +1,175 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p variant="body1">
+  In this reading, you'll learn how to access and implement MySQL’s built-in functions using Python.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Accessing functions
+  </strong>
+ </h2>
+ <p variant="body1">
+  Database engineers and developers need to perform several common tasks on data such as computing averages, sum, max, min, combining stings, counting records, handling date and time and many other similar operations. Writing code repetitively for such common tasks is not efficient and results in unnecessary repeat work.
+ </p>
+ <p variant="body1">
+  A function is a piece of code that is written to return results after performing a specific task. MySQL comes with a range of built-in functions that are useful for database engineers and developers working with data-centric applications. These built-in functions can easily be embedded in your SQL query.
+ </p>
+ <p variant="body1">
+  MySQL’s built-in functions include functions for working with strings. You can use these functions to concatenate strings, convert them into upper or lower case, find the lengths of strings, locate sub-strings, reverse strings and perform many more common operations on strings.
+ </p>
+ <p variant="body1">
+  In the numerical functions category, you have functions to compute averages, sums, max, min, logs, and much more. There are also functions that are used to perform a range of trigonometric operations on the data.
+ </p>
+ <p>
+  MySQL   also provides a set of functions that work with DateTime type of data. You can add a date and time or extract the day, year, month, hour, minutes and seconds using MySQL built-in functions from the DateTime object.
+ </p>
+ <p>
+  The advanced function in MySQL helps engineers to implement conditional statements using CASE.  Using the NULLIF function, you can compare the two expressions and return NULL if they are equal. Another function CAST converts a value of any type into a specified datatype.
+ </p>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  MySQL functions in a Python-based application
+ </h2>
+ <p>
+  Next, let’s look at how to use MySQL functions in your Python-based application.
+ </p>
+ <p>
+  To access the MySQL functions, follow the SQL syntax and embed the function in your SQL query. For example, if you want to know the total sale in dollars for the Little Lemon restaurant, you can write the following query containing the function
+  <var>
+   SUM
+  </var>
+  :
+ </p>
+ <pre language="python">sql_query = """SELECT SUM(BillAmont) AS Total_Sale FROM Orders;"""</pre>
+ <p>
+ </p>
+ <p variant="body1">
+  The above query returns the total sale in dollars by adding up all the bill amounts in the
+  <var>
+   BillAmount
+  </var>
+  column from the
+  <var>
+   Orders
+  </var>
+  table.
+ </p>
+ <p variant="body1">
+  You need to use the
+  <var>
+   execute
+  </var>
+  module from the
+  <var>
+   cursor
+  </var>
+  object and pass the SQL query as a Python string to run the above query in your Python-based application. You can use the following code to run the query:
+ </p>
+ <pre language="python">cursor.execute(sql_query) </pre>
+ <p>
+ </p>
+ <p>
+  Once the query is executed, you can fetch the results by calling a fetch module on the
+  <var>
+   cursor
+  </var>
+  :
+ </p>
+ <pre language="python">results = cursor.fetchall()</pre>
+ <p>
+ </p>
+ <p>
+  The results contains the total sale in dollars. Print the results using a for loop and print statement from Python:
+ </p>
+ <pre language="python">for result in results:
+print(result)</pre>
+ <p>
+ </p>
+ <p variant="body1">
+  Let’s consider another example of accessing the DateTime related function from MySQL. Little Lemon wants to know the peak hours of the restaurant so that they can plan their staff roster accordingly. To extract the hour data from the
+  <var>
+   BookingSlot
+  </var>
+  column of the
+  <var>
+   Bookings
+  </var>
+  table, your SQL query must include MySQL’s built-in function HOUR.
+ </p>
+ <pre language="python">sql_query = """SELECT HOUR(BookingSlot) FROM Bookings;"""
+cursor.execute(sql_query)
+results = cursor.fetchall()</pre>
+ <p>
+ </p>
+ <p>
+  The results contain the hour data of the DateTime column
+  <var>
+   BookingSlot
+  </var>
+  from the Bookings table.
+ </p>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Conclusion
+  </strong>
+ </h2>
+ <p variant="body1">
+  In this reading, you learned about embedding the MySQL built-in functions [SUM and HOUR] in your SQL query. You also learned how to execute that query to retrieve the required data from the MySQL database using Python.
+ </p>
+ <p variant="body1">
+  You can now practice and use other MySQL built-in functions in your SQL query and use Python to extract the results.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
