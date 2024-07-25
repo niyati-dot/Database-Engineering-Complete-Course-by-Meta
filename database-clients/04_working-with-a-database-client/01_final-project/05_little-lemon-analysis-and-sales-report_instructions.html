@@ -1,0 +1,439 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p variant="body1">
+  You have gained all the necessary skills and knowledge required to interact with the back-end MySQL database from your Python-based front-end application via the standard database client
+  <var>
+   MySQL Connector/Python
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Follow the instructions in the exercises given below and create a
+  <var>
+   Jupyter notebook
+  </var>
+  to produce a Little Lemon analysis and sales report. You need to submit this report for your peers to review.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 1:
+  </strong>
+ </h2>
+ <p variant="body1">
+  Complete the following steps to establish a connection pool:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    To create a connection pool, import
+    <var>
+     MySQLConnectionPool
+    </var>
+    class from MySQL Connector/Python.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    To find the information on the error, import the
+    <var>
+     Error
+    </var>
+    class from MySQL Connector/Python.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Define your database configurations as a Python dictionary object called
+    <var>
+     dbconfig
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Establish a connection pool [
+    <var>
+     pool_name = pool_b
+    </var>
+    ] with two connections.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Implement error handling using a
+    <var>
+     try-except
+    </var>
+    block in case the connection fails.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  <strong>
+  </strong>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 2:
+  </strong>
+ </h2>
+ <p variant="body1">
+  Three guests are trying to book dinner slots simultaneously. Get the connections from
+  <var>
+   pool_b
+  </var>
+  and insert the following data in the
+  <var>
+   Bookings
+  </var>
+  table:
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   TIP:
+  </strong>
+  You need to add a connection to connect the third guest.
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Guest 1:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    <var>
+     Table Number: 8
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     First Name: Anees
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Last Name: Java
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Booking Time: 18:00
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     EmployeeID: 6
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Guest 2:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    <var>
+     Table Number: 5
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     First Name: Bald
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Last Name: Vin
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Booking Time: 19:00
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     EmployeeID: 6
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Guest 3:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    <var>
+     Table Number: 12
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     First Name: Jay
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Last Name: Kon
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Booking Time: 19:30
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     EmployeeID: 6
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Return all the connections back to the pool.
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   TIP:
+  </strong>
+  The pool size is two. However, you have three connected users. You can only return two connections. Returning a third connection will raise a
+  <var>
+   PoolError
+  </var>
+  . Use
+  <var>
+   try-except
+  </var>
+  to print the error message.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 3:
+  </strong>
+ </h2>
+ <p variant="body1">
+  Create a report containing the following information:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    The name and
+    <var>
+     EmployeeID
+    </var>
+    of the Little Lemon manager.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    The name and role of the employee who receives the highest salary.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    The number of guests booked between 18:00 and 20:00.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    The full name and
+    <var>
+     BookingID
+    </var>
+    of all guests waiting to be seated with the receptionist in sorted order with respect to their
+    <var>
+     BookingSlot
+    </var>
+    .
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  <strong>
+  </strong>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 4:
+  </strong>
+ </h2>
+ <p variant="body1">
+  Create a stored procedure named
+  <var>
+   BasicSalesReport
+  </var>
+  that returns the following statistics:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Total sales
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Average sale
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Minimum bill paid
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Maximum bill paid
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  <strong>
+  </strong>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 5:
+  </strong>
+ </h2>
+ <p variant="body1">
+  Little Lemon needs to display the next three upcoming bookings from the
+  <var>
+   Bookings
+  </var>
+  table on the kitchen screen to notify their chefs which orders are due next. To complete this task, carry out the following steps:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Get a connection from the pool.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Create a buffered cursor.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Combine the data from the Bookings and the Employee tables. Sort the retrieved records in ascending order. Then display the information of the first three guests.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Returned the connection back to the pool.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  The output should be as follows:
+ </p>
+ <p variant="body1">
+  <var>
+   [BookingSlot]
+  </var>
+ </p>
+ <p variant="body1">
+  <var>
+   [Guest_name]
+  </var>
+ </p>
+ <p variant="body1">
+  <var>
+   [Assigned to: Employee Name [Employee Role]]
+  </var>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,378 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p variant="body1">
+  In this exercise you must create a pool of connections and get a connection from the pool to implement the stored procedures to complete the following tasks:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Establish a connection by importing
+    <var>
+     MySQLConnectionPool
+    </var>
+    and creating a pool with two connections.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Create and call a stored procedure named
+    <var>
+     PeakHours
+    </var>
+    that identifies the peak, or busiest hour, for the restaurant based on the number of bookings.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Create and call a stored procedure named
+    <var>
+     GuestStatus
+    </var>
+    that outputs status of each guest’s order based on which employee is assigned to the order.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  Stored procedures are created to carry out routine operations on MySQL databases. They are consistent and make sure that the written SQL queries in the procedures are executed in the same way every time you call the stored procedure.
+ </p>
+ <p variant="body1">
+  A stored procedure is created only once, and you store it in the MySQL database. You can call the stored procedures as many times as you need in your Python-based application.
+ </p>
+ <p variant="body1">
+  The tasks and the steps that you must follow to complete each one are as follows:
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 1: Establish a connection
+  </strong>
+ </h2>
+ <p variant="body1">
+  Step one: Import
+  <var>
+   MySQLConnectionPool
+  </var>
+ </p>
+ <p variant="body1">
+  Step two: Import
+  <var>
+   Error
+  </var>
+ </p>
+ <p variant="body1">
+  Step three: Create a pool named
+  <var>
+   pool_a
+  </var>
+  with two connections. Use a
+  <var>
+   try-except
+  </var>
+  block to handle any possible errors.
+ </p>
+ <p variant="body1">
+  Your database configurations are as follows:
+ </p>
+ <pre language="python">dbconfig={"database":"little_lemon_db", "user":"your_username", "password":"your_password"}</pre>
+ <p variant="body1">
+  Step four: Obtain a connection from pool_a and create a cursor object to communicate with the database.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 2: Implement a stored procedure called
+  </strong>
+  <var>
+   PeakHours
+  </var>
+ </h2>
+ <p variant="body1">
+  Step one: Write a SQL
+  <var>
+   CREATE PROCEDURE
+  </var>
+  query for
+  <var>
+   PeakHours
+  </var>
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     HOUR
+    </var>
+    to extract the hour part from the
+    <var>
+     BookingSlot
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     COUNT
+    </var>
+    on hour to count the number of bookings.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     GROUP BY
+    </var>
+    on booking hour.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     ORDER BY
+    </var>
+    on the number of bookings in descending order.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  Step two: Run the stored procedure query by invoking execute module on the
+  <var>
+   cursor
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Step three: Invoke
+  <var>
+   callproc
+  </var>
+  to call the stored procedure.
+ </p>
+ <p variant="body1">
+  Step four: Fetch the results in a variable called
+  <var>
+   dataset
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Step five: Extract the names of the columns.
+ </p>
+ <p variant="body1">
+  Step six: Print the names of the columns.
+ </p>
+ <p variant="body1">
+  Step seven: Print the sorted data using for loop.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Task 3:
+  </strong>
+  <strong>
+   Implement a stored procedure
+  </strong>
+  <var>
+   GuestStatus
+  </var>
+ </h2>
+ <p variant="body1">
+  Step one: Write a SQL CREATE PROCEDURE query for
+  <var>
+   GuestStatus
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Step two: Combine the guest’s first and last name from the booking column using
+  <var>
+   CONCAT
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Step three: Use
+  <var>
+   CASE
+  </var>
+  to implement the following statuses for each guest’s order:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Manager or Assistant Manager
+    </var>
+    then the guest’s order status is
+    <var>
+     Ready to pay
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Head Chef
+    </var>
+    then the status is
+    <var>
+     Ready to serve
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Assistant Chef
+    </var>
+    then the status is
+    <var>
+     Preparing Order
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Head Waiter
+    </var>
+    then the status is
+    <var>
+     Order served
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  Step four:
+  <var>
+   LEFT JOIN
+  </var>
+  Bookings table with Employees
+  <var>
+   ON EmployeeID
+  </var>
+ </p>
+ <p variant="body1">
+  Step five: Run the stored procedure query by invoking execute module on the
+  <var>
+   cursor
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Step six: Invoke
+  <var>
+   callproc
+  </var>
+  to call the stored procedure.
+ </p>
+ <p variant="body1">
+  Step seven: Fetch the results in a variable called
+  <var>
+   dataset
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Step eight: Extract the names of the columns.
+ </p>
+ <p variant="body1">
+  Step nine: Print the names of the columns.
+ </p>
+ <p variant="body1">
+  Step ten: Print the sorted data using for loop.
+ </p>
+ <p variant="body1">
+  Step eleven: Close the connection to return it back to the pool.
+ </p>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Conclusion
+  </strong>
+ </h2>
+ <p variant="body1">
+  You have now created a pool of connections and obtained a connection from the pool that implemented the stored procedures. You need to submit this exercise for your peer review project.
+ </p>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

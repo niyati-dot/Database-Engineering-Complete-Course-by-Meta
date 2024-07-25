@@ -1,0 +1,1472 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p variant="body1">
+  This document contains the solution codes for the following exercises in the peer review activity:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Exercise 1: Set up the database
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Exercise 2: Implement and query stored procedures
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Exercise 3: Create a Little Lemon analysis and sales report
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Exercise 1: Set up the database
+  </strong>
+ </h2>
+ <p variant="body1">
+  You need a database for your peer review exercise. Follow the given steps to set up the Little Lemon database and complete the graded assessment.
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 1: Establish a connection
+  </strong>
+ </p>
+ <p variant="body1">
+  Open a new Jupyter notebook and import the
+  <var>
+   MySQL Connector/Python API
+  </var>
+  to establish a connection between Python and MySQL database. The code to establish a connection is provided below. Use your own
+  <var>
+   username
+  </var>
+  and
+  <var>
+   password
+  </var>
+  while establishing a connection.
+ </p>
+ <pre language="python"># Import MySQL Connector/Python 
+import mysql.connector as connector
+connection=connector.connect(user="your_username",password="your_password")</pre>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 2: Create a cursor
+  </strong>
+ </p>
+ <p variant="body1">
+  Once the connection between Python and MySQL database is successfully established, you then need to create a cursor object to communicate with MySQL. Create a cursor using the following code:
+ </p>
+ <pre language="python"># Create cursor object to communicate with entire MySQL database
+cursor = connection.cursor()
+print("Cursor is created to communicate with the MySQL using Python.")</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Step 3: Create the database and set it for use
+  </strong>
+ </p>
+ <p variant="body1">
+  You now have a connection and a cursor. Create a new database called
+  <var>
+   little_lemon_db
+  </var>
+  and set it for use using the following code:
+ </p>
+ <pre language="python"># Use try-except block to create a database named "little_lemon_db"
+# If the database already exists then drop the database first, then create it again.
+try:
+    cursor.execute("CREATE DATABASE little_lemon_db")
+except:
+    cursor.execute("DROP DATABASE little_lemon_db")
+    cursor.execute("CREATE DATABASE little_lemon_db")
+print("The database 'little_lemon_db' is created.\n")    
+
+# Set little_lemon database for use 
+cursor.execute("USE little_lemon_db")
+print("The database little_lemon is set for use.")</pre>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 4: Create the
+  </strong>
+  <var>
+   MenuItems
+  </var>
+  <strong>
+   table in the database and populate it with data
+  </strong>
+ </p>
+ <pre language="python"># The SQL query for the MenuItems table is: 
+create_menuitem_table="""
+CREATE TABLE MenuItems (
+ItemID INT AUTO_INCREMENT,
+Name VARCHAR(200),
+Type VARCHAR(100),
+Price INT,
+PRIMARY KEY (ItemID)
+);"""
+
+# Create MenuItems table
+cursor.execute(create_menuitem_table)
+print("MenuItems table is created.\n")
+
+#*******************************************************#
+# Insert query to populate "MenuItems" table: 
+#*******************************************************#
+insert_menuitems="""
+INSERT INTO MenuItems (ItemID, Name, Type, Price)
+VALUES
+(1,'Olives','Starters',5),
+(2,'Flatbread','Starters', 5),
+(3, 'Minestrone', 'Starters', 8),
+(4, 'Tomato bread','Starters', 8),
+(5, 'Falafel', 'Starters', 7),
+(6, 'Hummus', 'Starters', 5),
+(7, 'Greek salad', 'Main Courses', 15),
+(8, 'Bean soup', 'Main Courses', 12),
+(9, 'Pizza', 'Main Courses', 15),
+(10,'Greek yoghurt','Desserts', 7),
+(11, 'Ice cream', 'Desserts', 6),
+(12, 'Cheesecake', 'Desserts', 4),
+(13, 'Athens White wine', 'Drinks', 25),
+(14, 'Corfu Red Wine', 'Drinks', 30),
+(15, 'Turkish Coffee', 'Drinks', 10),
+(16, 'Turkish Coffee', 'Drinks', 10),
+(17, 'Kabasa', 'Main Courses', 17);"""
+
+print("Inserting data in MenuItems table.")
+# Populate MenuItems table
+cursor.execute(insert_menuitems)
+print("Total number of rows in MenuItem table: {}\n".format(cursor.rowcount))
+# Once the query is executed,  commit the change to the database 
+connection.commit()</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Step 5: Create the
+  </strong>
+  <var>
+   Menus
+  </var>
+  <strong>
+   table in the database and populate it with the data
+  </strong>
+ </p>
+ <pre language="python"># The SQL query for the Menus table is:
+create_menu_table="""
+CREATE TABLE Menus (
+MenuID INT,
+ItemID INT,
+Cuisine VARCHAR(100),
+PRIMARY KEY (MenuID, ItemID)
+);"""
+
+# Create Menus table
+cursor.execute(create_menu_table)
+print("Menu table is created.\n")
+
+
+#*******************************************************#
+# Insert query to populate "Menus" table: 
+#*******************************************************#
+insert_menus="""
+INSERT INTO Menus (MenuID, ItemID, Cuisine)
+VALUES
+(1, 1, 'Greek'),
+(1, 7, 'Greek'),
+(1, 10, 'Greek'),
+(1, 13, 'Greek'),
+(2, 3, 'Italian'),
+(2, 9, 'Italian'),
+(2, 12, 'Italian'),
+(2, 15, 'Italian'),
+(3, 5, 'Turkish'),
+(3, 17, 'Turkish'),
+(3, 11, 'Turkish'),
+(3, 16, 'Turkish');"""
+
+print("Inserting data in Menus table.")
+# Populate Menus table
+cursor.execute(insert_menus)
+print("Total number of rows in Menu table: {}\n".format(cursor.rowcount))
+connection.commit()</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Step 6: Create the
+  </strong>
+  <var>
+   Bookings
+  </var>
+  <strong>
+   table in the database and populate it with  data
+  </strong>
+ </p>
+ <pre language="python"># SQL query for Bookings table::
+create_booking_table="""
+CREATE TABLE Bookings (
+BookingID INT AUTO_INCREMENT,
+TableNo INT,
+GuestFirstName VARCHAR(100) NOT NULL,
+GuestLastName VARCHAR(100) NOT NULL,
+BookingSlot TIME NOT NULL,
+EmployeeID INT,
+PRIMARY KEY (BookingID)
+);"""
+
+# Create Bookings table
+cursor.execute(create_booking_table)
+print("Bookings table is created.\n")
+
+#*******************************************************#
+# Insert query to populate "Bookings" table: 
+#*******************************************************#
+insert_bookings="""
+INSERT INTO Bookings (BookingID, TableNo, GuestFirstName, 
+GuestLastName, BookingSlot, EmployeeID)
+VALUES
+(1,12,'Anna','Iversen','19:00:00',1),
+(2, 12, 'Joakim', 'Iversen', '19:00:00', 1),
+(3, 19, 'Vanessa', 'McCarthy', '15:00:00', 3),
+(4, 15, 'Marcos', 'Romero', '17:30:00', 4),
+(5, 5, 'Hiroki', 'Yamane', '18:30:00', 2),
+(6, 8, 'Diana', 'Pinto', '20:00:00', 5);"""
+
+print("Inserting data in Bookings table.")
+# Populate Bookings table
+cursor.execute(insert_bookings)
+print("Total number of rows in Bookings table: {}\n".format(cursor.rowcount))
+connection.commit()
+</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Step 7: Create the
+  </strong>
+  <var>
+   Orders
+  </var>
+  <strong>
+   table in the database and populate it with the data
+  </strong>
+ </p>
+ <pre language="python">#  SQL query for Orders table: 
+create_orders_table="""
+CREATE TABLE Orders (
+OrderID INT,
+TableNo INT,
+MenuID INT,
+BookingID INT,
+BillAmount INT,
+Quantity INT,
+PRIMARY KEY (OrderID,TableNo)
+);"""
+
+# Create Orders table
+cursor.execute(create_orders_table)
+print("Orders table is created.\n")
+
+#*******************************************************#
+# Insert query to populate "Orders" table is:
+#*******************************************************#
+insert_orders="""
+INSERT INTO Orders (OrderID, TableNo, MenuID, BookingID, Quantity, BillAmount)
+VALUES
+(1, 12, 1, 1, 2, 86),
+(2, 19, 2, 2, 1, 37),
+(3, 15, 2, 3, 1, 37),
+(4, 5, 3, 4, 1, 40),
+(5, 8, 1, 5, 1, 43);"""
+
+print("Inserting data in Orders table.")
+# Populate Orders table
+cursor.execute(insert_orders)
+print("Total number of rows in Orders table: {}\n".format(cursor.rowcount))
+connection.commit()
+</pre>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 8: Create the
+  </strong>
+  <var>
+   Employees
+  </var>
+  <strong>
+   table in the database and populate it with  data
+  </strong>
+ </p>
+ <pre language="python">#  SQL query for  Employees table: 
+create_employees_table="""
+CREATE TABLE Employees (
+EmployeeID INT AUTO_INCREMENT,
+Name VARCHAR(200),
+Role VARCHAR(100),
+Address VARCHAR(200),
+Contact_Number INT,
+Email VARCHAR(100),
+Annual_Salary VARCHAR(100),
+PRIMARY KEY (EmployeeID)
+);"""
+
+# Create Employees table
+cursor.execute(create_employees_table)
+
+#*******************************************************#
+# Insert query to populate "Employees" table: 
+#*******************************************************#
+insert_employees="""
+INSERT INTO Employees (EmployeeID, Name, Role, Address, Contact_Number, Email, Annual_Salary)
+VALUES
+(01,'Mario Gollini','Manager','724, Parsley Lane, Old Town, Chicago, IL',351258074,'Mario.g@littlelemon.com','$70,000'),
+(02,'Adrian Gollini','Assistant Manager','334, Dill Square, Lincoln Park, Chicago, IL',351474048,'Adrian.g@littlelemon.com','$65,000'),
+(03,'Giorgos Dioudis','Head Chef','879 Sage Street, West Loop, Chicago, IL',351970582,'Giorgos.d@littlelemon.com','$50,000'),
+(04,'Fatma Kaya','Assistant Chef','132  Bay Lane, Chicago, IL',351963569,'Fatma.k@littlelemon.com','$45,000'),
+(05,'Elena Salvai','Head Waiter','989 Thyme Square, EdgeWater, Chicago, IL',351074198,'Elena.s@littlelemon.com','$40,000'),
+(06,'John Millar','Receptionist','245 Dill Square, Lincoln Park, Chicago, IL',351584508,'John.m@littlelemon.com','$35,000');"""
+
+
+print("Inserting data in the Employees table.")
+# Populate Employees table
+cursor.execute(insert_employees)
+print("Total number of rows in the Employees table: ", cursor.rowcount)
+# Once the query is executed, you can commit the change to the database 
+connection.commit()
+</pre>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Exercise 2: Implement and query stored procedures [Solution]
+  </strong>
+ </h2>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 1:
+  </strong>
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Establish a connection
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Import
+    <var>
+     MySQLConnectionPool
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Import
+    <var>
+     Error
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Create a pool named
+    <var>
+     pool_a
+    </var>
+    with two connections. You need to use the try-except block to handle any possible errors.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Your database configurations are as follows:
+ </p>
+ <pre language="python">dbconfig={"database":"little_lemon_db", "user":"your_username", "password":"your_password"}</pre>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Get a connection from
+    <var>
+     pool_a
+    </var>
+    and create a cursor object to communicate with the database.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python">from mysql.connector.pooling import MySQLConnectionPool
+from mysql.connector import Error
+
+dbconfig = {
+    "database":"little_lemon_db",
+    "user" : "your_username",
+    "password" : "your_password"
+}
+
+try:
+    pool = MySQLConnectionPool(pool_name = "pool_a",pool_size = 2,**dbconfig)
+    print("The connection pool is created with a name: ",pool.pool_name)
+    print("The pool size is:",pool.pool_size)
+
+except Error as er:
+    print("Error code:", er.errno)
+    print("Error message:", er.msg)
+</pre>
+ <p>
+ </p>
+ <p>
+  Get a connection from the pool:
+ </p>
+ <pre language="python"># Get the connection from the connection pool "pool"
+print("Getting a connection from the pool.")
+connection1 = pool.get_connection()
+print("'connection1' object is created with a connection from the pool")
+</pre>
+ <p>
+ </p>
+ <p>
+  Create the cursor object:
+ </p>
+ <pre language="python">cursor=connection1.cursor()</pre>
+ <p>
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 2:
+  </strong>
+ </p>
+ <p variant="body1">
+  Implement a stored procedure called
+  <var>
+   PeakHours
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Write a SQL
+  <var>
+   CREATE PROCEDURE
+  </var>
+  query for
+  <var>
+   PeakHours
+  </var>
+  :
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     HOUR
+    </var>
+    to extract the hour data from the
+    <var>
+     BookingSlot
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     COUNT
+    </var>
+    on the hour part of the
+    <var>
+     BookingSlot
+    </var>
+    data to count the number of bookings.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     GROUP BY
+    </var>
+    on the booking hour.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Use
+    <var>
+     ORDER BY
+    </var>
+    to retrieve the number of bookings in descending order.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  Run the stored procedure query by invoking the execute module on the
+  <var>
+   cursor
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Invoke
+  <var>
+   callproc
+  </var>
+  to call the stored procedure.
+ </p>
+ <p variant="body1">
+  Fetch the results in a variable called
+  <var>
+   dataset
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Extract the names of the columns.
+ </p>
+ <p variant="body1">
+  Print the names of the columns.
+ </p>
+ <p variant="body1">
+  Print the sorted data using a for loop.
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python">connection = pool.get_connection()
+cursor=connection.cursor()
+
+cursor.execute("DROP PROCEDURE IF EXISTS PeakHours;")
+stored_procedure_query="""
+CREATE PROCEDURE PeakHours()
+
+BEGIN
+
+SELECT 
+HOUR(BookingSlot) AS Booking_Hour,
+COUNT(HOUR(BookingSlot)) AS n_Bookings
+FROM Bookings
+GROUP BY Booking_Hour
+ORDER BY n_Bookings DESC;
+
+END
+
+"""
+
+# Execute the query 
+cursor.execute(stored_procedure_query)
+# Call the stored procedure with its name
+cursor.callproc("BusyHours")
+
+# Retrieve records in "dataset"
+results = next(cursor.stored_results() )
+dataset = results.fetchall()
+
+# Retrieve column names using list comprehension in a for loop 
+for column_id in cursor.stored_results():
+    columns = [column[0] for column in column_id.description]
+
+# Print column names:
+print(columns)
+
+# Print data 
+for data in dataset:
+    print(data)
+</pre>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Step 3:
+  </strong>
+ </p>
+ <p variant="body1">
+  Implement a stored procedure called
+  <var>
+   GuestStatus
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Write a SQL
+  <var>
+   CREATE PROCEDURE
+  </var>
+  query for
+  <var>
+   GuestStatus
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Combine the first and last name of each guest from the booking column using a
+  <var>
+   CONCAT
+  </var>
+  function.
+ </p>
+ <p variant="body1">
+  Use the
+  <var>
+   CASE
+  </var>
+  function to implement the following order statuses for each guest:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Manager or Assistant Manager
+    </var>
+    then the status is
+    <var>
+     Ready to pay
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Head Chef
+    </var>
+    then the status is
+    <var>
+     Ready to serve
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Assistant Chef
+    </var>
+    then the status is
+    <var>
+     Preparing order
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    If the
+    <var>
+     Role
+    </var>
+    in the Employee table is
+    <var>
+     Head Waiter
+    </var>
+    then the status is
+    <var>
+     Order served
+    </var>
+    .
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  Perform a
+  <var>
+   LEFT JOIN
+  </var>
+  on the Bookings table with the Employees table
+  <var>
+   ON EmployeeID
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Run the stored procedure query by invoking the execute module on the
+  <var>
+   cursor object
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Invoke
+  <var>
+   callproc
+  </var>
+  to call the stored procedure.
+ </p>
+ <p variant="body1">
+  Fetch the results in a variable called
+  <var>
+   dataset
+  </var>
+  .
+ </p>
+ <p variant="body1">
+  Extract the names of the columns.
+ </p>
+ <p variant="body1">
+  Print the names of the columns.
+ </p>
+ <p variant="body1">
+  Print the sorted data using a for loop.
+ </p>
+ <p variant="body1">
+  Close the connection to return it to the pool.
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python">stored_procedure_query="""
+CREATE PROCEDURE GuestStatus()
+
+BEGIN
+
+SELECT 
+
+Bookings.BookingID AS OrderNumber,  
+CONCAT(GuestFirstName,' ',GuestLastName) AS GuestName, 
+
+Role AS Employee, 
+
+CASE 
+WHEN Role IN ('Manager','Assistant Manager') THEN "Ready to Pay"
+WHEN Role = 'Head Chef' THEN "Ready to serve"
+WHEN Role = 'Assistant Chef' THEN "Preparing order"
+WHEN Role = 'Head Waiter' THEN "Order served"
+
+ELSE "Pending"
+END AS Status
+
+FROM Bookings 
+LEFT JOIN 
+Employees 
+ON Employees.EmployeeID=Bookings.EmployeeID;
+
+END
+"""
+
+
+# Execute the query
+cursor.execute(stored_procedure_query)
+
+#********************************************#
+
+# Call the stored procedure with its name
+cursor.callproc("GuestStatus")
+
+# Retrieve records in "dataset"
+results = next(cursor.stored_results())
+dataset = results.fetchall()
+
+# Retrieve column names using list comprehension in a for loop 
+for column_id in cursor.stored_results():
+    columns = [column[0] for column in column_id.description]
+
+# Print column names
+print(columns)
+
+# Print data 
+for data in dataset:
+    print(data)
+    
+connection1.close()
+</pre>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Exercise 3: Little Lemon analysis and sales report
+  </strong>
+ </h2>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Task 1:
+  </strong>
+ </p>
+ <p variant="body1">
+  Complete the following steps to establish a connection pool:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    To create a connection pool, import the
+    <var>
+     MySQLConnectionPool
+    </var>
+    class from MySQL Connector/Python.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    To find the information on the error, import the Error class from MySQL Connector/Python.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Define your database configurations as a Python dictionary object called
+    <var>
+     dbconfig
+    </var>
+    .
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Establish a connection pool [
+    <var>
+     pool_name = “pool_b”
+    </var>
+    ] with two connections.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Implement error handling using a try-except block in case the connection fails.
+   </p>
+  </li>
+ </ul>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python"># Import MySQLConnectionPool class
+from mysql.connector.pooling import MySQLConnectionPool
+
+# Import Error class
+from mysql.connector import Error
+
+# Define database configurations
+dbconfig = {
+    "database":"little_lemon_db",
+    "user" : "meta",
+    "password" : "password"
+}
+
+# Create a pool named "pool_b" with two connections.
+# try-except block
+try:
+    pool = MySQLConnectionPool(pool_name = "pool_b",pool_size = 2,**dbconfig)
+    print("The connection pool is created with the name: ",pool.pool_name)
+    print("The pool size is:",pool.pool_size)
+
+except Error as er:
+    print("Error code:", er.errno)
+    print("Error message:", er.msg)
+</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2:
+  </strong>
+ </p>
+ <p variant="body1">
+  Three guests are trying to book dinner slots simultaneously. Get their connections from
+  <var>
+   pool_b
+  </var>
+  and insert the following data in the Bookings table.
+  <em>
+   (TIP: You need to add a connection to connect the third guest.)
+  </em>
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Guest 1:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    <var>
+     Table Number: 8
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     First Name: Anees
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Last Name: Java
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Booking Time: 18:00
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     EmployeeID: 6
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Guest 2:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    <var>
+     Table Number: 5
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     First Name: Bald
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Last Name: Vin
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Booking Time: 19:00
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     EmployeeID: 6
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Guest 3:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    <var>
+     Table Number: 12
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     First Name: Jay
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Last Name: Kon
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     Booking Time: 19:30
+    </var>
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    <var>
+     EmployeeID: 6
+    </var>
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  Return all the connections back to the pool.
+  <em>
+   (TIP: The pool size is 2. However, you have three connected users. You can only return two connections. Returning
+  </em>
+  <sup>
+   <em>
+   </em>
+  </sup>
+  <em>
+   a third connection raises a
+  </em>
+  <var>
+   PoolError
+  </var>
+  <em>
+   . Use try-except to print the error message)
+  </em>
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python"># Connect the first guest.
+connection1 = pool.get_connection()
+cursor1=connection1.cursor()
+booking1="""INSERT INTO Bookings 
+(TableNo, GuestFirstName, GuestLastName, BookingSlot, EmployeeID)
+VALUES
+(8,'Anees','Java','18:00:00',6);"""
+cursor1.execute(booking1)
+connection1.commit()
+print("""A new booking is added in the "Bookings" table.""")
+
+# Connect the second guest .
+connection2 = pool.get_connection()
+cursor2=connection2.cursor()
+booking2="""INSERT INTO Bookings 
+(TableNo, GuestFirstName, GuestLastName, BookingSlot, EmployeeID)
+VALUES
+(5, 'Bald','Vin','19:00:00',6);"""
+cursor2.execute(booking2)
+connection2.commit()
+print("""A new booking is added in the "Bookings" table.""")
+
+# Adding a new connection to connect the third user.
+import mysql.connector as connector
+try:
+    connection3 = pool.get_connection()
+    print("The guest is connected")
+except:
+    print("Adding new connection in the pool.")
+        
+    # Create a connection
+    connection=connector.connect(user="meta",password="password")
+    # Add the connection into the pool
+    pool.add_connection(cnx=connection)
+    print("A new connection is added in the pool.\n")
+        
+    connection3 = pool.get_connection()
+    print("'connection3' is added in the pool.")
+    
+# Connect the third guest 
+cursor3=connection3.cursor()
+booking3="""INSERT INTO Bookings 
+(TableNo, GuestFirstName, GuestLastName, BookingSlot, EmployeeID)
+VALUES
+(12, 'Jay','Kon','19:30:00',6);"""
+cursor3.execute(booking3)
+connection3.commit()
+print("""A new booking is added in the "Bookings" table.""")
+
+# You can only return two connections back to the pool as the pool_size=2.
+#  Close all  connections and use try-except to print the pool error if the pool is already full.
+
+from mysql.connector import Error
+for connection in [connection1,connection2, connection3]:
+    try:
+        connection.close()
+        print("Connection is returned to the pool")
+    except Error as er:
+        print("\nConnection can't be returned to the pool")
+        print("Error message:", er.msg)
+</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 3:
+  </strong>
+ </p>
+ <p variant="body1">
+  Create a report containing the following information:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    The name and
+    <var>
+     EmployeeID
+    </var>
+    of the Little Lemon manager.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    The name and role of the employee who receives the highest salary.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    The number of guests booked between 18:00 and 20:00.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    The full name and the
+    <var>
+     BookingId
+    </var>
+    of each guest waiting to be seated with the receptionist in sorted order with respect to their
+    <var>
+     BookingSlot
+    </var>
+    .
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python"># Get a connection from pool_a and create a cursor object to communicate with the database. 
+print("Getting a connection from the pool.")
+connection = pool.get_connection()
+print("""The object "connection" is created with a connection link from the pool_a""")
+print("""Creating a cursor object to communicate with the database.""")
+cursor=connection.cursor()
+print("""The cursor object "cursor" is created.""")
+
+# The name and EmployeeID of the Little Lemon manager.
+cursor.execute("""SELECT 
+Name, EmployeeID 
+FROM Employees 
+WHERE Role = 'Manager'"""")
+results=cursor.fetchall()
+columns=cursor.column_names
+print(columns)
+for result in results:
+    print(result)
+
+# The name and role of the employee who receives the highest salary.
+cursor.execute("""SELECT 
+Name, EmployeeID 
+FROM Employees ORDER BY 
+Annual_Salary DESC LIMIT 1""")
+results=cursor.fetchall()
+columns=cursor.column_names
+print(columns)
+for result in results:
+    print(result)
+
+# The number of guests booked between 18:00:00 and 20:00:00.
+cursor.execute("""SELECT 
+COUNT(BookingID) n_booking_between_18_20_hrs
+FROM Bookings 
+WHERE BookingSlot BETWEEN '18:00:00' AND '20:00:00';""")
+results=cursor.fetchall()
+columns=cursor.column_names
+print(columns)
+for result in results:
+    print(result)
+
+# Full name and the BookingId of each guest  waiting to be seated  
+# with the receptionist in sorted order with respect to their BookingSlot.
+
+cursor.execute("""
+SELECT 
+
+Bookings.BookingID AS ID,  
+CONCAT(GuestFirstName,' ',GuestLastName) AS GuestName, 
+
+Role AS Employee
+
+FROM Bookings 
+LEFT JOIN 
+Employees 
+ON Employees.EmployeeID=Bookings.EmployeeID
+WHERE Employees.Role = "Receptionist"
+ORDER BY BookingSlot DESC;
+
+""")
+print("The following guests are waiting to be seated:")
+results=cursor.fetchall()
+columns=cursor.column_names
+print(columns)
+for result in results:
+    print(result)
+</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 4:
+  </strong>
+ </p>
+ <p variant="body1">
+  Create a stored procedure called
+  <var>
+   BasicSalesReport
+  </var>
+  that returns the following statistics.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Total sales
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Average sale
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Minimum bill paid
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Maximum bill paid
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python"># Create a stored procedure named BasicSalesReport. 
+cursor.execute("DROP PROCEDURE IF EXISTS BasicSalesReport;")
+
+stored_procedure_query="""
+CREATE PROCEDURE BasicSalesReport()
+
+BEGIN
+SELECT 
+SUM(BillAmount) AS Total_Sale,
+AVG(BillAmount) AS Average_Sale,
+MIN(BillAmount) AS Min_Bill_Paid,
+MAX(BillAmount) AS Max_Bill_Paid
+FROM Orders;
+END
+"""
+
+# Execute the query
+cursor.execute(stored_procedure_query)
+
+#********************************************#
+
+# Call the stored procedure with its name
+cursor.callproc("BasicSalesReport")
+
+# Retrieve records in "dataset"
+results = next(cursor.stored_results())
+results = results.fetchall()
+
+# Retrieve column names using list comprehension in a for loop 
+for column_id in cursor.stored_results():
+    cols = [column[0] for column in column_id.description]
+
+    
+print("Today's sales report:")
+for result in results:
+    print("\t",cols[0],"":"",result[0])
+    print("\t",cols[1],"":"",result[1])
+    print("\t",cols[2],"":"",result[2])
+    print("\t",cols[3],"":"",result[3])
+</pre>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Task 5:
+  </strong>
+ </p>
+ <p variant="body1">
+  Little Lemon needs to display the next three upcoming bookings from the
+  <var>
+   Bookings
+  </var>
+  table on the kitchen screen to notify their chefs that the orders are due.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p variant="body1">
+    Get a connection from the pool.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Create a buffered cursor.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Combine the data from the Bookings and the Employee tables, sort the retrieved records in ascending order, and display the information of the first three guests.
+   </p>
+  </li>
+  <li>
+   <p variant="body1">
+    Return the connection back to the pool.
+   </p>
+  </li>
+ </ul>
+ <p variant="body1">
+  The output should be as follows:
+ </p>
+ <p variant="body1">
+  <var>
+   [BookingSlot]
+  </var>
+ </p>
+ <p variant="body1">
+  <var>
+   [Guest_name]
+  </var>
+ </p>
+ <p variant="body1">
+  <var>
+   [Assigned to: Employee Name [Employee Role]]
+  </var>
+ </p>
+ <p variant="body1">
+ </p>
+ <p variant="body1">
+  <strong>
+   Solution code:
+  </strong>
+ </p>
+ <pre language="python">connection = pool.get_connection()
+cursor=connection.cursor(buffered=True)
+
+sql_query="""SELECT 
+Bookings.BookingSlot,
+CONCAT(Bookings.GuestFirstName," ",Bookings.GuestLastName) AS Guest_Name,
+Employees.Name AS Emp_Name,
+Employees.Role AS Emp_Role
+FROM Bookings 
+INNER JOIN 
+Employees ON Bookings.EmployeeID=Employees.EmployeeID
+ORDER BY Bookings.BookingSlot ASC;"""
+cursor.execute(sql_query)
+results=cursor.fetchmany(size=3)
+#print(cursor.column_names)
+for result in results:
+    print("\nBookingSlot",result[0])
+    print("\tGuest_name:",result[1])
+    print("\tAssigned to:",result[2],"[{}]".format(result[3]))
+    
+connection.close()</pre>
+ <p variant="body1">
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
