@@ -1,0 +1,128 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Write a SQL statement that creates the Staff table with the following columns:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    StaffID: INT
+   </p>
+  </li>
+  <li>
+   <p>
+    FullName: VARCHAR(100)
+   </p>
+  </li>
+  <li>
+   <p>
+    PhoneNumber: VARCHAR(10)
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">CREATE TABLE Staff (StaffID INT, FullName VARCHAR(100), PhoneNumber VARCHAR(10));</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Write a SQL statement to apply the following constraints to the Staff table:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    StaffID: INT NOT NULL and PRIMARY KEY
+   </p>
+  </li>
+  <li>
+   <p>
+    FullName: VARCHAR(100) and NOT NULL
+   </p>
+  </li>
+  <li>
+   <p>
+    PhoneNumber: INT NOT NULL
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">ALTER TABLE Staff MODIFY StaffID INT PRIMARY KEY, MODIFY FullName VARCHAR(100) NOT NULL, MODIFY PhoneNumber INT NOT NULL; </pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Write a SQL statement that adds a new column called 'Role' to the Staff table with the following constraint:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Role: VARCHAR(50) and NOT NULL
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">ALTER TABLE Staff ADD COLUMN Role VARCHAR(50) NOT NULL;</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 4 solution:
+  </strong>
+  Write a SQL statement that drops the Phone Number column from the 'Staff' table.
+ </p>
+ <pre language="sql">ALTER TABLE Staff DROP COLUMN PhoneNumber;</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

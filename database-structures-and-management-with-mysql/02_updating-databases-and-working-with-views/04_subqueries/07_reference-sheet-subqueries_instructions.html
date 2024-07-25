@@ -1,0 +1,135 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   What is a sub-query?
+  </strong>
+ </h2>
+ <p>
+  A sub-query is
+  <strong>
+   a query within another query
+  </strong>
+  . In other words, an
+  <strong>
+   inner query.
+  </strong>
+  In a sub-query, a SQL SELECT query is placed as a part of another query called an outer query. Think of the inner query as the child query and the outer query as the parent query.
+ </p>
+ <p>
+  Place a sub-query in the SELECT, FROM, or WHERE clause. You will find it used in the WHERE clause most of the time. Also, always place a subquery within a pair of parentheses. There can be sub-queries that return a single value, a single row, a single column, or multiple rows of one or more columns. When writing subqueries, it is possible to use comparison operators such as =, &gt;, &gt;=, &lt;, &lt;=, != (or &lt;&gt;). In addition, you can also use ALL, ANY and SOME operators followed by a comparison operator.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Types of sub-queries
+  </strong>
+ </h2>
+ <h3 level="3" variant="h3bold">
+  <strong>
+   Subqueries in the FROM clause
+  </strong>
+ </h3>
+ <p>
+  You already know that in SQL, in the FROM clause, you specify the table name in which the data in question resides. When you use a sub-query in the FROM clause, the result returned from a sub-query is used as a temporary table.
+ </p>
+ <p>
+  This table is referred to as a derived table as well.
+ </p>
+ <p>
+  Here’s what the syntax of a sub-query in the FROM clause looks like:
+ </p>
+ <pre language="sql">SELECT some_column, some_column FROM (Subquery) AS alias;</pre>
+ <h3 level="3" variant="h3bold">
+  <strong>
+   Sub-queries in INSERT statements
+  </strong>
+ </h3>
+ <p>
+  You already know that you can use INSERT INTO SELECT statements. That means to use SELECT statements in an INSERT statement when you want to retrieve some data and insert them into another table.
+ </p>
+ <p>
+  The SELECT statement here can contain a sub-query.
+ </p>
+ <p>
+  Here’s what the syntax of a sub-query in an INSERT statement looks like:
+ </p>
+ <pre language="sql">INSERT INTO table1 SELECT column1,column2,column3 FROM table2 WHERE some_column some_operator(Subquery);</pre>
+ <p>
+  <strong>
+   Sub-queries in UPDATE statements
+  </strong>
+ </p>
+ <p>
+  An update statement can also use a subquery. In the UPDATE statement’s WHERE clause, you can use a subquery to filter out the records you want to update.
+ </p>
+ <p>
+  Here’s what the syntax of a subquery in an UPDATE statement looks like:
+ </p>
+ <pre language="sql">UPDATE table1 SET column1 = some_value WHERE some_column some_operator(Sub-query);</pre>
+ <h3 level="3" variant="h3bold">
+  <strong>
+   Sub-queries in DELETE statements
+  </strong>
+ </h3>
+ <p>
+  You can also use sub-queries in your DELETE statement. Once again, in the WHERE clause of the DELETE statement, you can use a subquery to filter out the records you want to delete.
+ </p>
+ <p>
+  Here’s what the syntax of a subquery in a DELETE statement looks like:
+ </p>
+ <p>
+ </p>
+ <pre language="sql">DELETE FROM table1 WHERE some_column some_operator(Subquery);</pre>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,85 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Once you have completed these tasks, you can check and compare your answers with the solutions.
+ </p>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Use the SQL SELECT query to find all bookings that are due after the booking of the guest ‘Vanessa McCarthy’:
+ </p>
+ <pre language="sql">SELECT * FROM Bookings WHERE BookingSlot &gt; (SELECT BookingSlot FROM Bookings WHERE GuestFirstName = 'Vanessa' AND GuestLastName = 'McCarthy');</pre>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Use the SQL SELECT query to find the menu items that are more expensive than all the 'Starters' and 'Desserts' menu item types:
+ </p>
+ <pre language="sql">SELECT * FROM MenuItems WHERE Price &gt; ALL (SELECT Price FROM MenuItems WHERE Type IN ('Starters', 'Desserts')); </pre>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Use the SQL SELECT query to find the menu items that costs the same as the starter menu items that are Italian cuisine:
+ </p>
+ <pre language="sql">SELECT * FROM MenuItems WHERE Price = (SELECT Price FROM Menus, MenuItems WHERE Menus.ItemID = MenuItems.ItemID AND MenuItems.Type = 'Starters' AND Cuisine = 'Italian'); </pre>
+ <p>
+  <strong>
+   Task 4 solution:
+  </strong>
+  Use the SQL SELECT query to find the menu items that were not ordered by the guests who placed bookings:
+ </p>
+ <pre language="sql">SELECT * FROM MenuItems 
+WHERE NOT EXISTS (SELECT * FROM TableOrders, Menus WHERE TableOrders.MenuID = Menus.MenuID AND Menus.ItemID = MenuItems.ItemID); </pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,146 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  The following reference sheet outlines some common MySQL syntax that you can use when working with virtual tables in MySQL.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Creating virtual tables in MySQL
+  </strong>
+ </h2>
+ <p>
+  A view in MySQL is created with the CREATE VIEW statement.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">CREATE VIEW TableView AS SELECT STATEMENT;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql"> CREATE VIEW OrdersView AS SELECT OrderID, Cost FROM Orders;</pre>
+ <p>
+  This creates a virtual table that enables users to show the Order ID and Cost columns from the Orders table.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Retrieving Data from Virtual Tables
+  </strong>
+ </h2>
+ <p>
+  You can retrieve data from the virtual table in the same way you retrieve data from the normal table.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">SELECT * FROM TableView; </pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">SELECT * FROM OrdersView; </pre>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Updating Data in Virtual Tables
+  </strong>
+ </h2>
+ <p>
+  The virtual table itself does not store data physically, however, it is possible to update the base table data using the virtual table in the same way you update data in a normal table.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">Update TableView set ColumnName = value where condition;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">Update OrdersView set Cost = 500 WHERE OrderID = 1;</pre>
+ <p>
+  This statement updates the base Orders table via the OrdersView table.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Renaming Virtual Tables
+  </strong>
+ </h2>
+ <p>
+  In case you want to rename the virtual table, you can do that exactly in the same way you rename a normal table.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">RENAME TABLE VirtualTableName TO NewVirtualTableName; </pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">RENAME TABLE OrdersView TO OrdersViewTable; </pre>
+ <p>
+  This changes the OrdersView table name to a new name “OrdersViewTable”.
+ </p>
+ <h2 level="2" variant="h2regular">
+  <strong>
+   Dropping Virtual Tables
+  </strong>
+ </h2>
+ <p>
+  You can drop the virtual table using the SQL DROP VIEW command
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">DROP VIEW VirtualTableName; </pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">DROP VIEW OrdersViewTable; </pre>
+ <p>
+  This will delete the virtual table view without impacting the actual Orders table.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

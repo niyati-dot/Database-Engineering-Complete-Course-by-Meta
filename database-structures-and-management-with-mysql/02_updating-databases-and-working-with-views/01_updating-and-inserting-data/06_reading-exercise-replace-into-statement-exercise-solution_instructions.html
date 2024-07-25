@@ -1,0 +1,89 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Practice working with REPLACE INTO statement
+  </strong>
+ </h2>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Use the REPLACE statement to insert a new record of data with the following details:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    ‘StarterName’ = Cheese bread
+   </p>
+  </li>
+  <li>
+   <p>
+    ‘Cost’ = 9.50
+   </p>
+  </li>
+  <li>
+   <p>
+    ‘StarterType’ = Indian
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">REPLACE INTO Starters (StarterName, Cost, StarterType) VALUES ("Cheese bread ", 9.50, "Indian");</pre>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Use the REPLACE statement to change the cost of the Cheese bread from $9.50 to $9.75. There are two methods that can be used to complete this task. One of these solutions is as follows:
+ </p>
+ <pre language="sql">REPLACE INTO Starters (StarterName, Cost, StarterType) VALUES ("Cheese bread", 9.75, "Indian");</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

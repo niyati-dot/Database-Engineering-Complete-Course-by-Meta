@@ -1,0 +1,81 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Write a SQL REPLACE statement that inserts two new orders with the following details:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Order 9 data: OrderID = 9, ClientID = "Cl1", ProductID = "P1", Quantity = 10, Cost = 5000
+   </p>
+  </li>
+  <li>
+   <p>
+    Order 10 data: OrderID = 10, ClientID = "Cl2", ProductID = "P2", Quantity = 5, Cost = 100
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">REPLACE INTO Orders (OrderID, ClientID, ProductID, Quantity, Cost) VALUES (9, "Cl1", "P1", 10, 5000), (10, "Cl2", "P2", 5, 100);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Lucky Shrub have noticed that the cost of order number 9 is $5000. This is a mistake. The order should cost $500. You must help them to change it to $500 by writing a relevant REPLACE statement.
+ </p>
+ <pre language="sql">REPLACE INTO Orders SET OrderID = 9, ClientID = "Cl1", ProductID = "P1", Quantity = 10, Cost = 500;</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

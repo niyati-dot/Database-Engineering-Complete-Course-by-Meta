@@ -1,0 +1,114 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  In this reading, you will learn about the three main types of constraints that can be applied in MySQL.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  What are constraints in MySQL?
+ </h2>
+ <p>
+  Constraints in MySQL databases are used to define the rules that maintain data in tables to ensure data validity, accuracy, consistency and reliability.
+ </p>
+ <p>
+  Applying constraints on data in a relational database controls the type of data stored in a table. This will force MySQL to decline processes that violate the specified rules.
+ </p>
+ <p>
+  For example, you must be 18 years old in many countries to apply for a driving license. In this case, you can apply the SQL CHECK constraints on the relevant column in the related table in the database to restrict registering any person under 18.
+ </p>
+ <p>
+  Another example is that in most universities nowadays, each student will be registered with an email address containing the university domain name. You can apply the UNIQUE constraint to ensure that the university does not provide two students with the same email address.
+ </p>
+ <p>
+  In these cases, if there is any conflict between the constraints and the data insertion or update process, the process violating the constraint rule gets aborted.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Types of constraints
+ </h2>
+ <p>
+  There are three main types of constraints that can be applied in MySQL.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Key Constraints
+ </h2>
+ <p>
+  There are different types of keys in a relational database. For example, each table must have a primary key that maintains table integrity. The primary key ensures no duplications of records in the same table. Also, it allows identifying each data record using the primary key value. Therefore, it must be unique in each row of the table, and it is not allowed to contain null values.
+ </p>
+ <p>
+  For example, each citizen living in Denmark must have a unique personal number, which can be used to access different types of state services.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Domain Constraints
+ </h2>
+ <p>
+  Domain constraints refer to special rules defined for the values that can be stored for a certain column. To apply this, you must specify what data values are allowed and which ones should be rejected.
+ </p>
+ <p>
+  For example, you can define a valid range number for users to rate a streaming service that offers a wide variety of TV shows and movies. This range could be a number between 3 and 10, in which case the user will not be able to insert a value that is more than 10 and less than 3.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Referential Integrity Constraints
+ </h2>
+ <p>
+  In a relational database, tables are connected via a foreign key in one table linked to a primary key (or a unique key) in another table.
+ </p>
+ <p>
+  This implies that the value of the foreign key column in the ‘referencing’ table must also exist in the referenced table. Otherwise, you will end up with a problem as the “connection” between the records of the tables will cease.
+ </p>
+ <p>
+  Therefore, maintaining referential integrity requires that a foreign key value must have a matching primary key value to link the records of different related tables.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  Conclusion
+ </h2>
+ <p>
+  It is very important to apply constraints on data in a relational database to maintain data in tables to ensure data validity, accuracy, consistency and reliability.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

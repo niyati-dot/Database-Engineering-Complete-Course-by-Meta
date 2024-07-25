@@ -1,0 +1,119 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Find the minimum and the maximum average prices at which the customers can purchase food and drinks.
+ </p>
+ <p>
+  The following query returns the average prices of menu items by their type:
+ </p>
+ <pre language="sql">SELECT Type, AVG(Price) AS avgPrice 
+FROM MenuItems 
+GROUP BY Type;</pre>
+ <p>
+  It can, in turn, be the source from which data (average price) is used to find the min and max average prices. So, you write this outer SELECT statement and add the above query as a subquery in its FROM clause as follows:
+ </p>
+ <pre language="sql">SELECT ROUND(MIN(avgPrice),2), ROUND(MAX(avgPrice),2) 
+FROM (SELECT Type,AVG(Price) AS avgPrice
+FROM MenuItems 
+GROUP BY Type) AS aPrice;</pre>
+ <p>
+  The highlighted subquery in the FROM clause behaves as a temporary table in this case, and it becomes the source or target table for the outer query.
+ </p>
+ <p>
+  The result is as follows:
+ </p>
+ <img assetid="cmL6XqH3Reui-l6h9_XroQ" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdIAAABcCAMAAADtc8QYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEyUExURR4eHh4eWZvBzMyrfx4eWJrAy8yrgCAfHx5/q8zMzMzMwZtZHn+rzMGbWX+ryx8eHn+qyx8fHsGbWn6qy8vMzB8fHx5+qsrLzJtaHx5Zm8HMzMzMq38eHpvAzB5ZmsDLzH8fH8urgFmbwR4ef6vMzMzBm6t/HlkeHqvLzB8ef6t/Hx8ff1kfHlmbwJtZH6rLzMDMzB5/qlmawMvMwcvLzKuAH1ofH8zBwcHBm8yrm8vMq4AfH8vBmx4efqrLy5vBwcHMwZubq8DMwZvAwR9Zmh9+qptZf6vMwavBm8urfx9Zm8DLwczBq6vBzKrAm1kfHx8eWap/H6vMqx4ff6vLq38fHsHBwcHMq8DBwcvLwcDMqx9/qlqbwMHBzB9/qx8fWsvBq38ef38ff4CbwR8efgAAAHN2TnkAAABmdFJOU///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ADWOqLcAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAavSURBVHhe7Z1Nb+M2EIaNWC6gxEFRCNDFgU6OfTV0SfagwyZFFwU2BdpTESCHIv//P3TemSFFUbLzYWPXouY5RDQ5Ivly+CFZFjMzDGMcZBdzDSXKBAT+8qsGBXPp2MkWkUBz6djJFjZKE6M7SstcuZoVOFxTXFKBKQn02CgdOxNcS2PFqWEuTQ5zaXKQwO4Vr2EYhmEYhmGkzfRu21Kjf196rOJsga8cD/Mem5hqt7rRYESxv8YDSdMTeLTiYl/FAt5jE7NfcbXb234DSdMTGEfU+Fr/Et/rN2sONGvOpLilzxsXIG63iJ7VsG3WqB3qyKfn+cYbw4ptDsGPFd4yaik57wCUKvXpJZ1aIIpATJkj22zBOZ2VwL5iqjVXtMQznBrO8Yrv7ilXBChGxUiqNEadQ7Fk6I3pj+ZwADYr+KHRu4gGRU2nN2uR3BsvJxdYfOFZttbTvc0hfqTAQcVQq/HFKlD85ZFEqmItgs1n1cPX+Sx7/IoPzqVq7G3Qybmn6tyBno0YxLFZtljdlBTO0XBIEQlUmVxHhO/oQzOTjpRe0qkFNusNWpjyvbyqdpzHeQncp3ijA7zMA8XzmmydYi5Cz64e/vh2Vc6rBypUorzx1pfQ/EUKisurbCH65lw76GQzSiPFECcGGkl9mypSbpCjl6UWHfYlnVpgubphnVT770/syzMT2IuAYqwc2vOqXai4+Qe1c4qpKtWO24U0FtfFputSMd46GwEiuW6Ida0r4lBXngy114tifzZHutpq7ULchBQnnVogXXP6dOkVZyawrxgzBUXpiV3Fs/q6VYyq0jzCQeq5/z5L75UMvfHW2Qg4l89H/lxJJLM46t+cp0MUOwFaT4ns5snI5QoCUdKJBdK862pR7TQxLPHnC+wrXt3whcGw4ur5xitGJ24V486MO5xk6I0Dl3JjopdSLN/IybxEJnxBCC19xSqRMuSz3XVfrLh0C9Obio8UyBFcTSx9XOiZCRxSTDWZey2XHcWzYuMVows6K9c8HZeycetSvjrkcymGBzT/Fgo1dbIGFGvLR/WMZQX3eHHSiQWyc2SY59dyDetKPBOBg4oxRbA+FCsBMuNAOXeK+WpPFwKtVuxSGPu1VJZ1Ppd6MC4a26IPKPYx3gb4ArtH4JrIcVqBrber3e22WaN5z0xgL4JPgBruc1joebGnP6w4e3wRxVKInq2lqBxEeeNWGJYSunRHk9Tfn6DDizigWG4P6YKQW1iR1oM5ZxcKdkme0wp0ozbXemG4npnAXoRUXlZyvoGiKAlIb65zUoz5RKom5q1LZTnB/bsaU/GairVn9R/3cq2iLh96QQi8Ys0HxpjqkFlQrI4LZOksCM7EJXlOK1BrSgEumYqmw3kJ7Ed8DGmGw+yz0e9D0LofxLcQj7QOPskxPYFHKh4os88eG1wPEjzvfQjf1cO5SggnNmF6Ao9V/K4+OGwjnRiXGRrxTrSlqOoy+QW4pIAxC1x+SuDRivkG7A322Mji8fbpEeN5XvpZgX9q4Dc9tviklqMFGoZhGIZhGIZh/FSSv6uZnkBz6dgxlyaHuTQ5ugL5hxTEZerbApHAVzrwd95vBPj0HxrAb30/GyhxIMLHBul34uXUpiGbeMeOuTQ5zKXJkbxAwzAMwzAMw+iS/jW+fXuUGtMTaC4dOwm4VJ6uyMtijuYCMfgLOi8sjEhg9YL3jHHUJ0NK87SjiDy/35YvOD53tKfg0v77J53XjJqLoDVGJDBb3r6ytBKvG5Z3HRVE83Q9pD1Nl3ZfuYxeFBuNwEK3Ypm9YpbJlvHbL0icjEu5DRzxy55jEiguLTCx8pvoIQ3+r0SqLsVyGS6ldJuCHzFoE8Rvc47pJqbmtRQ7QOjbxgGsq7yLtBMJuBRky8BxDW/wJ5tE9QbpqP5riuuO1EPjSjffXIxs7tCSiEtnvwdXhOpFmX7jQToqgVJ57J3mtsnyBLqql86cnIpLw8GoEngTA15xOozOpdkSM2s08zaBikhjKi6VLQt04xJ2pqyZvUE6LpdiLRVn8m6SJPBeFs5QV7RdQyIu1W0p6jz/mz/RTMSiB/Y2GZVL2XGy9SevpvVO3NeupF67JwGX8o5B0k/dFk/Y3JZDA1ubjEag7oREQ9T/GtkLdLrIxU67JwGXfpDpCUxfsT1cS40J/pfh5F1qAg3DMAzDMAzDMM6Z9G/bej/iSQz7qiE5zKXJYS5Njq5Aty3Qw/u3BRpRANsC4UBAIH6xzkkpBcoXERj+mMNG6djpCTSXjh1zaXKYS5MjeYHTZTb7H54bf+r+V7MMAAAAAElFTkSuQmCC"/>
+ <p>
+  So, the minimum average price at which customers can buy food/drink from Little Lemon is $5.67 and the maximum average price is $18.75.
+ </p>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Insert data of menu items with a minimum price based on the 'Type' into the LowCostMenuItems table.
+ </p>
+ <p>
+  Here, the SELECT statement in INSERT INTO, contains the subquery.
+ </p>
+ <pre language="sql">INSERT INTO LowCostMenuItems 
+SELECT ItemID,Name,Price 
+FROM MenuItems 
+WHERE Price =ANY(SELECT MIN(Price) FROM MenuItems GROUP BY Type);</pre>
+ <p>
+  The outer SELECT query uses the ANY operator to find ANY matches from the values returned from the subquery – which gives a list of minimum prices of menu items based on their types. If it finds any matches, it will insert them into the LowCostMenuItems table.
+ </p>
+ <p>
+  The data inserted in the LowCostMenuItems looks like this once you run this:
+ </p>
+ <img assetid="Q52zu7zQTSqds7u80A0q4Q" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATsAAADVCAMAAAAfO6ezAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC9UExURR4eHh4eWZvBzMyrf5rAyx8fHszMzMzMwZtZHn+rzMGbWR5/q3+ryx8eHn+qyx5/qsvMzJtaHx5Zm8HMzMzMq38fHh4ef6vMzFmbwat/HszBm1keHszBwcHBm8HMwZtZf8yrm5vBwcvMwZvAzJtZH8HBwZtZWavBm6t/H6vLzFmbwH8eHqvMq8DMzFkfHsHMq8HBzH8ef38fH3+bwarLzMzBq6vBzH8eWVkef6urf6t/fx8ff5ubq39/qwAAABXbqZAAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA/TSURBVHhe7Z3bcuO4EYYtyzse+WJcpXLkGXl3NluVTarkeJKpVA6bw/u/VvoMoklKBNSUZBv/hQWTYBP4BIBgN0FdNTU1vTYtrpeSClK4wShFFSzZaexKtbhp7GrV2NVL2X0Qfbxa4ccdbDoqcY8fqCiDUYmogqmd24+w7R21O+trx+ld9tnGrlqNXb3i2TU1NTU1NTXNp/Ar7sVewuPnKI1dV+uXh2dJjmoKu80j3gMX6x2z27Gf4Ms+dppn84gf2yfZzHIGIQ/Yulq5XGeQryl5RsgfUqZxdmnLvnbHeSjH4iY/vzO4efzxJ8B2ieywSCtyMBUp2fEWdYu0LTS9uKHvZ/3158fbjytqZ5yH6W4eMy7O4Obx978AWyzo+sXbEcunka8psVvcPDzfY2k+QGfFAkpd0E+H2QdKmOx4i2mLtrvNI/y/u/24/vrrH29+XcKZNI/kgH34IXIG4egdbICCbv6E33PXjlqWrDPL15S7wgrYIabFDf/L7FY40Nx/sbrjNlWy4y2mLcpuh8MnbFy/LOlbQrOcR9nRiKZyBuHsmz8/a5ngq71LdtQy7Zld/kTS7rZP99RvqTBSzvWL1GiohOnfftF1i5CRf1dbMMhn8uxoi8kZxG9ud2fs4BCzY5Z519xyBePzQj/Iys+FYY6dundLmOx4i2mLkOGLKQwEo+wOtbur9V+e8fQ8hCZ2ZvlM7PTcXXaf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"/>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Delete all the low-cost menu items whose price is more than the minimum price of menu items that have a price between $5 and $10.
+ </p>
+ <pre language="sql">
+DELETE FROM LowCostMenuItems 
+WHERE Price &gt; ALL(SELECT MIN(Price) as p 
+FROM MenuItems 
+GROUP BY Type 
+HAVING p BETWEEN 5 AND 10);</pre>
+ <p>
+  The outer query uses the ALL operator to find matches from the values returned from the subquery. This provides a list of minimum prices of menu items whose price is between $5 and $10. If it finds any matches then it deletes those records with matching prices from the LowCostMenuItems table.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

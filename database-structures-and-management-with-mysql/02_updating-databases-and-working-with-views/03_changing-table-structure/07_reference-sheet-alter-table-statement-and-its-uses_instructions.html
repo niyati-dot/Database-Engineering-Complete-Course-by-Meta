@@ -1,0 +1,163 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  MySQL. You will repeatedly need it when developing your database.
+ </p>
+ <p>
+  You will find that the table you initially created in the database needs adjusting. Maybe it has some missing columns or constraints, or it may include some irrelevant ones, or you may have misnamed the table or the column, so you need to fix it.
+ </p>
+ <p>
+  Use the ALTER TABLE statement to solve all these problems, allowing you to change an existing table structure. It will enable you to add columns, delete columns, change column type, change column constraints, and even rename columns and the table itself.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Commands to use with the ALTER Statement
+  </strong>
+ </h2>
+ <p>
+  <strong>
+   ADD
+  </strong>
+ </p>
+ <p>
+  To add a column to an existing table, you can use the ADD command followed by the column name and data type. The syntax is as follows:
+ </p>
+ <pre language="sql">ALTER TABLE table_name ADD column_name datatype;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">ALTER TABLE Employees ADD Email VARCHAR(255);</pre>
+ <p>
+  <strong>
+   MODIFY
+  </strong>
+ </p>
+ <p>
+  To modify a column, you can use the MODIFY
+  <strong>
+  </strong>
+  command followed by the column that you want to modify.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">ALTER TABLE table_name MODIFY COLUMN column_name datatype;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">ALTER TABLE Employees MODIFY COLUMN Email VARCHAR(50);</pre>
+ <p>
+  <strong>
+   Adding a FOREIGN KEY to an existing table using ADD
+  </strong>
+ </p>
+ <p>
+  To create a link between one table and another table, you can use the FOREIGN KEY and REFERENCES commands along with the ADD command.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">ALTER TABLE table_name ADD FOREIGN KEY (primary_key_column_name) REFERENCES link_table_name(reference_column_name);</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">ALTER TABLE Orders ADD FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID);</pre>
+ <p>
+  <strong>
+   DROP COLUMN
+  </strong>
+ </p>
+ <p>
+  To remove/delete an existing column from a table, you can use the DROP COLUMN command followed by the column that you want to modify.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">ALTER TABLE table_name DROP COLUMN column_name;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">ALTER TABLE Employees DROP COLUMN Email;</pre>
+ <p>
+  <strong>
+   CHANGE
+  </strong>
+ </p>
+ <p>
+  You can use the CHANGE command with the ALTER statement to rename a column.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">ALTER TABLE table_name CHANGE from_column to_column datatype;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">ALTER TABLE Employees CHANGE Email BusinessEmail VARCHAR(50);</pre>
+ <p>
+  <strong>
+   RENAME
+  </strong>
+ </p>
+ <p>
+  The RENAME command can be used to change a table name, followed by the new name that needs to be given to the table.
+ </p>
+ <p>
+  Syntax:
+ </p>
+ <pre language="sql">ALTER TABLE table_name RENAME new_table_name;</pre>
+ <p>
+  Example:
+ </p>
+ <pre language="sql">ALTER TABLE OrderStatus RENAME OrderDeliveryStatus;</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

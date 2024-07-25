@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>MySQL - REPLACE Statement</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta name="Keywords" content="Statement, REPLACE, MySQL,  HTML, Python, CSS, SQL, JavaScript, Perl, PHP, Java, C, C++, C#, jQuery, Bootstrap, Colors, XML, MySQL, Icons, NodeJS, React, Graphics, Angular, R, AI, Git, Machine Learning, Data Science, Tutorials, Programming, Data Structure, Algorithms, Web Development, Training, Learning, Quiz, Exercises, Courses, References, Computer Science, Management, Finance, Examples, Articles, Demos, Tips, Website">
+<meta name="Description" content="MySQL REPLACE Statement - You can add new rows to an existing table of MySQL using the INSERT statement. In this, you need to specify the name of the table, column names, and values.">
+<link rel="canonical" href="https://www.tutorialspoint.com/mysql/mysql_replace.htm">
+<link rel="icon" href="/favicon.ico" type="image/x-icon" >
+<meta property="og:image" content="https://www.tutorialspoint.com/images/tp_big_logo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="234">
+<meta property="og:title" content="MySQL - REPLACE Statement">
+<meta property="og:description" content="MySQL REPLACE Statement - You can add new rows to an existing table of MySQL using the INSERT statement. In this, you need to specify the name of the table, column names, and values.">
+<link id="style-switch" rel="stylesheet" href="/static/css/purge/style-min.css?v=6.03">
+<link rel="stylesheet" href="/static/css/custom.css?v=8.19">
+<style>.navbar-expand-xl .navbar-brand .navbar-brand-item, .h-100px, ul.toc li.heading, .light-mode-item, .dark-mode-item, .back-top, a.demo, .home-intro-sub{background:#014e62; color:#fff;}  ul.toc li.heading:hover{background:#014e62;} .btn-grey-border{background:#014e62; color:#fff; border:1px solid #014e62;} .course-box{background:#014e62;} .qa-content{padding:0px 0px 0px 0px!important;} a.demo{background:#014e62!important;}
+</style>
+</head>
+<body>
+<div class="navbar-top navbar-dark d-xl-block py-2 mx-2 mx-md-4 rounded-bottom-4">
+	<div class="container-fluid px-3 px-xl-0">
+		<div class="d-lg-flex justify-content-lg-between align-items-center top-nav-links">
+			<ul class="nav align-items-center justify-content-center">
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Home Page">
+					<a class="nav-link" href="https://www.tutorialspoint.com/index.htm"><i class="fal fa-home-alt me-1"></i> Home</a>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Online Coding System">
+					<a class="nav-link" href="https://www.tutorialspoint.com/codingground.htm"><i class="fal fa-code me-1"></i> Coding Ground</a>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Job Openings">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/about/about_careers.htm"><i class="fal fa-suitcase me-1"></i> Jobs</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Digital Whiteboard">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/whiteboard.htm"><i class="fal fa-chalkboard me-1"></i> Whiteboard</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Developer's Tools">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/online_dev_tools.htm"><i class="fal fa-tools me-1"></i> Tools</a></span>
+				</li>
+				<li class="nav-item" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Corporate Trainings">
+					<span><a class="nav-link" href="https://www.tutorialspoint.com/business/index.asp"><i class="fal fa-chalkboard-user me-1"></i> Corporate Training</a></span>
+				</li>
+			</ul>
+			<!-- Navbar top Right-->
+			<div class="d-flex align-items-center justify-content-center">
+				<div class="navbar-nav ms-2">
+				  <div class="modeswitch-wrap" id="darkModeSwitch">
+					 <div class="modeswitch-item">
+						<div class="modeswitch-icon">
+							<i class="fal fa-sun toggle-sun"></i>
+							<i class="fal fa-moon toggle-moon"></i>
+						</div>
+					 </div>
+				  </div>
+				</div>
+				<div class="me-3c top-nav-social">
+				  <a class="nav-link" href="https://www.tutorialspoint.com/market/teach_with_us.jsp" target="_self"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Teach with us"><i class="fal fa-users-class me-2"></i> <span>Teach with us</span></a>
+				</div>
+				<ul class="list-unstyled d-flex mb-0 top-nav-social">
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Facebook" href="https://www.facebook.com/tutorialspointindia" target="_blank"   data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Facebook"><i class="fab fa-facebook"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Instagram" href="https://www.instagram.com/tutorialspoint_/" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Instagram"><i class="fab fa-instagram"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="Twitter" href="https://twitter.com/tutorialspoint" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Twitter"><i class="fab fa-twitter"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="YouTube" href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint Youtube"><i class="fab fa-youtube"></i></a> </li>
+					<li><a class="px-2 nav-link" rel="nofollow" aria-label="LinkedIn" href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQEkqX2eckF__gAAAX-wMwEYvrsjBVbEtWQd4pgEdVSzkL22Nik1KEpY_ECWLKDGc41z8IOZWr2Bb0fvJplT60NPBtSw87J6QCpc7wD4qQ3iU13n6xJtBxME5o05Wmpg5JPm5YY=&originalReferer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Ftutorialspoint" target="_blank"  data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Tutorialspoint LinkedIn"><i class="fab fa-linkedin-in"></i></a> </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<header class="navbar-light navbar-sticky header-static">
+	<nav class="navbar navbar-expand-xl">
+		<div class="container-fluid px-3 px-xl-4">
+			<a class="navbar-brand" href="https://www.tutorialspoint.com/index.htm"><img class="light-mode-item navbar-brand-item" src="/static/images/logo-color.png" alt="logo"> <img class="dark-mode-item navbar-brand-item" src="/static/images/logo-color-b.png" alt="logo"></a>
+			<button class="navbar-toggler-toc collapsed ms-auto-toc" type="button"  id="btn-tutorial-toc">
+				<span><i class="fal fa-bars"></i></span>
+			</button>
+			<button class="navbar-toggler ms-auto" type="button" id="btn-menu-collapse">
+				<i class="fal fa-user-circle fs-user-size"></i>
+			</button>
+			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+					<li class="nav-item nav-xs-login">
+						<a class="nav-link"><i class="fal fa-sign-in me-2"></i>Login</a>
+					</li>
+					<li class="nav-item dropdown dropdown-menu-shadow-stacked">
+						<a href="javascript:void(0);" class="nav-link" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fal fa-th-large fs-5 me-xl-1 d-xl-none"></i>
+							<i class="fal fa-th me-1 d-none d-xl-inline-block"></i>
+							<span class="d-xl-inline-block">Category <i class="fal fa-angle-down"></i></span>
+						</a>
+												<ul class="dropdown-menu categories-menu shadow" id="categories-menu">
+							<li><a href="/academic_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Academic Tutorials</a></li>
+							<li><a href="/big_data_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Big Data &amp; Analytics </a></li>
+							<li><a href="/computer_programming_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Computer Programming </a></li>
+							<li><a href="/computer_science_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Computer Science </a></li>
+							<li><a href="/database_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Databases </a></li>
+							<li><a href="/devops_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> DevOps </a></li>
+							<li><a href="/digital_marketing_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Digital Marketing </a></li>
+							<li><a href="/engineering_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Engineering Tutorials </a></li>
+							<li><a href="/upsc_ias_exams.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Exams Syllabus </a></li>
+							<li><a href="/famous_monuments.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Famous Monuments </a></li>
+							<li><a href="/gate_exams_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> GATE Exams </a></li>
+							<li><a href="/latest_technologies.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Latest Technologies </a></li>
+							<li><a href="/machine_learning_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Machine Learning </a></li>
+							<li><a href="/mainframe_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mainframe Development </a></li>
+							<li><a href="/management_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Management Tutorials </a></li>
+							<li><a href="/maths_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mathematics Tutorials</a></li>
+							<li><a href="/microsoft_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Microsoft Technologies </a></li>
+							<li><a href="/misc_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Misc tutorials </a></li>
+							<li><a href="/mobile_development_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Mobile Development </a></li>
+							<li><a href="/java_technology_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Java Technologies </a></li>
+							<li><a href="/python_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Python Technologies </a></li>
+							<li><a href="/sap_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> SAP Tutorials </a></li>
+							<li><a href="/scripting_lnaguage_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Programming Scripts </a></li>
+							<li><a href="/selected_reading.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Selected Reading </a></li>
+							<li><a href="/software_quality_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Software Quality </a></li>
+							<li><a href="/soft_skill_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Soft Skills </a></li>
+							<li><a href="/telecom_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Telecom Tutorials </a></li>
+							<li><a href="/upsc_ias_exams.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> UPSC IAS Exams </a></li>
+							<li><a href="/web_development_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Web Development </a></li>
+							<li><a href="/sports_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Sports Tutorials </a></li>
+							<li><a href="/xml_technologies_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> XML Technologies </a></li>
+							<li><a href="/multi_language_tutorials.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Multi-Language</a></li>
+							<li><a href="/questions_and_answers.htm" class="dropdown-item"><i class="fal fa-angle-right"></i> Interview Questions</a></li>
+						</ul>
+											</li>
+				</ul>
+				<div class="navbar-collapse">
+					<div class="col-xl-9">
+						<div class="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
+							<div class="nav-item w-100">
+								<form class="rounded position-relative">
+									<input class="form-control pe-4 bg-secondary bg-opacity-10 border-0 search-strings" type="search" placeholder="Search tutorials ..." id="search-strings" name="key" data-result="search-results" aria-label="Search">
+									<button type="button" id="btnSearch" class="btn bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"><i class="fal fa-search fs-6"></i></button>
+									<div class="search-box search-box-inn" id="search-results"></div>
+									<div class="clear"></div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="navbar-nav navbar-nav-scroll">
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/latest/prime-packs" target="_self"><i class="fal fa-cubes me-1"></i>Prime Packs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/market/index.asp" target="_self"><i class="fal fa-play-circle me-1"></i>Courses</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/latest/ebooks" target="_self"><i class="fal fa-book-reader me-1"></i>eBooks</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://www.tutorialspoint.com/tutorialslibrary.htm" target="_self"><i class="fal fa-books me-1"></i>Library</a>
+					</li>
+					<li class="nav-item">
+					        <a class="nav-link" href="https://www.tutorialspoint.com/articles/index.php" target="_self"><i class="fal fa-money-check-edit me-1"></i> Articles</a>
+					</li>
+				</ul>
+			</div>
+			<div class="navbar-nav d-lg-inline-block nav-login">
+			   <a href="https://www.tutorialspoint.com/market/login.asp" class="btn btn-grey-border mb-0"><i class="fal fa-sign-in me-2"></i>Login</a>
+			</div>
+		</div>
+	</nav>
+</header>
+<main class="bg-light pb-4">
+<div class="container-fluid mt-3 px-3 px-xl-3">
+<div class="row g-4">
+<div class="col-sm-12 col-md-4 col-xl-3 ps-0 pe-0 collapse tutorial-toc" id="tocCollapse">
+<div class="card card-body bg-light pt-0 toc-nav">
+<div class="mini-logo">
+<img src="/mysql/images/mysql-mini-logo.jpg" alt="MySQL Tutorial" />
+</div>
+<ul class="toc chapters" >
+<li class="heading">Learn MySQL</li>
+<li><a href="/mysql/index.htm">MySQL - Home</a></li>
+<li><a href="/mysql/mysql-introduction.htm">MySQL - Introduction</a></li>
+<li><a href="/mysql/mysql-installation.htm">MySQL - Installation</a></li>
+<li><a href="/mysql/mysql-administration.htm" >MySQL - Administration</a></li>
+<li><a href="/mysql/mysql-php-syntax.htm">MySQL - PHP Syntax</a></li>
+<li><a href="/mysql/mysql-connection.htm">MySQL - Connection</a></li>
+<li><a href="/mysql/mysql-create-database.htm">MySQL - Create Database</a></li>
+<li><a href="/mysql/mysql-drop-database.htm">MySQL - Drop Database</a></li>
+<li><a href="/mysql/mysql-select-database.htm">MySQL - Select Database</a></li>
+<li><a href="/mysql/mysql-data-types.htm">MySQL - Data Types</a></li>
+<li><a href="/mysql/mysql-create-tables.htm">MySQL - Create Tables</a></li>
+<li><a href="/mysql/mysql-drop-tables.htm">MySQL - Drop Tables</a></li>
+<li><a href="/mysql/mysql-insert-query.htm">MySQL - Insert Query</a></li>
+<li><a href="/mysql/mysql-select-query.htm">MySQL - Select Query</a></li>
+<li><a href="/mysql/mysql-where-clause.htm">MySQL - Where Clause</a></li>
+<li><a href="/mysql/mysql-update-query.htm">MySQL - Update Query</a></li>
+<li><a href="/mysql/mysql-delete-query.htm">MySQL - Delete Query</a></li>
+<li><a href="/mysql/mysql-like-clause.htm">MySQL - Like Clause</a></li>
+<li><a href="/mysql/mysql-sorting-results.htm">MySQL - Sorting Results</a></li>
+<li><a href="/mysql/mysql-using-joins.htm">MySQL - Using Join</a></li>
+<li><a href="/mysql/mysql-null-values.htm">MySQL - NULL Values</a></li>
+<li><a href="/mysql/mysql-regexps.htm">MySQL - Regexps</a></li>
+<li><a href="/mysql/mysql-transactions.htm">MySQL - Transactions</a></li>
+<li><a href="/mysql/mysql-alter-command.htm">MySQL - Alter Command</a></li>
+<li><a href="/mysql/mysql-indexes.htm">MySQL - Indexes</a></li>
+<li><a href="/mysql/mysql-temporary-tables.htm">MySQL - Temporary Tables</a></li>
+<li><a href="/mysql/mysql-clone-tables.htm">MySQL - Clone Tables</a></li>
+<li><a href="/mysql/mysql-database-info.htm">MySQL - Database Info</a></li>
+<li><a href="/mysql/mysql-using-sequences.htm">MySQL - Using Sequences</a></li>
+<li><a href="/mysql/mysql-handling-duplicates.htm">MySQL - Handling Duplicates</a></li>
+<li><a href="/mysql/mysql-sql-injection.htm">MySQL - SQL Injection</a></li>
+<li><a href="/mysql/mysql-database-export.htm">MySQL - Database Export</a></li>
+<li><a href="/mysql/mysql-database-import.htm">MySQL - Database Import</a></li>
+</ul>
+<ul class="toc chapters" >
+<li class="heading">MySQL Useful Resources</li>
+<li><a href="/mysql/mysql-useful-functions.htm">MySQL - Useful Functions</a></li>
+<li><a href="/mysql/mysql_statements_reference.htm">MySQL - Statements Reference</a></li>
+<li><a href="/mysql/mysql-quick-guide.htm">MySQL - Quick Guide</a></li>
+<li><a href="/mysql/mysql-useful-resources.htm">MySQL - Useful Resources</a></li>
+<li><a href="/mysql/mysql-discussion.htm">MySQL - Discussion</a></li>
+</ul>
+<ul class="toc reading">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+<div id="stickyparent" class="d-none d-sm-block">
+<div style="height:250px;width:300px;" id="sticky-ad">
+<div id="430c9911-782f-495d-88f9-69f58ca8c9a4" class="_ap_apex_ad" >
+<script>
+var adpushup = adpushup || {};
+adpushup.que = adpushup.que || [];
+adpushup.que.push(function() {
+adpushup.triggerAd("430c9911-782f-495d-88f9-69f58ca8c9a4");
+});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tutorial ToC Ends Here -->
+
+<!-- Tutorial Content Starts Here -->
+<div class="col-sm-12 col-md-8 col-xl-6 rounded-3 tutorial-content" id="mainContent">
+<h1>MySQL - REPLACE Statement</h1>
+<hr/>
+<div id="google-top-ads">
+<div style="text-align:center" class="google-top-ads">
+<div id="adp_top_ads" style="text-align:center!important"></div>
+<script>
+     var adPos = document.getElementById('adp_top_ads');
+     var ad_id_720 = "8014640d-fd34-4b2e-9b1b-cc67234a2325";
+     var ad_id_650 = "2d1bb2c4-eb72-471d-9c80-1bf5514728c1";
+     var ad_id_300 = "75e8929b-e21c-41ad-bca5-5cb2601dc07b";
+     var width = window.innerWidth;
+     var ad_id = ad_id_720;
+     if( width <= 768 ){
+        ad_id =  ad_id_300;
+     }else if( width <= 1435 ){
+        ad_id =  ad_id_650;
+     }
+     adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+     var adpushup = adpushup || {};
+     adpushup.que = adpushup.que || [];
+     adpushup.que.push(function() {
+     adpushup.triggerAd(ad_id);
+     });
+</script>
+</div>
+</div>
+<div class="mui-container-fluid button-borders">
+<div class="pre-btn">
+<a href="mysql_statements_reference.htm"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="mysql_statements_reference.htm">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+</div>
+<div class="clear"></div>
+<p>You can add new rows to an existing table of MySQL using the <b>INSERT</b> statement. In this, you need to specify the name of the table, column names, and values.</p>
+<p>The replace statement is similar to the INSERT statement using this you can insert records into the specified table. The only difference is,</p>
+<p>while inserting a record using the insert statement if a column has a UNIQUE or PRIMARY KEY constraint, if the new record has same value for this column an error will be generated.</p>
+<p>In the case of the REPLACE statement if you try to insert a new column with duplicate value for the column with UNIQUE or PRIMARY KEY constraints the old record will be completely replaced by the new record.</p>
+<h2>Syntax</h2>
+<p>Following is the syntax of the REPLACE statement of MySQL.</p>
+<pre class="result notranslate">
+REPLACE INTO <i>table_name (column1, column2, column3,...columnN)</i>
+VALUES (value1, value2, value3,...valueN);
+</pre>
+<p>Where, <i>table_name</i> is the name of the table into which you need to insert data, (column1, column2, column3,...columnN) are the names of the columns and (value1, value2, value3,...valueN) are the values in the record.</p>
+<h2>Example</h2>
+<p>Assume we have created a table with name <b>Sales</b> in MySQL database with unique constraint to the ID column and inserted a record, as shown below</p>
+<pre class="prettyprint notranslate">
+mysql&gt; CREATE TABLE sales(
+   ID INT UNIQUE,
+   ProductName VARCHAR(255),
+   CustomerName VARCHAR(255),
+   DispatchDate date,
+   DeliveryTime time,
+   Price INT,
+   Location VARCHAR(255)
+);
+Query OK, 0 rows affected (2.22 sec)
+mysql&gt; INSERT into sales values(1, 'Mouse', 'Puja', DATE('2019-03-01'), TIME('10:59:59'), 3000, 'Vijayawada');
+Query OK, 1 row affected (0.22 sec)
+</pre>
+<p>If you try to insert another record with ID value 1 (since it has UNIQUE constraint) an error will be generated as shown below.</p>
+<pre class="prettyprint notranslate">
+mysql&gt; INSERT into sales values(1, 'Mobile', 'Vanaja', DATE('2019-03-01'), TIME('10:10:52'), 9000, 'Chennai');
+ERROR 1062 (23000): Duplicate entry '1' for key 'sales.ID'
+</pre>
+<p>The contents of the sales the will be as follows &minus;</p>
+<pre class="prettyprint notranslate">
+mysql&gt; select * FROM SALES;
++------+-------------+--------------+--------------+--------------+-------+------------+
+| ID   | ProductName | CustomerName | DispatchDate | DeliveryTime | Price | Location   |
++------+-------------+--------------+--------------+--------------+-------+------------+
+| 1    | Mouse       | Puja         | 2019-03-01   | 10:59:59     | 3000  | Vijayawada |
++------+-------------+--------------+--------------+--------------+-------+------------+
+1 row in set (0.00 sec)
+</pre>
+<h2>The REPLACE statement</h2>
+<p>Following query replaces the above inserted record &minus;</p>
+<pre class="prettyprint notranslate">
+mysql&gt; REPLACE into sales values(1, 'Mobile', 'Vanaja', DATE('2019-03-01'), TIME('10:10:52'), 9000, 'Chennai');
+Query OK, 2 rows affected (0.12 sec)
+</pre>
+<h2>Verification</h2>
+<p>If you verify the contents of the SALES table again you can observe the new record as shown below &minus;</p>
+<pre class="prettyprint notranslate">
+mysql&gt; select * FROM SALES;
++------+-------------+--------------+--------------+--------------+-------+----------+
+| ID   | ProductName | CustomerName | DispatchDate | DeliveryTime | Price | Location |
++------+-------------+--------------+--------------+--------------+-------+----------+
+| 1    | Mobile      | Vanaja       | 2019-03-01   | 10:10:52     | 9000  | Chennai  |
++------+-------------+--------------+--------------+--------------+-------+----------+
+1 row in set (0.06 sec)
+</pre>
+<h2>Inserting records using REPLACE statement</h2>
+<p>Following query inserts a row in the SALES table &minus;</p>
+<pre class="prettyprint notranslate">
+mysql&gt; INSERT into sales (ID, ProductName, CustomerName, DispatchDate, DeliveryTime, Price, Location) values(1, 'Key-Board', 'Raja', DATE('2019-09-01'), TIME('11:00:00'), 7000, 'Hyderabad');
+Query OK, 1 row affected (0.14 sec)
+</pre>
+<p>If you pass the values to the INSERT statement in the same order as in the table you can omit the column names &minus;</p>
+<pre class="prettyprint notranslate">
+mysql&gt; REPLACE into sales values(2, 'Earphones', 'Roja', DATE('2019-05-01'), TIME('11:00:00'), 2000, 'Vishakhapatnam');
+Query OK, 1 row affected (0.26 sec)
+</pre>
+<p>Now, let us insert 3 more records in <b>Sales</b> table.&minus;</p>
+<pre class="prettyprint notranslate">
+INSERT into sales values(1, 'Mouse', 'Puja', DATE('2019-03-01'), TIME('10:59:59'), 3000, 'Vijayawada');
+REPLACE into sales values(1, 'Mobile', 'Vanaja', DATE('2019-03-01'), TIME('10:10:52'), 9000, 'Chennai');
+REPLACE into sales values(5, 'Headset', 'Jalaja', DATE('2019-04-06'), TIME('11:08:59'), 6000, 'Goa');
+</pre>
+<h3>Verification</h3>
+<p>If you verify the contents of the Sales table using the SELECT statement you can observe the inserted records as shown below &minus;</p>
+<pre class="prettyprint notranslate">
+mysql&gt; SELECT * FROM SALES;
++------+-------------+--------------+--------------+--------------+-------+----------------+
+| ID   | ProductName | CustomerName | DispatchDate | DeliveryTime | Price | Location       |
++------+-------------+--------------+--------------+--------------+-------+----------------+
+| 1    | Key-Board   | Raja         | 2019-09-01   | 11:00:00     | 7000  | Hyderabad      |
+| 2    | Earphones   | Roja         | 2019-05-01   | 11:00:00     | 2000  | Vishakhapatnam |
+| 3    | Mouse       | Puja         | 2019-03-01   | 10:59:59     | 3000  | Vijayawada     |
+| 4    | Mobile      | Vanaja       | 2019-03-01   | 10:10:52     | 9000  | Chennai        |
+| 5    | Headset     | Jalaja       | 2019-04-06   | 11:08:59     | 6000  | Goa            |
++------+-------------+--------------+--------------+--------------+-------+----------------+
+5 rows in set (0.00 sec)
+</pre>
+<div class="parent-file">mysql_statements_reference.htm</div><div class="d-flex justify-content-between border-bottom border-top py-2" id="bottom_navigation">
+<a href="mysql_statements_reference.htm" class="pre-btn"><i class="fal fa-chevron-circle-left"></i> Previous Page</a>
+<a id="print-page" href="#" class="pre-btn d-none d-sm-block"><i class="fal fa-print"></i> Print Page</a>
+<a href="mysql_statements_reference.htm" class="nxt-btn">Next Page <i class="fal fa-chevron-circle-right"></i>&nbsp;</a>
+</div>
+			<div class="google-bottom-ads" id="google-bottom-ads">
+				<div>Advertisements</div>
+				<div>
+					<div id="adp_bottom_ads"></div>
+					<script>
+						var adPos = document.getElementById('adp_bottom_ads');
+						var mobile_ad_id = "6d621d7e-9531-4f26-810f-68af67dc6366";
+						var desktop_ad_id = "4951d1d6-24d4-4a31-afb7-2c22c489eae1";
+						var adpushup = adpushup || {};
+						adpushup.que = adpushup.que || [];
+						adpushup.que.push(function() {
+							var ad_id = window.innerWidth <= 768 ? mobile_ad_id : desktop_ad_id;
+							adPos.innerHTML = '<div id="' + ad_id + '" class="_ap_apex_ad"></div>';
+							adpushup.triggerAd(ad_id);
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+	<!-- Tutorial Content Ends Here -->
+
+	<!-- Right Column Starts Here -->
+	<div class="col-sm-6 col-md-3 col-xl-3">
+				<div class="data-sticky" id="google-right-ads">
+			<div class="google-right-ad" style="margin: 0px auto !important;margin-top:5px;min-height:280px!important">
+				<div id="2557b9b8-4c1f-4586-a953-f123dbd2ed8e" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("2557b9b8-4c1f-4586-a953-f123dbd2ed8e");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<div class="google-right-ad" style="margin-top:16px;min-height:280px!important">
+				<div id="b078e6a3-e1b7-40fe-b690-11ac441ad2d5" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("b078e6a3-e1b7-40fe-b690-11ac441ad2d5");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<div class="google-right-ad" style="margin-top:16px;margin-bottom:15px;min-height:600px!important">
+				<div id="8f8814c2-d64c-4d26-9cb9-543653c0b48f" class="_ap_apex_ad">
+					<script>
+						if( window.innerWidth > 768 ){
+						   var adpushup = adpushup || {};
+						   adpushup.que = adpushup.que || [];
+						   adpushup.que.push(function() {
+						   adpushup.triggerAd("8f8814c2-d64c-4d26-9cb9-543653c0b48f");
+						   });
+						}
+					</script>
+				</div>
+			</div>
+			<!-- Right Column Ends Here -->
+		</div>
+	</div>
+</div>
+</div>
+</main>
+
+
+
+<footer class="py-3 card navbar-dark border-top" id="footer">
+	<!-- ======================= Annual Membership -->
+	<div class="py-4 bg-white">
+		<div class="container">
+			<div class="row g-4">
+			<!-- Action box item -->
+				<div class="col-lg-6 position-relative overflow-hidden">
+					<a href="https://www.tutorialspoint.com/market/business/subscription.jsp" target="_blank" title="Annual Membership">
+						<div class="bg-primary bg-opacity-10 rounded-3 p-5 h-100">
+							<div class="position-absolute bottom-0 end-0 me-3">
+								<img src="/images/annual-membership-wraps.svg" class="h-100px h-sm-200px" alt="">
+							</div>
+							<div class="row">
+								<div class="col-sm-8 position-relative">
+									<h3 class="mb-1">Annual Membership</h3>
+									<p class="mb-3 h5 fw-light lead">Enjoy unlimited access on 5500+ Hand Picked Quality Video Courses</p>
+									<div class="btn-business mb-0"><i class="fal fa-check"></i> Subscribe Now</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Action box item -->
+				<div class="col-lg-6 position-relative overflow-hidden">
+					<a href="https://www.tutorialspoint.com/business/index.asp#demoRequest" target="_blank" title="Business Pack">
+						<div class="bg-secondary rounded-3 bg-opacity-10 p-5 h-100">
+							<div class="position-absolute bottom-0 end-0 me-3">
+								<img src="/images/business-banner-wraps.svg" class="h-100px h-sm-200px" alt="">
+							</div>
+							<div class="row">
+								<div class="col-sm-8 position-relative">
+									<h3 class="mb-1">Training for a Team</h3>
+									<p class="mb-3 h5 fw-light lead">Affordable solution to train a team and make them project ready.</p>
+									<div class="btn btn-warning mb-0"><i class="fal fa-check me-1"></i> Submit Demo Request</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ======================= Annual Membership -->
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-lg-12 text-center">
+				<a class="me-0 pb-4" href="https://www.tutorialspoint.com">
+					<img class="light-mode-item h-100px" src="/static/images/logo-color-footer.png" alt="Tutorials Point">
+					<img class="dark-mode-item h-100px" src="/static/images/logo-footer-b.png" alt="Tutorials Point">
+				</a>
+				<ul class="nav justify-content-center py-3 mt-md-0 ">
+					<li class="nav-item"><a class="nav-link fw-bold" href="/about/index.htm"><i class="fal fa-globe"></i> About us</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="/about/return_refund_policy.htm"> <i class="fal fa-check"></i> Refund Policy</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="/about/about_terms_of_use.htm"><i class="fal fa-check"></i> Terms of use</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="/about/about_privacy.htm"> <i class="fal fa-shield-check"></i> Privacy Policy</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="/about/faq.htm"><i class="fal fa-question-circle"></i> FAQ's</a></li>
+					<li class="nav-item"><a class="nav-link fw-bold" href="/about/contact_us.htm"><i class="fal fa-map-marker-alt"></i> Contact</a></li>
+				</ul>
+				<p class="small">© Copyright 2023. All Rights Reserved.</p>
+			</div>
+			<div id="privacy-banner">
+				<div>
+					<p>We make use of First and third party cookies to improve our user experience. By using this website, you agree with our Cookies Policy.
+						<a id="banner-accept" href="#">Agree</a>
+						<a id="banner-learn" href="/about/about_cookies.htm" target="_blank">Learn more</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<div class="back-top">
+<i class="fal fa-angle-up position-absolute top-50 start-50 translate-middle"></i>
+</div>
+<script data-cfasync="false">(function(w, d) { var s = d.createElement('script'); s.src = '//cdn.adpushup.com/40046/adpushup.js'; s.type = 'text/javascript'; s.async = true; (d.getElementsByTagName('head')[0] || d.getElementsByTagName('body')[0]).appendChild(s); })(window, document);</script>
+<script>(function(w,d){var adSlot=d.createElement("div");adSlot.className="ad-slot ad gpt-div-slot",adSlot.style="position: absolute; visibility: hidden;",adSlot.textContent="&nbsp;",d.body.appendChild(adSlot),setTimeout((function(){if(0===adSlot.clientHeight){var t=d.createElement("script");t.setAttribute("src","https://delivery.adrecover.com/18107/adRecover.js"),t.setAttribute("type","text/javascript"),t.setAttribute("async",!0),d.head.append(t)}}),0);})(window, document);</script>
+<script async src="/static/js/script-min.js?v=0.37"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX9ZP4VY84"></script>
+<script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-EX9ZP4VY84');
+</script>
+<!-- Global site tag (gtag.js) - Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-664793816"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-664793816');
+</script>
+</body>
+</html>

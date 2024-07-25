@@ -1,0 +1,177 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  PRACTICE USING MYSQL CONSTRAINTS
+ </h2>
+ <p>
+  Mangata and Gallo is a jewelry store that specializes in special occasions like engagements, weddings and anniversaries in Texas. The company's database contains several tables of data, including the 'Staff' table that contains information about the Staff ID, the full name and the phone number.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Instructions
+  </strong>
+ </h2>
+ <p>
+  To complete this exercise, keep MySQL terminal open from the previous lab, or use MySQL on your own machine. To install MySQL on your own machine you can follow the instructions provided in the link in the additional resources item in the first module.
+ </p>
+ <p>
+  <strong>
+   Prerequisites
+  </strong>
+ </p>
+ <p>
+  To complete this lab, you must have already created the Mangata and Gallo database in MySQL so that you can create the required tables inside of it. If you do not have the database, then you can create it in MySQL using the following instructions.
+ </p>
+ <p>
+  The code to create and use the database is as follows:
+ </p>
+ <p>
+  1. Create a database
+ </p>
+ <pre language="sql">CREATE DATABASE IF NOT EXISTS Mangata_Gallo;</pre>
+ <p>
+ </p>
+ <p>
+  2. Use database
+ </p>
+ <pre language="sql">USE Mangata_Gallo;</pre>
+ <h2 level="2" variant="h2semibold">
+  Tasks
+ </h2>
+ <p>
+  <strong>
+   Task 1:
+  </strong>
+  Create the Staff table with the following PRIMARY KEY and NOT
+  <strong>
+  </strong>
+  NULL constraints:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Staff ID should be INT, NOT NULL and PRIMARY KEY
+   </p>
+  </li>
+  <li>
+   <p>
+    PhoneNumber should be INT, NOT NULL and UNIQUE
+   </p>
+  </li>
+  <li>
+   <p>
+    FullName: VARCHAR(100) NOT NULL.
+   </p>
+   <p>
+   </p>
+  </li>
+ </ul>
+ <p>
+  <strong>
+   Task 2:
+  </strong>
+  Create the 'ContractInfo' table with the following key and domain constraints:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Contract ID should be INT, NOT NULL and PRIMARY KEY
+   </p>
+  </li>
+  <li>
+   <p>
+    StaffID should be INT, NOT NULL.
+   </p>
+  </li>
+  <li>
+   <p>
+    Salary should be DECIMAL (7,2), NOT NULL.
+   </p>
+  </li>
+  <li>
+   <p>
+    Location should be VARCHAR (50) NOT NULL with DEFAULT = "Texas".
+   </p>
+  </li>
+  <li>
+   <p>
+    StaffType should be VARCHAR (20) NOT NULL and should accept a "Junior" or a "Senior" value.
+   </p>
+   <p>
+   </p>
+  </li>
+ </ul>
+ <p>
+  <strong>
+   Task 3:
+  </strong>
+  Create a foreign key that links the Staff table with the ContractInfo table. In this example, you need to apply the referential integrity rule as follows:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Link each member of staff in the Staff table to a specific contract in the Contract Info table.
+   </p>
+  </li>
+  <li>
+   <p>
+    Each staff ID existing in the 'Contract Info' table is expected to exist as well in the Staff table.
+   </p>
+  </li>
+  <li>
+   <p>
+    The staff ID in the 'Contract Info' table should be defined as a foreign key to reference the Staff ID in the Staff table.
+   </p>
+  </li>
+ </ul>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
