@@ -1,0 +1,246 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Filter data using the WHERE clause and logical operators.
+ </p>
+ <p>
+  Create an SQL statement to print all records from the Bookings table for the dates of the following bookings using the BETWEEN operator:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    2021-11-11,
+   </p>
+  </li>
+  <li>
+   <p>
+    2021-11-12,
+   </p>
+  </li>
+  <li>
+   <p>
+    and 2021-11-13.
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">SELECT * 
+FROM Bookings 
+WHERE BookingDate BETWEEN '2021-11-11' AND '2021-11-13';</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Create a JOIN query.
+ </p>
+ <p>
+  Create a JOIN SQL statement on the Customers and Bookings tables. The statement must print the customers full names and related bookings IDs from the date 2021-11-11.
+ </p>
+ <pre language="sql">SELECT Customers.FullName, Bookings.BookingID 
+FROM Customers RIGHT JOIN Bookings 
+ON Customers.CustomerID = Bookings.CustomerID 
+WHERE BookingDate = '2021-11-11';</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Create a GROUP BY query.
+ </p>
+ <p>
+  Create a SQl statement to print the bookings dates from Bookings table. The statement must show the total number of bookings placed on each of the printed dates using the GROUP BY BookingDate.
+ </p>
+ <pre language="sql">SELECT BookingDate, COUNT(BookingDate) 
+FROM Bookings 
+GROUP BY BookingDate;</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 4 solution:
+  </strong>
+  Create a REPLACE statement.
+ </p>
+ <p>
+  Create a SQL REPLACE statement that updates the cost of the Kabsa course from $17.00 to $20.00.
+ </p>
+ <pre language="sql">REPLACE INTO Courses (CourseName, Cost) VALUES ("Kabasa", 20.00);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 5 solution:
+  </strong>
+  Create constraints
+ </p>
+ <p>
+  Create a new table called "DeliveryAddress" in the Little Lemon database with the following columns and constraints:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    ID: INT PRIMARY KEY
+   </p>
+  </li>
+  <li>
+   <p>
+    Address: VARCHAR(255) NOT NULL
+   </p>
+  </li>
+  <li>
+   <p>
+    Type: VARCHAR(100) NOT NULL DEFAULT "Private"
+   </p>
+  </li>
+  <li>
+   <p>
+    CustomerID: INT NOT NULL FOREIGN KEY referencing CustomerID in the Customers table
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">CREATE TABLE DeliveryAddress(     
+    ID INT PRIMARY KEY,     
+    Address VARCHAR(255) NOT NULL,     
+    Type VARCHAR(100) NOT NULL DEFAULT "Private",     
+    CustomerID INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 6 solution:
+  </strong>
+  Create an ALTER TABLE statement
+ </p>
+ <p>
+  Create a SQL statement that adds a new column called 'Ingredients' to the Courses table.
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Ingredients: VARCHAR(255)
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">ALTER TABLE Courses ADD COLUMN Ingredients VARCHAR(255);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 7 solution:
+  </strong>
+  Create a subquery
+ </p>
+ <p>
+  Create a SQL statement with a subquery that prints the full names of all customers who made bookings in the restaurant on the following date: 2021-11-11.
+ </p>
+ <pre language="sql">SELECT FullName 
+FROM Customers 
+WHERE (SELECT CustomerID FROM Bookings WHERE Customers.CustomerID = Bookings.CustomerID and BookingDate = "2021-11-11");</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 8 solution:
+  </strong>
+  Create a virtual table
+ </p>
+ <p>
+  Create the "BookingsView" virtual table to print all bookings IDs, bookings dates and the number of guests for bookings made in the restaurant before 2021-11-13 and where the number of guests is larger than 3.
+ </p>
+ <pre language="sql">CREATE VIEW BookingsView AS SELECT BookingID, BookingDate, NumberOfGuests FROM Bookings WHERE NumberOfGuests &gt; 3 AND BookingDate &lt; "2021-11-13";</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 9 solution:
+  </strong>
+  Create a stored procedure
+ </p>
+ <p>
+  Create a stored procedure called 'GetBookingsData'. The procedure must contain one date parameter called "InputDate". This parameter retrieves all data from the Bookings table based on the user input of the date.
+ </p>
+ <pre language="sql">CREATE PROCEDURE GetBookingsData (InputDate DATE) 
+SELECT * 
+FROM Bookings 
+WHERE BookingDate = InputDate;</pre>
+ <p>
+  Call the stored procedure.
+ </p>
+ <pre language="sql">CALL GetBookingsData ("2021-11-13");</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 10 solution:
+  </strong>
+  Use the String function
+ </p>
+ <p>
+  Create a SQL SELECT query using the appropriate MySQL string function to list "Booking Details" including booking ID, booking date and number of guests. The data must be listed in the same format as the following example:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    ID: 10, Date: 2021-11-10, Number of guests: 5
+   </p>
+  </li>
+ </ul>
+ <pre language="sql">SELECT CONCAT("ID: ", BookingID,', Date: ', BookingDate,', Number of guests: ', NumberOfGuests) AS "Booking Details" FROM Bookings;</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
