@@ -1,0 +1,395 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  In this reading you’ll learn about the uses, advantages and disadvantages of MySQL triggers. You will also learn how to create, remove and list triggers in a MySQL database.
+ </p>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   MySQL triggers and their uses
+  </strong>
+ </h2>
+ <p>
+  A MySQL trigger is a stored program that is associated with a table. A trigger is activated before or after a defined SQL operation is performed on a table.
+ </p>
+ <p>
+  Triggers can be activated on SQL operations like INSERT, UPDATE and DELETE. MySQL supports Row-Level triggers that are invoked before or after a row is inserted, updated or deleted in a table.
+ </p>
+ <p>
+  You can specify a set of actions to be performed on a table when the specified operation occurs. This is done within the body of a trigger.
+ </p>
+ <p>
+  Triggers can be used in MySQL for the following purposes:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Enforcing business rules
+   </p>
+  </li>
+  <li>
+   <p>
+    Ensure data integrity (as a replacement to constraints)
+   </p>
+  </li>
+  <li>
+   <p>
+    Insert records to other tables for audit trail purposes
+   </p>
+  </li>
+  <li>
+   <p>
+    Query data for reporting purposes
+   </p>
+  </li>
+  <li>
+   <p>
+    Replicate data to different tables to achieve data consistency
+   </p>
+  </li>
+ </ul>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Creating and removing MYSQL triggers
+  </strong>
+ </h2>
+ <p>
+  The syntax to create a trigger in MySQL is as follows:
+ </p>
+ <pre language="sql">CREATE TRIGGER trigger_name
+{BEFORE | AFTER} {INSERT | UPDATE| DELETE}
+ON table_name FOR EACH ROW
+trigger_body;</pre>
+ <p>
+  This syntax has 5 main parts:
+ </p>
+ <p>
+  <strong>
+   1. Trigger name:
+  </strong>
+  All triggers must have a unique name within a schema or database name attached (optional). Triggers in different schemas can have the same name.
+ </p>
+ <p>
+  <strong>
+   2. Trigger time:
+  </strong>
+  This specifies when to action the trigger.  It can be BEFORE or AFTER the specified action to indicate that the trigger activates before or after each row that is inserted, modified or deleted.
+ </p>
+ <p>
+  <strong>
+   3. Trigger event:
+  </strong>
+  This is the type of operation that activates the trigger. For example, INSERT, UPDATE and DELETE.
+ </p>
+ <p>
+  <strong>
+   4. Table name:
+  </strong>
+  There must be a table to which the trigger is associated. It’s not possible to associate a trigger to a temporary table or a view.
+ </p>
+ <p>
+  <strong>
+   5. Trigger body:
+  </strong>
+  Consists of the statements that execute when the trigger activates. The BEGIN END block should be used to execute multiple statements.
+ </p>
+ <p>
+  The syntax to remove a MySQL trigger is as follows:
+ </p>
+ <pre language="sql">DROP TRIGGER [IF EXISTS] [schema_name.]trigger_name</pre>
+ <p>
+  The schema name must be specified if the trigger is not in the default (current) schema. When a table is dropped, any triggers associated with that table will also be dropped.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Accessing table columns from within a trigger
+  </strong>
+ </h2>
+ <p>
+  You often must access table column values when writing the code in the trigger body. Accessing a table column within the body of the trigger can be done using the OLD and NEW modifiers. OLD is used to access the value of the column before the operation (For example BEFORE INSERT, UPDATE and DELETE). NEW is used to access the value of the column after the operation.
+ </p>
+ <p>
+  The OLD and NEW modifiers are available for INSERT, UPDATE and DELETE operations as follows:
+ </p>
+ <table columns="3" rows="4">
+  <thead>
+   <tr>
+    <th>
+     <p>
+      Trigger event
+     </p>
+    </th>
+    <th>
+     <p>
+      OLD
+     </p>
+    </th>
+    <th>
+     <p>
+      NEW
+     </p>
+    </th>
+   </tr>
+  </thead>
+  <tr>
+   <td>
+    <p>
+     INSERT
+    </p>
+   </td>
+   <td>
+    <p>
+     No
+    </p>
+   </td>
+   <td>
+    <p>
+     Yes
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     UPDATE
+    </p>
+   </td>
+   <td>
+    <p>
+     Yes
+    </p>
+   </td>
+   <td>
+    <p>
+     Yes
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     DELETE
+    </p>
+   </td>
+   <td>
+    <p>
+     Yes
+    </p>
+   </td>
+   <td>
+    <p>
+     No
+    </p>
+   </td>
+  </tr>
+ </table>
+ <p>
+  Ensure that you use the OLD and NEW modifiers within your trigger correctly. Use the INSERT, UPDATE and DELETE triggers as specified in the table above.
+ </p>
+ <p>
+  Below are two examples of using the OLD and NEW modifiers within the trigger body.
+ </p>
+ <p>
+  <strong>
+   Using the NEW modifier:
+  </strong>
+ </p>
+ <pre language="sql">CREATE TRIGGER OrderQtyCheck  
+  BEFORE INSERT ON Orders  
+  FOR EACH ROW  
+BEGIN 
+  IF NEW.Quantity &lt; 0 THEN  
+    SET NEW.Quantity = 0; 
+  END IF; 
+END;</pre>
+ <p>
+  In this example an order is inserted. The
+  <var>
+   NEW
+  </var>
+  modifier is used to access the
+  <var>
+   Quantity
+  </var>
+  column’s value after the insert operation.
+ </p>
+ <p>
+  <strong>
+   Using the OLD modifier:
+  </strong>
+ </p>
+ <pre language="sql">CREATE TRIGGER AfterDeleteOrder 
+  AFTER DELETE   
+  ON Orders FOR EACH ROW 
+INSERT INTO Audits VALUES(4,'AFTER',CONCAT('Order ',OLD.OrderID, ' was deleted at ', CURRENT_TIME(), ' on ', CURRENT_DATE()),'DELETE');</pre>
+ <p>
+  In this example an order is deleted. The
+  <var>
+   OLD
+  </var>
+  modifier is used to access the
+  <var>
+   OrderID
+  </var>
+  column's value before the
+  <var>
+   DELETE
+  </var>
+  operation.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Listing all triggers in the MySQL database
+  </strong>
+ </h2>
+ <p>
+  It is also helpful to view the triggers in your MySQL database.
+ </p>
+ <p>
+  You can use the
+  <var>
+   SHOW TRIGGERS
+  </var>
+  statement to view this.
+ </p>
+ <pre language="sql">SHOW TRIGGERS
+[{FROM | IN} database_name]
+[LIKE 'pattern' | WHERE search_condition];</pre>
+ <p>
+  This syntax returns all triggers in the specified database.
+ </p>
+ <p>
+  The database name should be specified after the
+  <var>
+   FROM
+  </var>
+  or
+  <var>
+   IN
+  </var>
+  keyword.
+ </p>
+ <p>
+  It is possible to find triggers based on a pattern and find triggers that match a condition by adding the
+  <var>
+   LIKE
+  </var>
+  and the
+  <var>
+   WHERE
+  </var>
+  sections to this syntax.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Advantages and Disadvantages of triggers
+  </strong>
+ </h2>
+ <p>
+  Advantages of triggers:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Enables validation of data even before it is inserted or updated.
+   </p>
+  </li>
+  <li>
+   <p>
+    Provides an alternative way to run scheduled tasks or to perform tasks automatically.
+   </p>
+  </li>
+  <li>
+   <p>
+    Increases the performance of SQL queries because it does not need to compile each time that the query is executed.
+   </p>
+  </li>
+  <li>
+   <p>
+    Reduces client-side code for validations. This saves time and effort.
+   </p>
+  </li>
+  <li>
+   <p>
+    Easy to maintain.
+   </p>
+  </li>
+ </ul>
+ <p>
+  Disadvantages of triggers:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    It's not possible to perform all kinds of constraint validations using a trigger.
+   </p>
+  </li>
+  <li>
+   <p>
+    Not easy to troubleshoot because they work in the database layer and not in client/application layer. Therefore,  the errors in triggers may be hidden to the developer.
+   </p>
+  </li>
+  <li>
+   <p>
+    May increase the overhead of the database server.
+   </p>
+  </li>
+ </ul>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Conclusion
+  </strong>
+ </h2>
+ <p>
+  Triggers are a good way of enforcing business rules. Triggers are also a good alternative to constraints. They can be invoked automatically on specified actions on a database table. However, triggers should not be overused as it may increase the overhead of the MySQL database.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
