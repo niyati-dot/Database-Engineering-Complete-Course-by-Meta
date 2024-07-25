@@ -1,0 +1,86 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Once you have completed these tasks, you can check your answers against the solutions.
+ </p>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Write a SQL statement that creates a stored procedure called 'GetOrdersData', which retrieves all data from the Orders table.
+ </p>
+ <p>
+  The GetOrdersData SQL procedure syntax.
+ </p>
+ <pre language="sql">CREATE PROCEDURE GetOrdersData ()  SELECT * FROM Orders; </pre>
+ <p>
+  To call the GetOrdersData procedure write the following syntax.
+ </p>
+ <pre language="sql">CALL GetOrdersData(); </pre>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Write SQL statement that creates a stored procedure called “GetListOfOrdersInRange”. The procedure must contain two parameters that determine the range of retrieved data based on the user input of two cost values “MinimumValue” and “MaximumValue”.
+ </p>
+ <p>
+  The syntax for the GetListOfOrdersInRange prodedure is as follows:
+ </p>
+ <pre language="sql">CREATE PROCEDURE GetListOfOrdersInRange (MinimumValue DECIMAL, MaximumValue DECIMAL) SELECT * FROM Orders WHERE Cost &gt;= MinimumValue AND Cost &lt;= MaximumValue;</pre>
+ <p>
+  Write the following syntax to call the GetListOfOrdersInRange procedure.
+ </p>
+ <pre language="sql">CALL GetListOfOrdersInRange (150, 600);</pre>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

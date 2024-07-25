@@ -1,0 +1,94 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Once you have completed the tasks in the lab, check and compare your answers against the following solutions.
+ </p>
+ <p>
+  <strong>
+   Task 1 solution:
+  </strong>
+  Write a SQL SELECT query using appropriate MySQL string functions to list items, quantities and order status in the following format: Item name–quantity–order status
+ </p>
+ <pre language="sql">SELECT CONCAT(LCASE(Name),'-',Quantity,'-', UCASE(OrderStatus)) 
+FROM item,mg_orders 
+WHERE item.ItemID = mg_orders.ItemID;</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 2 solution:
+  </strong>
+  Write a SQL SELECT query using an appropriate date function and a format string to find the name of the weekday on which M&amp;G's orders are to be delivered.
+ </p>
+ <pre language="sql">SELECT DATE_FORMAT(DeliveryDate,'%W') FROM mg_orders; </pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 3 solution:
+  </strong>
+  Write a SQL SELECT query that calculates the cost of handling each order. This is 5% of the total order cost. Use an appropriate math function to round that value to 2 decimal places.
+ </p>
+ <pre language="sql">SELECT OrderID, ROUND((Cost * 5 / 100),2) AS HandlingCost FROM mg_orders; </pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 4 solution:
+  </strong>
+  Review the query you wrote in the second task. Use an appropriate comparison function to filter out the records that do not have a NULL value in the delivery date column.
+ </p>
+ <pre language="sql">SELECT DATE_FORMAT(DeliveryDate,'%W') FROM mg_orders WHERE !ISNULL(DeliveryDate)</pre>
+ <p>
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

@@ -1,0 +1,362 @@
+<meta charset="utf-8"/>
+<co-content>
+ <h2 level="2" variant="h2semibold">
+  What is a function in MySQL?
+ </h2>
+ <p>
+  A function is a code that performs an operation and returns a result. Functions are used to manipulate data in a database table.
+ </p>
+ <p>
+  MySQL has many built-in functions that fall under different categories. These include:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    String manipulation functions
+   </p>
+  </li>
+  <li>
+   <p>
+    D​ate and time functions
+   </p>
+  </li>
+  <li>
+   <p>
+    Numeric functions
+   </p>
+  </li>
+  <li>
+   <p>
+    Comparison functions
+   </p>
+  </li>
+  <li>
+   <p>
+    And control flow functions
+   </p>
+  </li>
+ </ul>
+ <p>
+  At this stage in the lesson, you should be familiar with basic examples of each of these types of functions. So l​et's take a few moments to explore other examples.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Numeric functions
+  </strong>
+ </h2>
+ <p>
+  MySQL numeric functions can be broadly divided into mathematical and aggregate functions. You've reviewed numerous examples of many MySQL aggregate functions. You've also looked at many mathematical functions. In this reading, you'll  explore a few more mathematical functions.
+ </p>
+ <p>
+  Mathematical functions allow you to perform mathematical tasks on numeric data.
+ </p>
+ <p>
+  Let's look at two meaningful and useful mathematical functions: CEIL and FLOOR.
+ </p>
+ <p>
+  The CEIL function returns the smallest integer value, which is
+  <em>
+   not less than
+  </em>
+  the passed value. For example, passing a value of 1.23 to the CEIL function returns a value of 2.
+ </p>
+ <p>
+  It returns NULL if the value passed is NULL. The syntax of the CEIL function is as follows:
+ </p>
+ <pre language="sql">SELECT CEIL(VALUE);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following code returns 16 as it is the smallest integer value that is greater than or equal to 15.50.
+ </p>
+ <pre language="sql">SELECT CEIL(15.50);</pre>
+ <p>
+ </p>
+ <p>
+  The FLOOR function does the opposite of CEIL. It returns the largest integer value not greater than the passed value. It returns NULL if the passed value is NULL.
+ </p>
+ <p>
+  Its syntax is the same as the CEIL function. It's just a matter of replacing the CEIL function with the FLOOR function.
+ </p>
+ <pre language="sql">SELECT FLOOR(VALUE);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following code returns 15 as it is the largest integer value that is less than or equal to 15.50.
+ </p>
+ <pre language="sql">SELECT FLOOR(15.50);</pre>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   String functions
+  </strong>
+ </h2>
+ <p>
+  Now let's look at some more String functions like FORMAT, LENGTH and REPLACE.
+ </p>
+ <p>
+  The FORMAT function formats the number passed into a format like '#,###,###.##', rounded to the specified number of decimal places. It returns the result as a string.
+ </p>
+ <p>
+  Here's the syntax:
+ </p>
+ <pre language="sql">SELECT FORMAT(number_to_be_formatted, number_of_decimal_places);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following code returns 3,750.75  as it formats the number (3750.753, 2) as "#,###.##" and rounds it within two decimal places.
+ </p>
+ <pre language="sql">FORMAT(3750.753, 2)</pre>
+ <p>
+ </p>
+ <p>
+  If the number of decimal places is 0, the result has no decimal point or fractional part. If the number to be formatted or the number of decimal places is NULL, then the function returns NULL.
+ </p>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Date functions
+  </strong>
+ </h2>
+ <p>
+  You’ve explored MySQL date functions such as CURRENT_DATE, CURRENT_TIME, DATE_FORMAT and DATEDIFF. Now let’s explore a few more essential date functions with some examples.
+ </p>
+ <p>
+  The ADDDATE function is used to perform arithmetic with dates. It comes in two forms.
+ </p>
+ <ol bullettype="numbers">
+  <li>
+   <p>
+    <strong>
+     ADDDATE
+    </strong>
+    (date, INTERVAL expr unit)
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>
+     ADDDATE
+    </strong>
+    (date, days)
+   </p>
+  </li>
+ </ol>
+ <p>
+  The first argument specifies the starting date or datetime value in the first form. The second argument is an expression that determines the interval value to be added to the starting date.
+ </p>
+ <p>
+  It has three parts:
+ </p>
+ <ol bullettype="numbers">
+  <li>
+   <p>
+    <strong>
+     INTERVAL
+    </strong>
+    is a keyword
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>
+     expr
+    </strong>
+    represents a quantity
+   </p>
+  </li>
+  <li>
+   <p>
+    and
+    <strong>
+     unit
+    </strong>
+    represents the unit for interpreting the quantity; such as HOUR, DAY, or WEEK
+   </p>
+  </li>
+ </ol>
+ <p>
+  The syntax for the first form is as follows:
+ </p>
+ <pre language="sql">SELECT ADDDATE(date, INTERVAL expr unit);</pre>
+ <p>
+ </p>
+ <p>
+  In the second form, the first argument is the same and the second argument is the integer, or number of days, to be added to the given date in the first argument.
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : the following code returns 2020-05-15 because it adds 5 days to the specified date.
+ </p>
+ <pre language="sql">SELECT ADDDATE("2020-05-10", INTERVAL 5 DAY);
+</pre>
+ <p>
+ </p>
+ <p>
+  The syntax for the second form is as follows:
+ </p>
+ <pre language="sql">SELECT ADDDATE(date, days);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following code returns 2020-06-25 because it adds 5 days to the specified date.
+ </p>
+ <pre language="sql">SELECT ADDDATE("2020-06-15", 10);    </pre>
+ <p>
+ </p>
+ <p>
+  The QUARTER function is also a very versatile function that returns the quarter of the year for the given date. The return value is in the range 1 to 4, or NULL if date is NULL.
+ </p>
+ <p>
+  The syntax is as follows:
+ </p>
+ <pre language="sql">SELECT QUARTER(date_value);</pre>
+ <p>
+ </p>
+ <p>
+  The DATE, MONTH, YEAR and DAY functions extract the date, month, year and 'day of the month' parts respectively, of a given date or date time expression.
+ </p>
+ <p>
+  <strong>
+   Example:
+  </strong>
+  The following code returns a value of 3. The QUARTER() function returns the quarter of the year for the given date value.
+ </p>
+ <pre language="sql"> SELECT QUARTER("2020-09-15");</pre>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Comparison functions
+  </strong>
+ </h2>
+ <p>
+  You may know of a few comparison functions of MySQL like GREATEST, LEAST and ISNULL.
+ </p>
+ <p>
+  COALESCE is another comparison function that takes several arguments and returns the first non-NULL argument. In case all arguments are NULL, the COALESCE function returns NULL. You can think of this function as a NULL checking function.
+ </p>
+ <p>
+  The syntax for this function is as follows:
+ </p>
+ <pre language="sql">SELECT COALESCE (value1, value2);</pre>
+ <p>
+ </p>
+ <p>
+  This function is particularly useful when you replace a column value with a NULL value with some other value.
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following code returns Coursera, because the COALESCE() function returns the first non-null value in a list.
+ </p>
+ <pre language="sql">SELECT COALESCE(NULL, 'Coursera', NULL, 'Database');</pre>
+ <p>
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Control flow functions
+  </strong>
+ </h2>
+ <p>
+  MySQL also has a function that lets you evaluate conditions and decide how the query should be executed accordingly. You should be familiar with the CASE function in MySQL and IFNULL, another function. It accepts two arguments and returns the first argument if it is not NULL. Otherwise, the IFNULL function returns the second argument. The two arguments can be literal values or expressions.
+ </p>
+ <p>
+  The syntax is as follows:
+ </p>
+ <pre language="sql">SELECT IFNULL(evaluated_expression, alternative_value);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following code returns Coursera as the value because the evaluated expression is NULL.
+ </p>
+ <pre language="sql">SELECT IFNULL(NULL, "Coursera");</pre>
+ <p>
+ </p>
+ <p>
+  There’s also the NULLIF function that takes in two values or expressions. If they're equal then it returns NULL. Otherwise, it returns the first value or expression.
+ </p>
+ <p>
+  This is an example of the syntax:
+ </p>
+ <pre language="sql">SELECT NULLIF(expression1, expression2);</pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Example
+  </strong>
+  : The following NULLIF() function returns 10, as it compares the two expressions (10 and 15) and returns NULL if they are equal. Otherwise, the first expression is returned.
+ </p>
+ <pre language="sql">SELECT NULLIF(10, 15);</pre>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

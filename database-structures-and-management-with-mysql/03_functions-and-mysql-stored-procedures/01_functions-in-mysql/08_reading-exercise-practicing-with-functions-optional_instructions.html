@@ -1,0 +1,219 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Mangata and Gallo (also called M&amp;G) is a jewelry store specializing in special occasions like engagements, weddings and anniversaries.
+ </p>
+ <p>
+  T​hey maintain all data about their jewelry store in a database named jewelrystore_db with 4 tables.
+ </p>
+ <h2 level="2" variant="h2semibold">
+  <strong>
+   Instructions
+  </strong>
+ </h2>
+ <p>
+  To complete this exercise, you can either keep the MySQL terminal open from the previous lab, or use MySQL on your own machine. To install MySQL on your own machine you can follow the instructions provided in the link in the additional resources item in the first module of this course.
+ </p>
+ <p>
+  <strong>
+   Prerequisites
+  </strong>
+ </p>
+ <p>
+  Set up the database and the tables using the following SQL statements.
+ </p>
+ <p>
+  1. Create the database and the clients' table.
+ </p>
+ <pre language="sql">CREATE DATABASE jewelrystore_db; 
+
+USE jewelrystore_db; 
+
+CREATE TABLE clients 
+(ClientID int NOT NULL, 
+ClientName varchar(255) DEFAULT NULL, 
+Address varchar(255) DEFAULT NULL, 
+ContactNo varchar(10) DEFAULT NULL, 
+PRIMARY KEY (ClientID));</pre>
+ <p>
+ </p>
+ <p>
+  2​. Create the client_orders table.
+ </p>
+ <pre language="sql">CREATE TABLE client_orders 
+(OrderID INT NOT NULL, 
+ClientID INT DEFAULT NULL, 
+ItemID INT DEFAULT NULL, 
+Cost INT DEFAULT NULL, 
+PRIMARY KEY (OrderID));</pre>
+ <p>
+ </p>
+ <p>
+  3​. Create the item table.
+ </p>
+ <pre language="sql">CREATE TABLE item 
+(ItemID INT NOT NULL, 
+Name varchar(150) DEFAULT NULL, 
+Cost INT DEFAULT NULL, 
+PRIMARY KEY (ItemID));</pre>
+ <p>
+ </p>
+ <p>
+  4. Create the mg_orders table
+ </p>
+ <pre language="sql">CREATE TABLE mg_orders 
+(OrderID INT NOT NULL, 
+ItemID INT DEFAULT NULL, 
+Quantity INT DEFAULT NULL, 
+Cost INT DEFAULT NULL, 
+OrderDate DATE DEFAULT NULL, 
+DeliveryDate DATE DEFAULT NULL, 
+OrderStatus VARCHAR(50) DEFAULT NULL, 
+PRIMARY KEY (OrderID));</pre>
+ <p>
+ </p>
+ <p>
+  5. Populate the clients table with data.
+ </p>
+ <pre language="sql">INSERT INTO clients VALUES 
+(1, 'Kishan Hughes','223 Golden Hills, North Austin, TX','387986345'), 
+(2, 'Indira Moncada','119 Silver Street, Bouldin Creek, TX','334567243'), 
+(3, 'Mosha Setsile','785 Bronze Lane, East Austin, TX','315642597'), 
+(4, 'Laura Mills','908 Diamond Crescent, South Lamar, TX','300842509'), 
+(5, 'Henrik Kreida','345, Golden Hills, North Austin, TX','358208983'), 
+(6, 'Millicent Blou','812, Diamond Crescent, North Burnet, TX','347898755');</pre>
+ <p>
+ </p>
+ <p>
+  6. Populate the item table with data.
+ </p>
+ <pre language="sql">INSERT INTO item VALUES 
+(1,'Engagement ring',2500), 
+(2,'Silver brooch',400), 
+(3,'Earrings',350), 
+(4,'Luxury watch',1250), 
+(5,'Golden bracelet',800), 
+(6,'Gemstone',1500); </pre>
+ <p>
+ </p>
+ <p>
+  7​. Populate the client_orders table with data.
+ </p>
+ <pre language="sql">INSERT INTO client_orders VALUES 
+(1,1,1,2500), 
+(2,2,2,400), 
+(3,3,3,350), 
+(4,4,4,1250), 
+(5,5,5,800), 
+(6,6,6,1500), 
+(7,2,4,400), 
+(8,3,4,1250), 
+(9,4,2,400), 
+(10,1,3,350); </pre>
+ <p>
+ </p>
+ <p>
+  8​. Populate the mg_orders table with data.
+ </p>
+ <pre language="sql">INSERT INTO mg_orders VALUES 
+(1,1,50,122000,'2022-04-05','2022-05-25', 'Delivered'), 
+(2,2,75,28000,'2022-03-08',NULL, 'In progress'), 
+(3,3,80,25000,'2022-05-19','2022-06-08', 'Delivered'), 
+(4,4,45,100000,'2022-01-10',NULL, 'In progress'), 
+(5,5,70,56000,'2022-05-19',NULL, 'In progress'), 
+(6,6,60,90000,'2022-06-10','2022-06-18', 'Delivered'); </pre>
+ <p>
+ </p>
+ <p>
+  <strong>
+   Task 1:
+  </strong>
+  Use the MySQL CEIL function to express the cost after the discount in the form of the smallest integer as follows:
+ </p>
+ <p>
+  Give a 5% discount to the clients who have ordered luxury watches. Express the cost after the discount in the form of the smallest integer, which is not less than the value shown in the afterDiscount column in the result table given below. Use the MySQL CEIL function to do this.
+ </p>
+ <p>
+  The following query is written to determine the cost of each order after the discount is applied.
+ </p>
+ <pre language="sql">SELECT ClientID, OrderID, (Cost -(Cost * 5 /100)) As afterDiscount FROM client_orders WHERE ItemID = 4;</pre>
+ <p>
+  The result is as follows:
+ </p>
+ <img assetid="xh60BURlT5yw68aDLGN8yg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWQAAACPCAYAAADN76HVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAA4TSURBVHhe7Z3blas4EEUnkptXR+NAOoSOwv+dk8cgCSRUgtIDtTD7Y691Gxcgzikdy4zN/Pfv378XALTm6/X9/H39/v6+nt9fwusAMQQyAMAgEMgAAINAIAMADAKBDAAwCAQyAMAgEMgAAINAIAMADAKBDAAwCMpAtl9y/3kIr0Ff8KIP6Aw1lPUPgXw58KIP6Aw1EMg3AS/6gM5QA4F8E/CiD+gMNbQO5MfP/GCUNM/X95epffzEr28fqEJNRQ1e9KlBZ2pqajL6JwUr5MuBF31AZ6ih9Qo5gOYcB7zoAzpDDQTyTcCLPqAz1EAg3wS86AM6Qw2nBjIAAJwNgQwAMAgEMgDAIBDIAACDQCADAAwCgQwAMAjKQOYrQOOAF31AZ6jh1K+9dWjOr+/X0//d9/P79SXVTSy1P6+H9PpHM3BQWF9+HsJrl6Ozztv+Vzz34E+59RzUcPVA9pgf4DFEID9eP+/zbB8w8rcQyH3oqLPr5+S5BuzDjwzkljpfIJC/vp/23d8hm3kYyN3YNyi+nhUTSmb/6PWqa2vhxXZcjVZjJwXydXXWYa5vz4OWQZHiDA2vRkudhw5ku3/UdG8BhGNeJZBXUvpI+6e00FLphX1EoD8mF3jVQXr6CvlCOmdg9N9babYMihRnaHg1Wupc1j9dAvl4BRCSDOTlY5IlGdqukRzhuefxzPsaA1ydM8IFVIrYsJQ+KYPteYvedGq8SO9rnvNqQ2EObaOZ2e7YhkaonyMM5H0v9OeauIrOlm2/JuZAKpDz+rBWZ6WG6jm47Q352qNnCCe8TR1H1i68lvbzXUNZ/3QIZLtvxqRIBrJHusaK7o3VCL4auRrgmWsbIwyT0Ng0KX3S+2/HpKfCC/Eahdf8SbKcZ+OjnZjBtUUr5GMvVOdauIjOM+8xbcZvgtCOxb9uieC8R31Yr3OJhjlzMK3Hph/f41z+tmP2x2TGsu5j/lYE8jQeQY/g3Dsa5FPWP+cHsjRxD6gJZNmgcPxbUw2SGVqDUvqk95fHoKHcC1kbix+mwkSY8PcX9d8EssYLzbnW7dfQOUliLuz6MrPfhy10LtEwOU+jN2aBw5qU/na7Pa987eG1yOOXrndf5zzK+ufDAjk9Tr9eY2J6m0TqvDv7i+/QGsq9kK/b4vt0OLbEdQWTTOdFng7X0DmNPM5dX2b2+rCVzvkapuepOdbe+Q6veSc3/H01c1lTk95WSln/fFggr40gYuvbG5QfFGYMfYNCvm6LH6ZNAlnnxdmB/Bc6O9y5t2zHuevLzF4fttI5X8P9eWr1c+PY3PI4nONBL4WY8ZjjydqF16KpSW8rpax/OtxDtg2zJ/6G8kDWjbO9Qanzpvefx787CVNUeDFPyvheYPRak0BWjvPkQP4Tnd/IISaPU+5Hn70+bKVzvoaaeTpj+8LvvcNrPgxks69mLmtq0ttKKeufDoHsDE0EgYDG6FSNZl+9QdrrTtUlDHYNWqRnjRdmPNK+gW6Hk1ceg/F53U/jxamB/Gc6232ja5fHeRhOB2Npo3O+hqrzOrYBW9hj2+2idvbY7lraz3cNZcfqEshLEESh/N4uHFNjdLJGMQn1BtnzHL6ZpPQRjunGtzsB96jzwlx7OBHMNu8aFSG53Wf++/kMJ50mEM8K5D/WOeqbZTxxj8n9GLLbh010ztcwOQff55Kv0R+/1Xd7Te99lzEKYz7sVfu3r7Osb81811DWP50C2WAu1mcVyYi2fd0QCrtfYzBib2ucaTkGrY2zohmPOdf+OMpo4IXXtIaNFsJEkAj8nMdjrjfc70ADxbmuqfO2byaN5R6T+3FLug8NtTrrNNTOwbhOvr4oE7Z6H/Xqm/Bc0+tGq3CebveTvTjWWUtZ/3QNZGgBXvQBnaEGAvkm4EUf0BlqIJBvAl70AZ2hBgL5JuBFH9AZajg1kAEA4GwIZACAQSCQAQAGgUAGABgEAhkAYBAIZACAQSCQAQAGQRnIfCdzHPCiD+gMNZz6PWSacxzwog/oDDUQyDcBL/qAzlADgXwT8KIP6Aw1tA7k6DmkW9aHOMfPOY6fIUpNRQ1e9KlBZ2pqajL6JwUr5MuBF31AZ6ih9Qo5gOYcB7zoAzpDDQTyTcCLPqAz1EAg3wS86AM6Qw2nBjIAAJwNgQwAMAgEMgDAIBDIAACDQCADAAwCgQwAMAjKQOYrQOOAF31AZ6jh1K+90ZzjgBd9QGeogUC+CXjRB3SGGgjkC/B4/dgnP22fIqUHL45B5yRf36/n0ZPHjmqW11dWnVftRZ7fr6/t8VIkn57283oEtdtzSuNuVaOFQB4e/9F9BMV5oLOEvZ53ID6+n4mwUdTYkPx5xNv2tTZhl+XHfNyDUHRvDp5Pxn9vv1Y1WZT1D4HcC2v4z6OgMQPwYhd0FpnCxWnxlQhbbU28yj3WKnW8XRSBrBlPq5o8yvYlkLvg60dQnAc6a9CE424gJ24ZpLU2r2dreRjIifPaFfs0zlY14fVqKOsfArkDprmdqUfNewRepEBnHTWB7HRdX7N/R6vLFc35RJZA9PHCcfk0tO6z9IAN81Y12WMnkEdlGwwExTmgsxZNQB7VmJWyZVcjG9hNdLSeuHEFQbrxSwzb8hoC+UOI700RFGeAznrqAtkGrFup2jBLHU9zrizs+WZflyAVvI7Ctq6GQP4ERDMJiuagcxblgWw18W8bzBit49sWdntTDf1j2n+/8W83TJjxr/eHa2vC69VAIA9H8LEuQX5g4MUWdM6jPJBtcKW+jbAJLs151hW2MvTmN981OONPRhOhd61q8ijbl0DujmlqVm5ng84pygN5ffMLVpI2JEOtbHgf6GfOIxxTwoW3f0y7zffZjNEL+FY1WRDIF4Gg6AM6+/jBF2FXhpqa6VgulH22OrtjqUNWCD5pPOLxlmM4hBBtVaOGQL4JeNEHdIYaCOSbgBd9QGeogUC+CXjRB3SGGgjkm4AXfUBnqOHUQAYAgLMhkAEABoFbFpcDL/qAzlDDqbcsaM5xwIs+oDPUQCDfBLzoAzpDDQTysES/OIp+M58DXsTYn+mmKNL7hjq7n0AfaRf9ok36ReTWk4NnWiTRHKdnjRYCeUjmMA6a2ppeHMp4ocdoXfbzaXQWe3XzcB9/26KzC2xPO/Nz68yA0xynZ00WBPJlMCvmvkbfEXSux2i4PtNhDqloMRFqpanR0OpcPce8UrYvgfwHEBQ9sKu7Yp3QeUIM5OihO/4nkcSnkuV2iPaBPcfH6VmT/5AhAvkyyE2tBS801L3pTaCz+xgfBpUJr1Vb+7dbXdp9/FsaS6jPAaf0RHGcnjX5fUQgX4PZ4Bot8eIYGxJVGt1UZxtOZmWYvn6zqBBqgnDbaJgTborj9KwhkD+R2dy3jtG9qhzw4gizuimZRD7oPGGC19fSrZDfq8fpbxtmS80SbsJtgJxwUxynZw2B/GlY05dGLgYv9jGTql4fdDb4IWU1iXrYav5eaKyBPQWcX+PdBvC2pTk+Ts+a/DlLII9LszCewIs9zASqXR1PoLPBhJUJZBtcqW8j2P7O+sbCztzQHKdnTR5l+xLIZ9M0jCfwIo0NjCbaoPOigde7c3C9NQ5WkvPHek8r2/P+R3+zXzwHzBuocMwJzXF61mRBIA+JMTVB9I6sAS9SuMkdTewi7qezH44OP6AcUk9HdTbg1ppEsC11R6/vHKdnjRoC+SbgRR/QGWogkG8CXvQBnaEGAvkm4EUf0BlqIJBvAl70AZ2hhlMDGQAAzoZABgAYBG5ZXA686AM6Qw2n3rKgOccBL/qAzlADgXwT8KIP6Aw1EMhj4n5W6lP0Cz0HXiSJfmkl/9JMx4fqvGi087yPo5pdndcH9Yjk9L40d2a2v6DbnlMad6saLQTyRbCmF4cyXojYySs9Y6EslD9NZ3s97757JB/ApKgp1tn0fZYX83EPQtG9OXg+mZ92e/u1qsmirH8I5D+g/JF+E3ghMU+e6E2uRqvP0nnSx4Vh6ol42poSnVPH20URyJrxtKrJo2xfAvkPIJDbM0+oxEdZVsghmnDcDeRsne2nwlwtDwM5cV67Yp/G2aomf64SyNfAfjQqC4kJvJCxk36ZwPbvaNWjhUCWa/J11pxPZAlEHy8c7Vzyb5+Yc71rbJi3qskeO4E8MO7+lKNKR7zYw6zg0HkPTUAe1eh1toHdREfriRtXEKQbv8SwLa8hkD8Y08wlJk/ghYxbudkV1PImiM5b6gI5T2fNubKw55s/YS5BasYUfOqMwrauJn/8BPKFEIxXgxcxVhMXEgs2PIpuWxDIcU2uznZ7Uw39Y9p/v/FvN0yY8fP/1AMVpgEI5FbYCZX6r+QdJ9QVKA/kPJ0151lX2EqP5hXrGpzzp83UeKx3rWryKNuXQO6O1bIoJCbwQsLd0wxWOHby9pxQV6A8kHN0tuF9oJ85j3BMCRfe/jHtNn9xY8boza9WNVkQyEPiN5yjbGXswIsULizaaP1ZOkt9uGBXhpqa6Vgand2x1CErBJ80HvF4yzEcQoi2qlFDIN8EvOgDOkMNBPJNwIs+oDPUQCDfBLzoAzpDDQTyTcCLPqAz1HBqIAMAwNkQyAAAg0AgAwAMAoEMADAIBDIAwCAQyAAAg0AgAwAMgjKQ+U7mOOBFH9AZajj1e8g05zjgRR/QGWogkG8CXvQBnaEGAvkm4EUf0BlqaB3I7qHTSdaHV2uej0pNRQ1e9KlBZ2pqajL6JwUr5MuBF31AZ6ih9Qo5gOYcB7zoAzpDDQTyTcCLPqAz1EAg3wS86AM6Qw2nBjIAAJwNgQwAMAgEMgDAIBDIAACDQCADAAzBv9f/P47uReaBrBQAAAAASUVORK5CYII="/>
+ <p>
+  Your task is to apply the MySQL CEIL function to this query to express the cost after the discount in the form of the smallest integer, which is not less than the afterDiscount value in the result above.
+ </p>
+ <p>
+  <strong>
+   Task 2:
+  </strong>
+  Format the afterDiscount column value from the earlier result for 5% discount in '#,###,###.##' format rounded to 2 decimal places using the FORMAT function.
+ </p>
+ <p>
+  <strong>
+   Task 3:
+  </strong>
+  Find the expected delivery dates for their orders. The scheduled delivery date is 30 days after the order date. Use the ADDDATE function.
+ </p>
+ <p>
+  <strong>
+   Task 4
+  </strong>
+  : Generate data required for a report with details of all orders that have not yet been delivered. The DeliveryDate column has a NULL value for orders not yet delivered. It would help if you showed a value of 'NOT DELIVERED' instead of showing NULL for orders that are not yet delivered. Use the COALESCE function to do this.
+ </p>
+ <p>
+  <strong>
+   Task 5
+  </strong>
+  : Generate data required for the report by retrieving a list of M&amp;G orders yet to be delivered. These orders have an 'In Progress' status using the NULLIF function.
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>
